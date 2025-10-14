@@ -55,8 +55,8 @@ export default function Navigation({ currentPage, onNavigate }: NavigationProps)
                 onClick={() => handleNavigate(item.id)}
                 className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
                   currentPage === item.id
-                    ? 'text-blue-900 bg-blue-50'
-                    : 'text-gray-700 hover:text-blue-900 hover:bg-gray-50'
+                    ? 'text-[#2D1B4E] bg-[#E5D4A6]/30'
+                    : 'text-gray-700 hover:text-[#2D1B4E] hover:bg-gray-50'
                 }`}
               >
                 {item.name}
@@ -64,7 +64,7 @@ export default function Navigation({ currentPage, onNavigate }: NavigationProps)
             ))}
             <button
               onClick={() => handleNavigate('about')}
-              className="ml-4 px-6 py-2 bg-blue-900 text-white rounded-lg font-medium hover:bg-blue-800 transition-colors"
+              className="ml-4 px-6 py-2 bg-[#C9A961] text-[#2D1B4E] rounded-lg font-medium hover:bg-[#E5D4A6] transition-colors"
             >
               Request Demo
             </button>
@@ -90,8 +90,8 @@ export default function Navigation({ currentPage, onNavigate }: NavigationProps)
                 onClick={() => handleNavigate(item.id)}
                 className={`block w-full text-left px-3 py-2 rounded-md text-base font-medium ${
                   currentPage === item.id
-                    ? 'text-blue-900 bg-blue-50'
-                    : 'text-gray-700 hover:text-blue-900 hover:bg-gray-50'
+                    ? 'text-[#2D1B4E] bg-[#E5D4A6]/30'
+                    : 'text-gray-700 hover:text-[#2D1B4E] hover:bg-gray-50'
                 }`}
               >
                 {item.name}
@@ -99,7 +99,7 @@ export default function Navigation({ currentPage, onNavigate }: NavigationProps)
             ))}
             <button
               onClick={() => handleNavigate('about')}
-              className="w-full mt-4 px-4 py-2 bg-blue-900 text-white rounded-lg font-medium hover:bg-blue-800 transition-colors"
+              className="w-full mt-4 px-4 py-2 bg-[#C9A961] text-[#2D1B4E] rounded-lg font-medium hover:bg-[#E5D4A6] transition-colors"
             >
               Request Demo
             </button>

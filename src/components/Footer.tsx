@@ -11,7 +11,7 @@ export default function Footer({ onNavigate }: FooterProps) {
   };
 
   return (
-    <footer className="bg-gray-900 text-gray-300">
+    <footer className="bg-[#2D1B4E] text-gray-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           <div>
@@ -24,11 +24,11 @@ export default function Footer({ onNavigate }: FooterProps) {
             </p>
             <div className="flex space-x-4">
               <div className="flex items-center space-x-1 text-xs">
-                <Shield size={16} className="text-green-400" />
+                <Shield size={16} className="text-[#C9A961]" />
                 <span>SOC 2 Ready</span>
               </div>
               <div className="flex items-center space-x-1 text-xs">
-                <Lock size={16} className="text-green-400" />
+                <Lock size={16} className="text-[#C9A961]" />
                 <span>HIPAA</span>
               </div>
             </div>
@@ -120,11 +120,11 @@ export default function Footer({ onNavigate }: FooterProps) {
             </p>
             <div className="flex items-center space-x-4 mt-4 md:mt-0">
               <div className="flex items-center space-x-2 text-xs text-gray-400">
-                <Award size={16} className="text-green-400" />
+                <Award size={16} className="text-[#C9A961]" />
                 <span>Air-Gap Certified</span>
               </div>
               <div className="flex items-center space-x-2 text-xs text-gray-400">
-                <Shield size={16} className="text-green-400" />
+                <Shield size={16} className="text-[#C9A961]" />
                 <span>Enterprise Security</span>
               </div>
             </div>
