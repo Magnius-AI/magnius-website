@@ -1,0 +1,33 @@
+# Jekyll configuration for GitHub Pages
+# Note: This is for a Vite/React app, so we're bypassing Jekyll processing
+
+# Site settings
+title: Magnius AI
+description: Legal AI Assistant Platform
+baseurl: "/magnius-website"
+url: "https://magnius-ai.github.io"
+
+# Build settings
+exclude:
+  - node_modules
+  - src
+  - public
+  - package.json
+  - package-lock.json
+  - vite.config.ts
+  - tsconfig.json
+  - tsconfig.app.json
+  - tsconfig.node.json
+  - tailwind.config.js
+  - postcss.config.js
+  - eslint.config.js
+  - README.md
+  - .gitignore
+  - .git
+
+# Include the dist folder (your built files)
+include:
+  - dist
+
+# Bypass Jekyll processing entirely
+plugins: []
