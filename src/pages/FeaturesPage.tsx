@@ -129,12 +129,12 @@ export default function FeaturesPage() {
 
   return (
     <div className="bg-white">
-      <section className="relative bg-gradient-to-br from-[#2D1B4E] via-[#3D2861] to-[#2D1B4E] text-white py-20">
+      <section className="relative bg-gradient-to-br from-gray-900 via-black to-gray-900 text-white py-20">
         <div className="absolute inset-0 bg-grid-white/[0.05] bg-[size:32px_32px]"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
             <nav className="text-sm mb-4">
-              <span className="text-[#C9A961]">Home</span>
+              <span className="text-white">Home</span>
               <span className="mx-2 text-gray-400">/</span>
               <span>Features</span>
             </nav>
@@ -162,8 +162,8 @@ export default function FeaturesPage() {
                   onClick={() => setActiveTab(tab.id)}
                   className={`pb-4 px-1 border-b-2 font-medium text-lg transition-colors ${
                     activeTab === tab.id
-                      ? 'border-[#C9A961] text-[#2D1B4E]'
-                      : 'border-transparent text-gray-500 hover:text-[#2D1B4E] hover:border-gray-300'
+                      ? 'border-gray-900 text-gray-900'
+                      : 'border-transparent text-gray-500 hover:text-gray-900 hover:border-gray-300'
                   }`}
                 >
                   {tab.label}
@@ -177,10 +177,10 @@ export default function FeaturesPage() {
               {coreFeatures.map((feature) => (
                 <div
                   key={feature.title}
-                  className="bg-white border-2 border-gray-100 rounded-xl p-6 hover:border-[#C9A961] hover:shadow-xl transition-all duration-300"
+                  className="bg-white border-2 border-gray-100 rounded-xl p-6 hover:border-gray-900 hover:shadow-xl transition-all duration-300"
                 >
-                  <div className="w-12 h-12 bg-gradient-to-br from-[#2D1B4E] to-[#3D2861] rounded-lg flex items-center justify-center mb-4">
-                    <feature.icon className="text-[#C9A961]" size={24} />
+                  <div className="w-12 h-12 bg-gray-900 rounded-lg flex items-center justify-center mb-4">
+                    <feature.icon className="text-white" size={24} />
                   </div>
                   <h3 className="text-xl font-bold text-gray-900 mb-3">{feature.title}</h3>
                   <p className="text-gray-600 mb-4">{feature.description}</p>
@@ -193,7 +193,7 @@ export default function FeaturesPage() {
                     ))}
                   </ul>
                   {feature.badge && (
-                    <div className="inline-block bg-[#2D1B4E] text-[#C9A961] text-xs px-3 py-1 rounded-full font-medium">
+                    <div className="inline-block bg-gray-900 text-white text-xs px-3 py-1 rounded-full font-medium">
                       {feature.badge}
                     </div>
                   )}
@@ -219,10 +219,10 @@ export default function FeaturesPage() {
               {advancedFeatures.map((feature) => (
                 <div
                   key={feature.title}
-                  className="bg-white border-2 border-gray-100 rounded-xl p-6 hover:border-[#C9A961] hover:shadow-xl transition-all duration-300"
+                  className="bg-white border-2 border-gray-100 rounded-xl p-6 hover:border-gray-900 hover:shadow-xl transition-all duration-300"
                 >
-                  <div className="w-12 h-12 bg-gradient-to-br from-[#2D1B4E] to-[#3D2861] rounded-lg flex items-center justify-center mb-4">
-                    <feature.icon className="text-[#C9A961]" size={24} />
+                  <div className="w-12 h-12 bg-gray-900 rounded-lg flex items-center justify-center mb-4">
+                    <feature.icon className="text-white" size={24} />
                   </div>
                   <h3 className="text-xl font-bold text-gray-900 mb-3">{feature.title}</h3>
                   <p className="text-gray-600 mb-4">{feature.description}</p>
@@ -235,7 +235,7 @@ export default function FeaturesPage() {
                     ))}
                   </ul>
                   {feature.badge && (
-                    <div className="inline-block bg-[#C9A961] text-[#2D1B4E] text-xs px-3 py-1 rounded-full font-medium">
+                    <div className="inline-block bg-gray-700 text-white text-xs px-3 py-1 rounded-full font-medium">
                       {feature.badge}
                     </div>
                   )}
@@ -249,10 +249,10 @@ export default function FeaturesPage() {
               {securityFeatures.map((feature) => (
                 <div
                   key={feature.title}
-                  className="bg-white border-2 border-gray-100 rounded-xl p-6 text-center hover:border-[#C9A961] hover:shadow-xl transition-all duration-300"
+                  className="bg-white border-2 border-gray-100 rounded-xl p-6 text-center hover:border-gray-900 hover:shadow-xl transition-all duration-300"
                 >
-                  <div className="w-12 h-12 bg-gradient-to-br from-[#2D1B4E] to-[#3D2861] rounded-lg flex items-center justify-center mb-4 mx-auto">
-                    <feature.icon className="text-[#C9A961]" size={24} />
+                  <div className="w-12 h-12 bg-gray-900 rounded-lg flex items-center justify-center mb-4 mx-auto">
+                    <feature.icon className="text-white" size={24} />
                   </div>
                   <h3 className="text-lg font-bold text-gray-900 mb-2">{feature.title}</h3>
                   <p className="text-sm text-gray-600">{feature.description}</p>
@@ -267,13 +267,13 @@ export default function FeaturesPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">See Features in Action</h2>
-            <p className="text-xl text-gray-600">Watch how Relius AI transforms legal workflows</p>
+            <p className="text-xl text-gray-600">Watch how Magnius AI transforms legal workflows</p>
           </div>
           <div className="bg-white rounded-2xl shadow-xl overflow-hidden max-w-4xl mx-auto">
-            <div className="aspect-video bg-gradient-to-br from-[#2D1B4E] to-[#3D2861] flex items-center justify-center">
+            <div className="aspect-video bg-gradient-to-br from-gray-900 to-black flex items-center justify-center">
               <div className="text-center text-white">
-                <div className="w-20 h-20 bg-[#C9A961] rounded-full flex items-center justify-center mx-auto mb-4 cursor-pointer hover:scale-110 transition-transform">
-                  <Play size={32} className="text-[#2D1B4E]" />
+                <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-4 cursor-pointer hover:scale-110 transition-transform">
+                  <Play size={32} className="text-black" />
                 </div>
                 <p className="text-lg">Product Demo Video</p>
               </div>
@@ -288,13 +288,13 @@ export default function FeaturesPage() {
             Ready to See These Features in Your Firm?
           </h2>
           <p className="text-xl text-gray-600 mb-8">
-            Experience the power of Relius AI with a personalized demo
+            Experience the power of Magnius AI with a personalized demo
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="px-8 py-4 bg-[#2D1B4E] text-white rounded-lg font-semibold text-lg hover:bg-[#3D2861] transition-colors shadow-lg">
+            <button className="px-8 py-4 bg-gray-900 text-white rounded-lg font-semibold text-lg hover:bg-gray-800 transition-colors shadow-lg">
               Schedule Demo
             </button>
-            <button className="px-8 py-4 bg-white text-[#2D1B4E] rounded-lg font-semibold text-lg hover:bg-gray-50 transition-colors shadow-lg border-2 border-[#C9A961]">
+            <button className="px-8 py-4 bg-white text-gray-900 rounded-lg font-semibold text-lg hover:bg-gray-50 transition-colors shadow-lg border-2 border-gray-900">
               Download Feature Comparison
             </button>
           </div>

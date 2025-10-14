@@ -48,11 +48,11 @@ export default function UseCasesPage() {
 
   return (
     <div className="bg-white">
-      <section className="relative bg-gradient-to-br from-[#2D1B4E] via-[#3D2861] to-[#2D1B4E] text-white py-20">
+      <section className="relative bg-gradient-to-br from-gray-900 via-black to-gray-900 text-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h1 className="text-5xl md:text-6xl font-bold mb-6">Built for Every Legal Practice</h1>
           <p className="text-xl text-gray-300 max-w-3xl">
-            See how Relius AI transforms legal workflows across practice areas
+            See how Magnius AI transforms legal workflows across practice areas
           </p>
         </div>
       </section>
@@ -61,17 +61,17 @@ export default function UseCasesPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-8">
             {useCases.map((useCase) => (
-              <div key={useCase.title} className="bg-white border-2 border-gray-100 rounded-xl p-8 hover:border-[#C9A961] hover:shadow-xl transition-all">
-                <div className="w-16 h-16 bg-gradient-to-br from-[#2D1B4E] to-[#3D2861] rounded-xl flex items-center justify-center mb-4">
-                  <useCase.icon className="text-[#C9A961]" size={32} />
+              <div key={useCase.title} className="bg-white border-2 border-gray-100 rounded-xl p-8 hover:border-gray-900 hover:shadow-xl transition-all">
+                <div className="w-16 h-16 bg-gradient-to-br from-gray-900 to-black rounded-xl flex items-center justify-center mb-4">
+                  <useCase.icon className="text-white" size={32} />
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-3">{useCase.title}</h3>
                 <div className="mb-4">
-                  <span className="text-sm font-semibold text-[#2D1B4E]">Challenge:</span>
+                  <span className="text-sm font-semibold text-gray-900">Challenge:</span>
                   <p className="text-gray-600 mt-1">{useCase.challenge}</p>
                 </div>
                 <div className="mb-4">
-                  <span className="text-sm font-semibold text-[#2D1B4E]">Results:</span>
+                  <span className="text-sm font-semibold text-gray-900">Results:</span>
                   <ul className="mt-2 space-y-1">
                     {useCase.results.map((result) => (
                       <li key={result} className="flex items-start space-x-2 text-sm text-gray-700">
@@ -81,7 +81,7 @@ export default function UseCasesPage() {
                     ))}
                   </ul>
                 </div>
-                <div className="bg-gray-50 rounded-lg p-4 italic text-gray-700 border-l-4 border-[#C9A961]">
+                <div className="bg-gray-50 rounded-lg p-4 italic text-gray-700 border-l-4 border-gray-900">
                   "{useCase.quote}"
                 </div>
               </div>
@@ -94,10 +94,10 @@ export default function UseCasesPage() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-4xl font-bold text-gray-900 mb-8">Which Use Case Matches Your Practice?</h2>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="px-8 py-4 bg-[#2D1B4E] text-white rounded-lg font-semibold hover:bg-[#3D2861] transition-colors">
+            <button className="px-8 py-4 bg-gray-900 text-white rounded-lg font-semibold hover:bg-gray-800 transition-colors">
               Schedule Consultation
             </button>
-            <button className="px-8 py-4 border-2 border-[#C9A961] text-[#2D1B4E] rounded-lg font-semibold hover:bg-white transition-colors">
+            <button className="px-8 py-4 border-2 border-gray-900 text-gray-900 rounded-lg font-semibold hover:bg-white transition-colors">
               See All Features
             </button>
           </div>

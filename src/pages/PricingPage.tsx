@@ -117,7 +117,7 @@ export default function PricingPage() {
 
   return (
     <div className="bg-white">
-      <section className="relative bg-gradient-to-br from-[#2D1B4E] via-[#3D2861] to-[#2D1B4E] text-white py-20">
+      <section className="relative bg-gradient-to-br from-gray-900 via-black to-gray-900 text-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-5xl md:text-6xl font-bold mb-6">Transparent Pricing for Every Deployment Model</h1>
           <p className="text-xl text-gray-300 mb-8">No hidden fees. No surprises. Choose the plan that fits your practice.</p>
@@ -127,7 +127,7 @@ export default function PricingPage() {
               onClick={() => setDeployment('onpremise')}
               className={`px-6 py-3 rounded-lg font-semibold transition-colors ${
                 deployment === 'onpremise'
-                  ? 'bg-[#C9A961] text-[#2D1B4E]'
+                  ? 'bg-white text-gray-900'
                   : 'text-white hover:bg-white/10'
               }`}
             >
@@ -137,7 +137,7 @@ export default function PricingPage() {
               onClick={() => setDeployment('cloud')}
               className={`px-6 py-3 rounded-lg font-semibold transition-colors ${
                 deployment === 'cloud'
-                  ? 'bg-[#C9A961] text-[#2D1B4E]'
+                  ? 'bg-white text-gray-900'
                   : 'text-white hover:bg-white/10'
               }`}
             >
@@ -155,12 +155,12 @@ export default function PricingPage() {
                 key={tier.name}
                 className={`rounded-2xl p-8 ${
                   tier.highlighted
-                    ? 'bg-[#2D1B4E] text-white shadow-2xl scale-105 border-4 border-[#C9A961]'
+                    ? 'bg-gray-900 text-white shadow-2xl scale-105 border-4 border-white'
                     : 'bg-white border-2 border-gray-200 shadow-lg'
                 }`}
               >
                 {tier.badge && (
-                  <div className="bg-[#C9A961] text-[#2D1B4E] px-4 py-1 rounded-full text-sm font-bold inline-block mb-4">
+                  <div className="bg-white text-gray-900 px-4 py-1 rounded-full text-sm font-bold inline-block mb-4">
                     {tier.badge}
                   </div>
                 )}
@@ -171,7 +171,7 @@ export default function PricingPage() {
                   {tier.description}
                 </p>
                 <div className="mb-6">
-                  <span className={`text-4xl font-bold ${tier.highlighted ? 'text-[#C9A961]' : 'text-[#2D1B4E]'}`}>
+                  <span className={`text-4xl font-bold ${tier.highlighted ? 'text-white' : 'text-gray-900'}`}>
                     {tier.price}
                   </span>
                   {tier.period && (
@@ -184,7 +184,7 @@ export default function PricingPage() {
                   {tier.features.map((feature) => (
                     <li key={feature} className="flex items-start space-x-2">
                       <CheckCircle
-                        className={`flex-shrink-0 mt-0.5 ${tier.highlighted ? 'text-[#C9A961]' : 'text-[#10B981]'}`}
+                        className={`flex-shrink-0 mt-0.5 ${tier.highlighted ? 'text-white' : 'text-[#10B981]'}`}
                         size={18}
                       />
                       <span className={`text-sm ${tier.highlighted ? 'text-gray-200' : 'text-gray-700'}`}>
@@ -196,8 +196,8 @@ export default function PricingPage() {
                 <button
                   className={`w-full py-3 rounded-lg font-semibold transition-colors ${
                     tier.highlighted
-                      ? 'bg-[#C9A961] text-[#2D1B4E] hover:bg-[#E5D4A6]'
-                      : 'bg-[#2D1B4E] text-white hover:bg-[#3D2861]'
+                      ? 'bg-white text-gray-900 hover:bg-gray-100'
+                      : 'bg-gray-900 text-white hover:bg-gray-800'
                   }`}
                 >
                   {tier.price === 'Custom' ? 'Request Quote' : deployment === 'cloud' ? 'Start Free Trial' : 'Purchase License'}
@@ -243,10 +243,10 @@ export default function PricingPage() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-4xl font-bold text-gray-900 mb-6">Questions About Pricing?</h2>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="px-8 py-4 bg-[#2D1B4E] text-white rounded-lg font-semibold hover:bg-[#3D2861] transition-colors">
+            <button className="px-8 py-4 bg-gray-900 text-white rounded-lg font-semibold hover:bg-gray-800 transition-colors">
               Chat with Sales
             </button>
-            <button className="px-8 py-4 border-2 border-[#C9A961] text-[#2D1B4E] rounded-lg font-semibold hover:bg-gray-50 transition-colors">
+            <button className="px-8 py-4 border-2 border-gray-900 text-gray-900 rounded-lg font-semibold hover:bg-gray-50 transition-colors">
               Calculate Your TCO
             </button>
           </div>

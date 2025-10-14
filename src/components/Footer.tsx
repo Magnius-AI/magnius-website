@@ -11,24 +11,24 @@ export default function Footer({ onNavigate }: FooterProps) {
   };
 
   return (
-    <footer className="bg-[#2D1B4E] text-gray-300">
+    <footer className="bg-gray-900 text-gray-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           <div>
             <div className="flex items-center space-x-2 mb-4">
-              <img src="/relius-logo.png" alt="Relius AI" className="h-8 w-auto" />
-              <span className="text-xl font-bold text-white">Relius AI</span>
+              <img src="/magnius-icon.png" alt="Magnius AI" className="h-8 w-auto" />
+              <span className="text-xl font-bold text-white">Magnius AI</span>
             </div>
             <p className="text-sm mb-4">
-              Secure AI-powered legal assistant for modern law firms. Your data, your infrastructure, your control.
+              Enterprise-grade AI legal assistant platform. Secure, powerful, and built for modern legal professionals.
             </p>
             <div className="flex space-x-4">
               <div className="flex items-center space-x-1 text-xs">
-                <Shield size={16} className="text-[#C9A961]" />
+                <Shield size={16} className="text-white" />
                 <span>SOC 2 Ready</span>
               </div>
               <div className="flex items-center space-x-1 text-xs">
-                <Lock size={16} className="text-[#C9A961]" />
+                <Lock size={16} className="text-white" />
                 <span>HIPAA</span>
               </div>
             </div>
@@ -116,15 +116,15 @@ export default function Footer({ onNavigate }: FooterProps) {
         <div className="border-t border-gray-800 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-sm text-gray-400">
-              © 2025 Relius AI. All rights reserved.
+              © 2025 Magnius AI. All rights reserved.
             </p>
             <div className="flex items-center space-x-4 mt-4 md:mt-0">
               <div className="flex items-center space-x-2 text-xs text-gray-400">
-                <Award size={16} className="text-[#C9A961]" />
+                <Award size={16} className="text-white" />
                 <span>Air-Gap Certified</span>
               </div>
               <div className="flex items-center space-x-2 text-xs text-gray-400">
-                <Shield size={16} className="text-[#C9A961]" />
+                <Shield size={16} className="text-white" />
                 <span>Enterprise Security</span>
               </div>
             </div>

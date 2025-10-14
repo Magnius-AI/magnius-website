@@ -3,7 +3,7 @@ import { Server, Cloud, CheckCircle, ArrowRight } from 'lucide-react';
 export default function DeploymentPage() {
   return (
     <div className="bg-white">
-      <section className="relative bg-gradient-to-br from-[#2D1B4E] via-[#3D2861] to-[#2D1B4E] text-white py-20">
+      <section className="relative bg-gradient-to-br from-gray-900 via-black to-gray-900 text-white py-20">
         <div className="absolute inset-0 bg-grid-white/[0.05] bg-[size:32px_32px]"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h1 className="text-5xl md:text-6xl font-bold mb-6">Deploy Your Way: On-Premise or Cloud</h1>
@@ -16,12 +16,12 @@ export default function DeploymentPage() {
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-white border-2 border-[#2D1B4E] rounded-2xl p-8 shadow-xl">
-              <div className="bg-[#C9A961] text-[#2D1B4E] px-4 py-1 text-sm font-bold rounded-full inline-block mb-4">
+            <div className="bg-white border-2 border-gray-900 rounded-2xl p-8 shadow-xl">
+              <div className="bg-white text-gray-900 px-4 py-1 text-sm font-bold rounded-full inline-block mb-4 border-2 border-gray-900">
                 Maximum Security
               </div>
               <div className="flex items-center space-x-3 mb-4">
-                <Server className="text-[#C9A961]" size={32} />
+                <Server className="text-gray-900" size={32} />
                 <h2 className="text-3xl font-bold text-gray-900">On-Premise Air-Gapped</h2>
               </div>
               <p className="text-lg text-gray-600 mb-6">Complete Data Sovereignty</p>
@@ -63,18 +63,18 @@ export default function DeploymentPage() {
                 </ul>
               </div>
 
-              <button className="w-full py-3 bg-[#2D1B4E] text-white rounded-lg font-semibold hover:bg-[#3D2861] transition-colors flex items-center justify-center space-x-2">
+              <button className="w-full py-3 bg-gray-900 text-white rounded-lg font-semibold hover:bg-gray-800 transition-colors flex items-center justify-center space-x-2">
                 <span>Request Air-Gap Quote</span>
                 <ArrowRight size={18} />
               </button>
             </div>
 
             <div className="bg-white border-2 border-gray-200 rounded-2xl p-8 shadow-xl">
-              <div className="bg-gradient-to-r from-[#C9A961] to-[#E5D4A6] text-[#2D1B4E] px-4 py-1 text-sm font-bold rounded-full inline-block mb-4">
+              <div className="bg-white text-gray-900 px-4 py-1 text-sm font-bold rounded-full inline-block mb-4 border-2 border-gray-900">
                 Managed Service
               </div>
               <div className="flex items-center space-x-3 mb-4">
-                <Cloud className="text-[#C9A961]" size={32} />
+                <Cloud className="text-gray-900" size={32} />
                 <h2 className="text-3xl font-bold text-gray-900">Cloud/Hybrid Edition</h2>
               </div>
               <p className="text-lg text-gray-600 mb-6">Scalable & Maintained</p>
@@ -116,7 +116,7 @@ export default function DeploymentPage() {
                 </ul>
               </div>
 
-              <button className="w-full py-3 bg-[#2D1B4E] text-white rounded-lg font-semibold hover:bg-[#3D2861] transition-colors flex items-center justify-center space-x-2">
+              <button className="w-full py-3 bg-gray-900 text-white rounded-lg font-semibold hover:bg-gray-800 transition-colors flex items-center justify-center space-x-2">
                 <span>Start Free Trial</span>
                 <ArrowRight size={18} />
               </button>
@@ -131,7 +131,7 @@ export default function DeploymentPage() {
           <p className="text-xl text-gray-600 mb-8">
             Keep sensitive data on-premise while leveraging cloud compute for AI processing
           </p>
-          <button className="px-8 py-4 bg-[#2D1B4E] text-white rounded-lg font-semibold text-lg hover:bg-[#3D2861] transition-colors shadow-lg">
+          <button className="px-8 py-4 bg-gray-900 text-white rounded-lg font-semibold text-lg hover:bg-gray-800 transition-colors shadow-lg">
             Discuss Hybrid Setup
           </button>
         </div>

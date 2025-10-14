@@ -43,8 +43,8 @@ export default function Navigation({ currentPage, onNavigate }: NavigationProps)
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center cursor-pointer" onClick={() => handleNavigate('home')}>
             <div className="flex items-center space-x-2">
-              <img src="/relius-logo.png" alt="Relius AI" className="h-10 w-auto" />
-              <span className="text-xl font-bold text-gray-900">Relius AI</span>
+              <img src="/magnius-icon.png" alt="Magnius AI" className="h-10 w-auto" />
+              <span className="text-xl font-bold text-gray-900">Magnius AI</span>
             </div>
           </div>
 
@@ -55,8 +55,8 @@ export default function Navigation({ currentPage, onNavigate }: NavigationProps)
                 onClick={() => handleNavigate(item.id)}
                 className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
                   currentPage === item.id
-                    ? 'text-[#2D1B4E] bg-[#E5D4A6]/30'
-                    : 'text-gray-700 hover:text-[#2D1B4E] hover:bg-gray-50'
+                    ? 'text-gray-900 bg-gray-200'
+                    : 'text-gray-700 hover:text-gray-900 hover:bg-gray-50'
                 }`}
               >
                 {item.name}
@@ -64,7 +64,7 @@ export default function Navigation({ currentPage, onNavigate }: NavigationProps)
             ))}
             <button
               onClick={() => handleNavigate('about')}
-              className="ml-4 px-6 py-2 bg-[#C9A961] text-[#2D1B4E] rounded-lg font-medium hover:bg-[#E5D4A6] transition-colors"
+              className="ml-4 px-6 py-2 bg-gray-900 text-white rounded-lg font-medium hover:bg-gray-800 transition-colors"
             >
               Request Demo
             </button>
@@ -90,8 +90,8 @@ export default function Navigation({ currentPage, onNavigate }: NavigationProps)
                 onClick={() => handleNavigate(item.id)}
                 className={`block w-full text-left px-3 py-2 rounded-md text-base font-medium ${
                   currentPage === item.id
-                    ? 'text-[#2D1B4E] bg-[#E5D4A6]/30'
-                    : 'text-gray-700 hover:text-[#2D1B4E] hover:bg-gray-50'
+                    ? 'text-gray-900 bg-gray-200'
+                    : 'text-gray-700 hover:text-gray-900 hover:bg-gray-50'
                 }`}
               >
                 {item.name}
@@ -99,7 +99,7 @@ export default function Navigation({ currentPage, onNavigate }: NavigationProps)
             ))}
             <button
               onClick={() => handleNavigate('about')}
-              className="w-full mt-4 px-4 py-2 bg-[#C9A961] text-[#2D1B4E] rounded-lg font-medium hover:bg-[#E5D4A6] transition-colors"
+              className="w-full mt-4 px-4 py-2 bg-gray-900 text-white rounded-lg font-medium hover:bg-gray-800 transition-colors"
             >
               Request Demo
             </button>

@@ -42,7 +42,7 @@ export default function TechnologyPage() {
 
   return (
     <div className="bg-white">
-      <section className="relative bg-gradient-to-br from-[#2D1B4E] via-[#3D2861] to-[#2D1B4E] text-white py-20">
+      <section className="relative bg-gradient-to-br from-gray-900 via-black to-gray-900 text-white py-20">
         <div className="absolute inset-0 bg-grid-white/[0.05] bg-[size:32px_32px]"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h1 className="text-5xl md:text-6xl font-bold mb-6">Built on Enterprise-Grade Technology</h1>
@@ -56,15 +56,15 @@ export default function TechnologyPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {techStack.map((tech) => (
-              <div key={tech.title} className="bg-white border-2 border-gray-100 rounded-xl p-6 hover:border-[#C9A961] hover:shadow-xl transition-all">
-                <div className="w-12 h-12 bg-gradient-to-br from-[#2D1B4E] to-[#3D2861] rounded-lg flex items-center justify-center mb-4">
-                  <tech.icon className="text-[#C9A961]" size={24} />
+              <div key={tech.title} className="bg-white border-2 border-gray-100 rounded-xl p-6 hover:border-gray-900 hover:shadow-xl transition-all">
+                <div className="w-12 h-12 bg-gradient-to-br from-gray-900 to-black rounded-lg flex items-center justify-center mb-4">
+                  <tech.icon className="text-white" size={24} />
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-4">{tech.title}</h3>
                 <ul className="space-y-2">
                   {tech.items.map((item) => (
                     <li key={item} className="flex items-center space-x-2 text-sm text-gray-700">
-                      <span className="text-[#C9A961]">•</span>
+                      <span className="text-gray-900">•</span>
                       <span>{item}</span>
                     </li>
                   ))}
@@ -86,7 +86,7 @@ export default function TechnologyPage() {
               { label: 'Uptime SLA', value: '99.9%' }
             ].map((metric) => (
               <div key={metric.label} className="bg-white rounded-xl p-6 text-center shadow-lg">
-                <div className="text-4xl font-bold text-[#2D1B4E] mb-2">{metric.value}</div>
+                <div className="text-4xl font-bold text-gray-900 mb-2">{metric.value}</div>
                 <div className="text-gray-600">{metric.label}</div>
               </div>
             ))}
@@ -99,10 +99,10 @@ export default function TechnologyPage() {
           <h2 className="text-4xl font-bold text-gray-900 mb-6">Technical Questions?</h2>
           <p className="text-xl text-gray-600 mb-8">Our Engineers Are Here to Help</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="px-8 py-4 bg-[#2D1B4E] text-white rounded-lg font-semibold hover:bg-[#3D2861] transition-colors">
+            <button className="px-8 py-4 bg-gray-900 text-white rounded-lg font-semibold hover:bg-gray-800 transition-colors">
               Schedule Technical Deep-Dive
             </button>
-            <button className="px-8 py-4 border-2 border-[#C9A961] text-[#2D1B4E] rounded-lg font-semibold hover:bg-gray-50 transition-colors">
+            <button className="px-8 py-4 border-2 border-gray-900 text-gray-900 rounded-lg font-semibold hover:bg-gray-50 transition-colors">
               Download Architecture Whitepaper
             </button>
           </div>
