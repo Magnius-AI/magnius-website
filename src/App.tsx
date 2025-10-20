@@ -1,48 +1,58 @@
-import { useState } from 'react';
+import { useEffect } from 'react';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import Navigation from './components/Navigation';
 import Footer from './components/Footer';
 import HomePage from './pages/HomePage';
-import FeaturesPage from './pages/FeaturesPage';
-import DeploymentPage from './pages/DeploymentPage';
-import TechnologyPage from './pages/TechnologyPage';
-import UseCasesPage from './pages/UseCasesPage';
+import FinancialPage from './pages/FinancialPage';
+import BankingPage from './pages/BankingPage';
 import PricingPage from './pages/PricingPage';
+import SolutionsPage from './pages/SolutionsPage';
 import ResourcesPage from './pages/ResourcesPage';
-import AboutPage from './pages/AboutPage';
+import CompanyPage from './pages/CompanyPage';
+import DemoPage from './pages/DemoPage';
+import PrivacyPage from './pages/PrivacyPage';
+import TermsPage from './pages/TermsPage';
+
+function ScrollToTop() {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash) {
+      const targetId = location.hash.replace('#', '');
+      const element = document.getElementById(targetId);
+      if (element) {
+        requestAnimationFrame(() => {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      }
+      return;
+    }
+    window.scrollTo({ top: 0, behavior: 'auto' });
+  }, [location.pathname, location.hash]);
+
+  return null;
+}
 
 function App() {
-  const [currentPage, setCurrentPage] = useState('home');
-
-  const renderPage = () => {
-    switch (currentPage) {
-      case 'home':
-        return <HomePage onNavigate={setCurrentPage} />;
-      case 'features':
-        return <FeaturesPage />;
-      case 'deployment':
-        return <DeploymentPage />;
-      case 'technology':
-        return <TechnologyPage />;
-      case 'use-cases':
-        return <UseCasesPage />;
-      case 'pricing':
-        return <PricingPage />;
-      case 'resources':
-        return <ResourcesPage />;
-      case 'about':
-        return <AboutPage />;
-      default:
-        return <HomePage onNavigate={setCurrentPage} />;
-    }
-  };
-
   return (
-    <div className="min-h-screen bg-white">
-      <Navigation currentPage={currentPage} onNavigate={setCurrentPage} />
-      <main className="pt-16">
-        {renderPage()}
+    <div className="min-h-screen bg-black text-white font-sans">
+      <ScrollToTop />
+      <Navigation />
+      <main className="pt-20">
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/financial" element={<FinancialPage />} />
+          <Route path="/banking" element={<BankingPage />} />
+          <Route path="/pricing" element={<PricingPage />} />
+          <Route path="/solutions" element={<SolutionsPage />} />
+          <Route path="/resources" element={<ResourcesPage />} />
+          <Route path="/company" element={<CompanyPage />} />
+          <Route path="/demo" element={<DemoPage />} />
+          <Route path="/privacy" element={<PrivacyPage />} />
+          <Route path="/terms" element={<TermsPage />} />
+        </Routes>
       </main>
-      <Footer onNavigate={setCurrentPage} />
+      <Footer />
     </div>
   );
 }

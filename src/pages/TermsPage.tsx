@@ -1,0 +1,17 @@
+export default function TermsPage() {
+  return (
+    <div className="bg-neutral-950 text-white">
+      <section className="min-h-[60vh] flex items-center justify-center px-6 py-24">
+        <div className="max-w-2xl text-center space-y-4">
+          <p className="text-xs uppercase tracking-[0.35em] text-blue-400">
+            Terms of Service
+          </p>
+          <h1 className="text-4xl font-black">Terms content coming soon</h1>
+          <p className="text-base text-gray-400">
+            Contractual language and service commitments will be published here during the rollout.
+          </p>
+        </div>
+      </section>
+    </div>
+  );
+}
