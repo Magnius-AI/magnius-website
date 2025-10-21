@@ -3,8 +3,6 @@ import { Routes, Route, useLocation } from 'react-router-dom';
 import Navigation from './components/Navigation';
 import Footer from './components/Footer';
 import HomePage from './pages/HomePage';
-import FinancialPage from './pages/FinancialPage';
-import BankingPage from './pages/BankingPage';
 import PricingPage from './pages/PricingPage';
 import SolutionsPage from './pages/SolutionsPage';
 import ResourcesPage from './pages/ResourcesPage';
@@ -41,8 +39,6 @@ function App() {
       <main className="pt-20">
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/financial" element={<FinancialPage />} />
-          <Route path="/banking" element={<BankingPage />} />
           <Route path="/pricing" element={<PricingPage />} />
           <Route path="/solutions" element={<SolutionsPage />} />
           <Route path="/resources" element={<ResourcesPage />} />

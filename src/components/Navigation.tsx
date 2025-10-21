@@ -1,43 +1,20 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
-import {
-  ArrowUpRight,
-  BarChart3,
-  Building2,
-  ChevronDown,
-  Menu,
-  X,
-} from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import clsx from 'clsx';
 
-const primaryLinks = [
+const navLinks = [
+  { label: 'MAGNIUS Banking', to: '/#risk-intelligence', isAnchor: true },
   { label: 'Solutions', to: '/solutions' },
   { label: 'Pricing', to: '/pricing' },
   { label: 'Resources', to: '/resources' },
   { label: 'Company', to: '/company' },
 ];
 
-const productLinks = [
-  {
-    name: 'MAGNIUS Financial Platform',
-    description: 'For Investment Professionals',
-    to: '/financial',
-    icon: BarChart3,
-  },
-  {
-    name: 'MAGNIUS Banking',
-    description: 'For Community Banks & Credit Unions',
-    to: '/banking',
-    icon: Building2,
-  },
-];
-
 export default function Navigation() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [productsOpen, setProductsOpen] = useState(false);
-  const productsRef = useRef<HTMLDivElement>(null);
   const location = useLocation();
 
   useEffect(() => {
@@ -48,21 +25,7 @@ export default function Navigation() {
 
   useEffect(() => {
     setMobileOpen(false);
-    setProductsOpen(false);
   }, [location.pathname, location.hash]);
-
-  useEffect(() => {
-    if (!productsOpen) return;
-    const handlePointerDown = (event: PointerEvent) => {
-      if (productsRef.current?.contains(event.target as Node)) {
-        return;
-      }
-      setProductsOpen(false);
-    };
-
-    document.addEventListener('pointerdown', handlePointerDown);
-    return () => document.removeEventListener('pointerdown', handlePointerDown);
-  }, [productsOpen]);
 
   return (
     <header
@@ -85,101 +48,43 @@ export default function Navigation() {
               Magnius
             </span>
             <span className="block text-[10px] font-medium uppercase tracking-[0.35em] text-blue-400">
-              Local-First AI
+              Cloud-Native Risk Intelligence
             </span>
           </div>
         </Link>
 
         <nav className="hidden items-center space-x-8 md:flex">
-          <div
-            className="relative"
-            onMouseEnter={() => setProductsOpen(true)}
-            onMouseLeave={() => setProductsOpen(false)}
-            ref={productsRef}
-          >
-            <button
-              type="button"
-              onClick={() => setProductsOpen((prev) => !prev)}
-              className={clsx(
-                'inline-flex items-center gap-1 rounded-full px-4 py-2 text-sm font-semibold uppercase tracking-[0.25em] transition-colors',
-                productsOpen ? 'text-white' : 'text-gray-300 hover:text-white'
-              )}
-            >
-              Products
-              <ChevronDown
-                size={16}
-                className={clsx(
-                  'transition-transform duration-200',
-                  productsOpen && 'rotate-180'
-                )}
-              />
-            </button>
-            <AnimatePresence>
-              {productsOpen ? (
-                <motion.div
-                  initial={{ opacity: 0, y: 8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 8 }}
-                  transition={{ duration: 0.18 }}
-                  className="absolute left-0 top-full mt-4 w-[380px] overflow-hidden rounded-3xl border border-white/10 bg-neutral-900/95 shadow-2xl backdrop-blur-xl"
+          {navLinks.map((link) => {
+            if (link.isAnchor) {
+              return (
+                <Link
+                  key={link.label}
+                  to={link.to}
+                  className="text-sm font-semibold uppercase tracking-[0.25em] text-gray-300 transition hover:text-white"
                 >
-                  <div className="border-b border-white/10 px-6 py-5">
-                    <p className="text-xs font-medium uppercase tracking-[0.35em] text-blue-400">
-                      Local-First Platforms
-                    </p>
-                    <p className="mt-2 text-sm text-gray-400">
-                      Two enterprise suites engineered for high-stakes financial intelligence.
-                    </p>
-                  </div>
-                  <div className="flex flex-col divide-y divide-white/5">
-                    {productLinks.map((product) => (
-                      <Link
-                        key={product.name}
-                        to={product.to}
-                        className="flex items-start gap-4 px-6 py-5 transition hover:bg-white/5"
-                      >
-                        <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-blue-600/15 text-blue-400">
-                          <product.icon size={18} />
-                        </div>
-                        <div>
-                          <p className="text-sm font-semibold text-white">{product.name}</p>
-                          <p className="text-xs uppercase tracking-[0.25em] text-gray-400">
-                            {product.description}
-                          </p>
-                        </div>
-                        <ArrowUpRight className="ml-auto mt-1 h-4 w-4 text-gray-500" />
-                      </Link>
-                    ))}
-                    <Link
-                      to="/#products"
-                      className="flex items-center justify-between px-6 py-4 text-sm font-semibold text-blue-400 transition hover:bg-blue-500/10 hover:text-blue-300"
-                    >
-                      View All Products
-                      <ArrowUpRight size={16} />
-                    </Link>
-                  </div>
-                </motion.div>
-              ) : null}
-            </AnimatePresence>
-          </div>
+                  {link.label}
+                </Link>
+              );
+            }
 
-          {primaryLinks.map((link) => (
-            <NavLink
-              key={link.label}
-              to={link.to}
-              className={({ isActive }) =>
-                clsx(
-                  'text-sm font-semibold uppercase tracking-[0.25em] transition',
-                  isActive ? 'text-white' : 'text-gray-300 hover:text-white'
-                )
-              }
-            >
-              {link.label}
-            </NavLink>
-          ))}
+            return (
+              <NavLink
+                key={link.label}
+                to={link.to}
+                className={({ isActive }) =>
+                  clsx(
+                    'text-sm font-semibold uppercase tracking-[0.25em] transition',
+                    isActive ? 'text-white' : 'text-gray-300 hover:text-white'
+                  )
+                }
+              >
+                {link.label}
+              </NavLink>
+            );
+          })}
         </nav>
 
-        <div className="hidden md:flex items-center gap-4">
+        <div className="hidden items-center gap-4 md:flex">
           <Link
             to="/pricing"
             className="hidden text-sm font-semibold uppercase tracking-[0.25em] text-gray-400 transition hover:text-white lg:block"
@@ -190,7 +95,7 @@ export default function Navigation() {
             to="/demo"
             className="inline-flex items-center justify-center rounded-full bg-blue-600 px-5 py-2 text-sm font-semibold uppercase tracking-[0.35em] text-white transition hover:bg-blue-500 hover:shadow-glow"
           >
-            Request Demo
+            Schedule Demo
           </Link>
         </div>
 
@@ -214,73 +119,52 @@ export default function Navigation() {
             transition={{ duration: 0.2 }}
             className="border-t border-white/10 bg-neutral-950/98 px-6 pb-12 pt-6 backdrop-blur-lg md:hidden"
           >
-            <div className="space-y-8">
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.35em] text-blue-400">
-                  Products
-                </p>
-                <div className="mt-4 space-y-4">
-                  {productLinks.map((product) => (
+            <div className="space-y-7">
+              <div className="space-y-4">
+                {navLinks.map((link) =>
+                  link.isAnchor ? (
                     <Link
-                      key={`mobile-${product.name}`}
-                      to={product.to}
-                      className="flex items-start gap-3 rounded-2xl border border-white/5 bg-white/5 px-4 py-4 transition hover:border-blue-500/30 hover:bg-blue-500/10"
+                      key={`mobile-${link.label}`}
+                      to={link.to}
+                      className="block text-sm font-semibold uppercase tracking-[0.3em] text-gray-300 transition hover:text-white"
                     >
-                      <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-600/20 text-blue-400">
-                        <product.icon size={18} />
-                      </div>
-                      <div>
-                        <p className="text-sm font-semibold text-white">{product.name}</p>
-                        <p className="text-xs uppercase tracking-[0.25em] text-gray-400">
-                          {product.description}
-                        </p>
-                      </div>
+                      {link.label}
                     </Link>
-                  ))}
-                  <Link
-                    to="/#products"
-                    className="inline-flex items-center gap-2 text-sm font-semibold text-blue-400 hover:text-blue-300"
-                  >
-                    View All Products
-                    <ArrowUpRight size={16} />
-                  </Link>
-                </div>
+                  ) : (
+                    <NavLink
+                      key={`mobile-${link.label}`}
+                      to={link.to}
+                      className={({ isActive }) =>
+                        clsx(
+                          'block text-sm font-semibold uppercase tracking-[0.3em] transition',
+                          isActive ? 'text-white' : 'text-gray-300 hover:text-white'
+                        )
+                      }
+                    >
+                      {link.label}
+                    </NavLink>
+                  )
+                )}
               </div>
 
-              <div className="space-y-4">
-                {primaryLinks.map((link) => (
-                  <NavLink
-                    key={`mobile-${link.label}`}
-                    to={link.to}
-                    className={({ isActive }) =>
-                      clsx(
-                        'block text-sm font-semibold uppercase tracking-[0.3em] transition',
-                        isActive ? 'text-white' : 'text-gray-300 hover:text-white'
-                      )
-                    }
-                  >
-                    {link.label}
-                  </NavLink>
-                ))}
+              <div className="space-y-3">
                 <Link
                   to="/pricing"
                   className="block text-sm font-semibold uppercase tracking-[0.3em] text-gray-300 transition hover:text-white"
                 >
                   See Pricing
                 </Link>
-              </div>
-
-              <div className="pt-2">
                 <Link
                   to="/demo"
                   className="flex w-full items-center justify-center rounded-full bg-blue-600 px-5 py-3 text-sm font-semibold uppercase tracking-[0.35em] text-white transition hover:bg-blue-500"
                 >
-                  Request Demo
+                  Schedule Demo
                 </Link>
-                <p className="mt-4 text-xs uppercase tracking-[0.3em] text-gray-500">
-                  Local-first AI for financial intelligence
-                </p>
               </div>
+
+              <p className="text-xs uppercase tracking-[0.3em] text-gray-500">
+                Cloud-native risk intelligence for every commercial bank
+              </p>
             </div>
           </motion.div>
         ) : null}

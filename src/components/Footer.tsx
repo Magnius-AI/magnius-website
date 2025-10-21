@@ -21,40 +21,38 @@ const socialLinks = [
 
 const footerColumns = [
   {
-    title: 'Products',
+    title: 'Platform',
     links: [
-      { label: 'MAGNIUS Financial Platform', to: '/financial' },
-      { label: 'MAGNIUS Banking', to: '/banking' },
+      { label: 'MAGNIUS Banking', to: '/#risk-intelligence' },
+      { label: 'Solutions Overview', to: '/solutions' },
       { label: 'Pricing', to: '/pricing' },
-      { label: 'Request Demo', to: '/demo' },
+      { label: 'Schedule Demo', to: '/demo' },
     ],
   },
   {
-    title: 'Solutions',
+    title: 'Why MAGNIUS',
     links: [
-      { label: 'For Financial Advisors', to: '/solutions' },
-      { label: 'For Hedge Funds', to: '/solutions' },
-      { label: 'For Family Offices', to: '/solutions' },
-      { label: 'For Community Banks', to: '/solutions' },
-      { label: 'For Credit Unions', to: '/solutions' },
+      { label: 'Critical Data Flow', to: '/#critical-layer' },
+      { label: 'Network Effects', to: '/#network-effects' },
+      { label: 'Implementation', to: '/company#implementation' },
+      { label: 'Security and Compliance', to: '/#security' },
     ],
   },
   {
     title: 'Resources',
     links: [
-      { label: 'Documentation', to: '/resources' },
-      { label: 'Blog', to: '/resources' },
-      { label: 'Case Studies', to: '/resources' },
-      { label: 'FAQs', to: '/resources' },
-      { label: 'System Status', to: '/resources' },
+      { label: 'Resource Library', to: '/resources' },
+      { label: 'Early Warning System', to: '/solutions#early-warning' },
+      { label: 'Cloud Migration Guide', to: '/resources#cloud' },
+      { label: 'Status Page', to: '/resources#status' },
     ],
   },
   {
     title: 'Company',
     links: [
-      { label: 'About Us', to: '/company' },
-      { label: 'Careers', to: '/company' },
-      { label: 'Contact', to: '/company' },
+      { label: 'About', to: '/company' },
+      { label: 'Careers', to: '/company#careers' },
+      { label: 'Contact', to: '/demo' },
       { label: 'Privacy Policy', to: '/privacy' },
       { label: 'Terms of Service', to: '/terms' },
     ],
@@ -78,13 +76,13 @@ export default function Footer() {
                   Magnius
                 </p>
                 <p className="text-xs uppercase tracking-[0.35em] text-blue-400">
-                  Local-First AI for Financial Intelligence
+                  Cloud Risk Intelligence for Banking
                 </p>
               </div>
             </div>
             <p className="max-w-xs text-sm text-gray-400">
-              Local-first, privacy-first AI platforms engineered exclusively for financial professionals
-              and regulated institutions.
+              Cloud-native, multi-tenant risk intelligence positioned between commercial banks and the Federal Reserve
+              to surface early warnings before crises emerge.
             </p>
             <div className="flex items-center space-x-4">
               {socialLinks.map((link) => (
@@ -126,9 +124,9 @@ export default function Footer() {
 
       <div className="border-t border-white/10 bg-neutral-950">
         <div className="mx-auto flex flex-col items-center gap-3 px-4 py-6 text-xs font-medium uppercase tracking-[0.3em] text-gray-500 sm:flex-row sm:justify-between sm:px-6 lg:max-w-7xl lg:px-8">
-          <span>© 2025 MAGNIUS. All rights reserved.</span>
-          <span>Built with privacy in mind.</span>
-          <span>Your data stays yours.</span>
+          <span>(c) 2025 MAGNIUS. All rights reserved.</span>
+          <span>SOC 2 Type II and FFIEC-ready cloud controls.</span>
+          <span>US data residency with tenant isolation.</span>
         </div>
       </div>
     </footer>

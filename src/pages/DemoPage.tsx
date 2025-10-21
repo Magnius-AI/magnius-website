@@ -1,279 +1,304 @@
-import { useState } from 'react';
+import { useForm } from 'react-hook-form';
 import { motion } from 'framer-motion';
-import { useForm, type UseFormRegisterReturn } from 'react-hook-form';
-import { Check, Phone } from 'lucide-react';
+import { ArrowRight, Building2, CalendarClock, Check, ShieldCheck } from 'lucide-react';
 
-type DemoFormValues = {
+type DemoForm = {
   firstName: string;
   lastName: string;
-  email: string;
-  phone: string;
-  company: string;
-  role: string;
-  industry: string;
-  platform: string;
-  assets: string;
-  users: string;
-  timeline: string;
-  message: string;
+  workEmail: string;
+  institution: string;
+  assetSize: string;
+  regulator: string;
+  coreProvider: string;
+  objectives: string;
 };
+
+const assetSizes = [
+  'Under $500M',
+  '$500M - $1B',
+  '$1B - $5B',
+  '$5B - $10B',
+  '$10B - $50B',
+  '$50B - $100B',
+  '$100B+',
+];
+
+const regulators = ['Federal Reserve', 'OCC', 'FDIC', 'NCUA', 'State Regulator', 'Other'];
+
+const cores = ['Jack Henry', 'Fiserv', 'FIS', 'Finastra', 'CSI', 'Q2', 'Thought Machine', 'Other'];
 
 const fadeIn = {
-  initial: { opacity: 0, y: 32 },
+  initial: { opacity: 0, y: 24 },
   whileInView: { opacity: 1, y: 0 },
   viewport: { once: true, amount: 0.2 },
-  transition: { duration: 0.5, ease: 'easeOut' },
+  transition: { duration: 0.6, ease: 'easeOut' },
 };
 
-const industryOptions = ['Financial Services', 'Banking', 'Credit Union', 'Family Office', 'Corporate Finance', 'Other'];
-const roleOptions = ['Executive', 'Portfolio Manager', 'Analyst', 'Compliance Officer', 'IT / Security', 'Other'];
-const timelineOptions = ['Evaluating', 'Ready to buy', 'Just exploring'];
-
 export default function DemoPage() {
-  const [submitted, setSubmitted] = useState(false);
-
   const {
     register,
     handleSubmit,
+    formState: { errors, isSubmitting, isSubmitSuccessful },
     reset,
-    formState: { isSubmitting, errors },
-  } = useForm<DemoFormValues>({
+  } = useForm<DemoForm>({
     defaultValues: {
       firstName: '',
       lastName: '',
-      email: '',
-      phone: '',
-      company: '',
-      role: '',
-      industry: '',
-      platform: 'MAGNIUS Financial',
-      assets: '',
-      users: '',
-      timeline: '',
-      message: '',
+      workEmail: '',
+      institution: '',
+      assetSize: '',
+      regulator: '',
+      coreProvider: '',
+      objectives: '',
     },
   });
 
-  const onSubmit = (values: DemoFormValues) => {
-    console.info('Demo request', values);
-    setSubmitted(true);
+  const onSubmit = async (data: DemoForm) => {
+    console.log('Demo request submitted', data);
+    await new Promise((resolve) => setTimeout(resolve, 800));
     reset();
   };
 
   return (
-    <div className="bg-brand-black text-white">
-      <Hero />
-      <section className="bg-neutral-950">
-        <div className="mx-auto max-w-5xl px-6 py-24 sm:px-8 lg:px-12">
-          <motion.form
-            className="rounded-3xl border border-white/10 bg-white/[0.03] p-10 shadow-[0_25px_60px_rgba(0,0,0,0.4)]"
-            onSubmit={handleSubmit(onSubmit)}
-            {...fadeIn}
-          >
-            <div className="grid gap-6 md:grid-cols-2">
-              <InputField
-                label="First Name"
-                placeholder="Jordan"
-                register={register('firstName', { required: 'First name is required.' })}
-                error={errors.firstName?.message}
-              />
-              <InputField
-                label="Last Name"
-                placeholder="Lee"
-                register={register('lastName', { required: 'Last name is required.' })}
-                error={errors.lastName?.message}
-              />
+    <div className="space-y-24 pb-24">
+      <section className="relative overflow-hidden bg-neutral-950">
+        <div className="mx-auto max-w-7xl px-4 pt-24 pb-20 sm:px-6 lg:px-8 lg:pt-32">
+          <motion.div {...fadeIn} className="max-w-3xl space-y-8">
+            <div className="inline-flex items-center gap-2 rounded-full border border-blue-500/40 bg-blue-500/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.35em] text-blue-300">
+              Schedule a demo
             </div>
-
-            <div className="mt-6 grid gap-6 md:grid-cols-2">
-              <InputField
-                type="email"
-                label="Email"
-                placeholder="jordan@institution.com"
-                register={register('email', {
-                  required: 'Email is required.',
-                  pattern: {
-                    value: /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/,
-                    message: 'Enter a valid email address.',
-                  },
-                })}
-                error={errors.email?.message}
-              />
-              <InputField
-                label="Phone"
-                placeholder="+1 202 555 0123"
-                register={register('phone', { required: 'Phone number is required.' })}
-                error={errors.phone?.message}
-              />
-            </div>
-
-            <div className="mt-6 grid gap-6 md:grid-cols-2">
-              <InputField
-                label="Company / Institution"
-                placeholder="Summit Ridge Bank"
-                register={register('company', { required: 'Company is required.' })}
-                error={errors.company?.message}
-              />
-              <SelectField
-                label="Role / Title"
-                options={roleOptions}
-                register={register('role', { required: 'Select your role.' })}
-                error={errors.role?.message}
-              />
-            </div>
-
-            <div className="mt-6 grid gap-6 md:grid-cols-2">
-              <SelectField
-                label="Industry"
-                options={industryOptions}
-                register={register('industry', { required: 'Select an industry.' })}
-                error={errors.industry?.message}
-              />
-              <SelectField
-                label="Platform Interest"
-                options={['MAGNIUS Financial', 'MAGNIUS Banking', 'Both']}
-                register={register('platform', { required: 'Select a platform.' })}
-                error={errors.platform?.message}
-              />
-            </div>
-
-            <div className="mt-6 grid gap-6 md:grid-cols-2">
-              <InputField
-                label="Assets Under Management / Assets"
-                placeholder="$2.3B"
-                register={register('assets', { required: 'Provide an estimate.' })}
-                error={errors.assets?.message}
-              />
-              <InputField
-                label="Number of Potential Users"
-                placeholder="25"
-                register={register('users', { required: 'Provide an estimate.' })}
-                error={errors.users?.message}
-              />
-            </div>
-
-            <div className="mt-6">
-              <SelectField
-                label="Timeline"
-                options={timelineOptions}
-                register={register('timeline', { required: 'Select a timeline.' })}
-                error={errors.timeline?.message}
-              />
-            </div>
-
-            <div className="mt-6">
-              <label className="text-xs font-semibold uppercase tracking-[0.3em] text-gray-400">Message</label>
-              <textarea
-                rows={4}
-                placeholder="Share priorities, required modules, or regulatory considerations."
-                className="mt-2 w-full rounded-2xl border border-white/15 bg-white/[0.02] px-4 py-3 text-sm text-white outline-none transition placeholder:text-gray-500 focus:border-blue-400"
-                {...register('message')}
-              />
-            </div>
-
-            <button
-              type="submit"
-              className="mt-8 inline-flex items-center justify-center rounded-full bg-blue-600 px-8 py-3 text-sm font-semibold uppercase tracking-[0.3em] text-white transition hover:bg-blue-500 disabled:opacity-60"
-              disabled={isSubmitting}
-            >
-              {isSubmitting ? 'Sending...' : 'Request Demo'}
-            </button>
-            <p className="mt-4 text-xs text-gray-400">Thanks! We will contact you within 24 hours.</p>
-
-            {submitted ? (
-              <div className="mt-6 rounded-2xl border border-green-500/40 bg-green-600/10 px-4 py-3 text-sm text-green-200">
-                <Check className="mr-2 inline h-4 w-4" />
-                We received your request. A MAGNIUS strategist will follow up shortly.
-              </div>
-            ) : null}
-          </motion.form>
-
-          <motion.div className="mt-12 rounded-3xl border border-white/10 bg-white/[0.03] p-8" {...fadeIn}>
-            <h3 className="text-lg font-semibold text-white">Prefer to talk now?</h3>
-            <p className="mt-2 text-sm text-gray-300">
-              Call our team Monday-Friday, 9am-6pm ET. We can walk through requirements, pricing, and deployment
-              timelines.
+            <h1 className="text-4xl font-semibold tracking-tight text-white sm:text-5xl lg:text-6xl">
+              See how MAGNIUS Banking delivers real-time risk intelligence for every commercial bank.
+            </h1>
+            <p className="text-lg text-gray-300 lg:text-xl">
+              Share details about your institution, and our team will tailor a live session that covers data ingestion,
+              AI anomaly detection, early warning workflows, and regulator collaboration specific to your needs.
             </p>
-            <div className="mt-4 flex items-center gap-3 text-sm text-blue-200">
-              <Phone className="h-4 w-4" />
-              <span>+1 (202) 555-0199</span>
+            <div className="flex flex-wrap gap-3">
+              <span className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-blue-200">
+                Cloud-native, multi-tenant SaaS
+              </span>
+              <span className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-blue-200">
+                Implementation in 4 weeks
+              </span>
             </div>
           </motion.div>
         </div>
       </section>
-    </div>
-  );
-}
 
-function Hero() {
-  return (
-    <section className="relative overflow-hidden bg-neutral-950 pt-32 pb-20">
-      <div className="absolute inset-0 bg-hex-grid bg-[length:32px_32px] opacity-[0.08]" />
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-600/15 via-transparent to-purple-600/15 opacity-[0.35]" />
-      <div className="relative mx-auto max-w-4xl px-6 text-center sm:px-8 lg:px-12">
-        <motion.div
-          initial={{ opacity: 0, y: 32 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, ease: 'easeOut' }}
-        >
-          <p className="text-xs font-semibold uppercase tracking-[0.4em] text-blue-400">Request a Demo</p>
-          <h1 className="mt-6 text-4xl font-black md:text-6xl">Experience MAGNIUS in Your Environment</h1>
-          <p className="mt-6 text-lg text-gray-300 md:text-xl">
-            See how local-first AI transforms your research, compliance, or banking workflows. Sessions are tailored to
-            your priorities and regulatory requirements.
-          </p>
+      <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <motion.div {...fadeIn} className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr]">
+          <div className="rounded-3xl border border-white/10 bg-white/[0.03] p-8">
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+              <div className="grid gap-6 sm:grid-cols-2">
+                <div>
+                  <label className="text-xs font-semibold uppercase tracking-[0.3em] text-gray-400">
+                    First name
+                  </label>
+                  <input
+                    type="text"
+                    className="mt-2 w-full rounded-xl border border-white/10 bg-neutral-950 px-4 py-3 text-sm text-white outline-none transition focus:border-blue-400"
+                    {...register('firstName', { required: 'First name is required' })}
+                  />
+                  {errors.firstName ? (
+                    <p className="mt-2 text-xs text-red-400">{errors.firstName.message}</p>
+                  ) : null}
+                </div>
+                <div>
+                  <label className="text-xs font-semibold uppercase tracking-[0.3em] text-gray-400">
+                    Last name
+                  </label>
+                  <input
+                    type="text"
+                    className="mt-2 w-full rounded-xl border border-white/10 bg-neutral-950 px-4 py-3 text-sm text-white outline-none transition focus:border-blue-400"
+                    {...register('lastName', { required: 'Last name is required' })}
+                  />
+                  {errors.lastName ? (
+                    <p className="mt-2 text-xs text-red-400">{errors.lastName.message}</p>
+                  ) : null}
+                </div>
+              </div>
+
+              <div>
+                <label className="text-xs font-semibold uppercase tracking-[0.3em] text-gray-400">
+                  Work email
+                </label>
+                <input
+                  type="email"
+                  className="mt-2 w-full rounded-xl border border-white/10 bg-neutral-950 px-4 py-3 text-sm text-white outline-none transition focus:border-blue-400"
+                  {...register('workEmail', {
+                    required: 'Work email is required',
+                    pattern: {
+                      value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                      message: 'Enter a valid email address',
+                    },
+                  })}
+                />
+                {errors.workEmail ? (
+                  <p className="mt-2 text-xs text-red-400">{errors.workEmail.message}</p>
+                ) : null}
+              </div>
+
+              <div>
+                <label className="text-xs font-semibold uppercase tracking-[0.3em] text-gray-400">
+                  Bank or institution
+                </label>
+                <input
+                  type="text"
+                  className="mt-2 w-full rounded-xl border border-white/10 bg-neutral-950 px-4 py-3 text-sm text-white outline-none transition focus:border-blue-400"
+                  {...register('institution', { required: 'Institution name is required' })}
+                />
+                {errors.institution ? (
+                  <p className="mt-2 text-xs text-red-400">{errors.institution.message}</p>
+                ) : null}
+              </div>
+
+              <div className="grid gap-6 sm:grid-cols-2">
+                <div>
+                  <label className="text-xs font-semibold uppercase tracking-[0.3em] text-gray-400">
+                    Asset size
+                  </label>
+                  <select
+                    className="mt-2 w-full rounded-xl border border-white/10 bg-neutral-950 px-4 py-3 text-sm text-white outline-none transition focus:border-blue-400"
+                    {...register('assetSize', { required: 'Select asset size' })}
+                  >
+                    <option value="">Select</option>
+                    {assetSizes.map((option) => (
+                      <option key={option} value={option}>
+                        {option}
+                      </option>
+                    ))}
+                  </select>
+                  {errors.assetSize ? (
+                    <p className="mt-2 text-xs text-red-400">{errors.assetSize.message}</p>
+                  ) : null}
+                </div>
+                <div>
+                  <label className="text-xs font-semibold uppercase tracking-[0.3em] text-gray-400">
+                    Primary regulator
+                  </label>
+                  <select
+                    className="mt-2 w-full rounded-xl border border-white/10 bg-neutral-950 px-4 py-3 text-sm text-white outline-none transition focus:border-blue-400"
+                    {...register('regulator', { required: 'Select regulator' })}
+                  >
+                    <option value="">Select</option>
+                    {regulators.map((option) => (
+                      <option key={option} value={option}>
+                        {option}
+                      </option>
+                    ))}
+                  </select>
+                  {errors.regulator ? (
+                    <p className="mt-2 text-xs text-red-400">{errors.regulator.message}</p>
+                  ) : null}
+                </div>
+              </div>
+
+              <div>
+                <label className="text-xs font-semibold uppercase tracking-[0.3em] text-gray-400">
+                  Core banking provider
+                </label>
+                <select
+                  className="mt-2 w-full rounded-xl border border-white/10 bg-neutral-950 px-4 py-3 text-sm text-white outline-none transition focus:border-blue-400"
+                  {...register('coreProvider', { required: 'Select core provider' })}
+                >
+                  <option value="">Select</option>
+                  {cores.map((option) => (
+                    <option key={option} value={option}>
+                      {option}
+                    </option>
+                  ))}
+                </select>
+                {errors.coreProvider ? (
+                  <p className="mt-2 text-xs text-red-400">{errors.coreProvider.message}</p>
+                ) : null}
+              </div>
+
+              <div>
+                <label className="text-xs font-semibold uppercase tracking-[0.3em] text-gray-400">
+                  What do you want to explore?
+                </label>
+                <textarea
+                  rows={4}
+                  className="mt-2 w-full rounded-xl border border-white/10 bg-neutral-950 px-4 py-3 text-sm text-white outline-none transition focus:border-blue-400"
+                  placeholder="Example: Daily liquidity reporting, early warning automation, regulator collaboration..."
+                  {...register('objectives', { required: 'Tell us what matters most' })}
+                />
+                {errors.objectives ? (
+                  <p className="mt-2 text-xs text-red-400">{errors.objectives.message}</p>
+                ) : null}
+              </div>
+
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="inline-flex w-full items-center justify-center rounded-full bg-blue-600 px-6 py-3 text-sm font-semibold uppercase tracking-[0.3em] text-white transition hover:bg-blue-500 hover:shadow-glow disabled:cursor-not-allowed disabled:opacity-60"
+              >
+                {isSubmitting ? 'Submitting...' : 'Request Demo'}
+                <ArrowRight size={16} className="ml-2" />
+              </button>
+              {isSubmitSuccessful ? (
+                <p className="text-xs text-blue-300">
+                  Thanks for reaching out. A MAGNIUS specialist will contact you within one business day.
+                </p>
+              ) : null}
+            </form>
+          </div>
+
+          <div className="space-y-6">
+            <div className="rounded-3xl border border-white/10 bg-white/[0.03] p-6">
+              <div className="flex items-center gap-3">
+                <CalendarClock size={20} className="text-blue-300" />
+                <h3 className="text-lg font-semibold text-white">What to expect</h3>
+              </div>
+              <ul className="mt-4 space-y-3 text-sm text-gray-300">
+                <li className="flex items-start gap-3">
+                  <Check size={16} className="mt-1 text-blue-400" />
+                  60-minute live demo tailored to your regulatory cadence, risk profile, and asset size.
+                </li>
+                <li className="flex items-start gap-3">
+                  <Check size={16} className="mt-1 text-blue-400" />
+                  Deep dive into data ingestion, validation rules, alerting, and regulator collaboration features.
+                </li>
+                <li className="flex items-start gap-3">
+                  <Check size={16} className="mt-1 text-blue-400" />
+                  Discussion of implementation plan, security documentation, and pricing aligned to your balance sheet.
+                </li>
+              </ul>
+            </div>
+            <div className="rounded-3xl border border-blue-500/20 bg-blue-500/10 p-6 text-sm text-blue-100">
+              <div className="flex items-center gap-3">
+                <ShieldCheck size={18} className="text-blue-200" />
+                <p className="font-semibold text-white">Security first</p>
+              </div>
+              <p className="mt-3">
+                We include SOC 2 Type II reports, penetration test summaries, and shared responsibility matrices with
+                every evaluation so your teams can accelerate due diligence.
+              </p>
+            </div>
+            <div className="rounded-3xl border border-white/10 bg-white/[0.03] p-6">
+              <div className="flex items-center gap-3">
+                <Building2 size={18} className="text-blue-300" />
+                <h3 className="text-lg font-semibold text-white">Who should join</h3>
+              </div>
+              <ul className="mt-4 space-y-3 text-sm text-gray-300">
+                <li className="flex items-start gap-3">
+                  <Check size={16} className="mt-1 text-blue-400" />
+                  Chief Risk Officers, CFOs, Treasurers, and Heads of Regulatory Reporting.
+                </li>
+                <li className="flex items-start gap-3">
+                  <Check size={16} className="mt-1 text-blue-400" />
+                  Supervisory examiners evaluating technology modernization plans.
+                </li>
+                <li className="flex items-start gap-3">
+                  <Check size={16} className="mt-1 text-blue-400" />
+                  Technology and security teams responsible for cloud governance.
+                </li>
+              </ul>
+            </div>
+          </div>
         </motion.div>
-      </div>
-    </section>
-  );
-}
-
-type InputFieldProps = {
-  label: string;
-  placeholder?: string;
-  type?: string;
-  register: UseFormRegisterReturn;
-  error?: string;
-};
-
-function InputField({ label, placeholder, type = 'text', register, error }: InputFieldProps) {
-  return (
-    <div>
-      <label className="text-xs font-semibold uppercase tracking-[0.3em] text-gray-400">{label}</label>
-      <input
-        type={type}
-        placeholder={placeholder}
-        className="mt-2 w-full rounded-2xl border border-white/15 bg-white/[0.02] px-4 py-3 text-sm text-white outline-none transition placeholder:text-gray-500 focus:border-blue-400"
-        {...register}
-      />
-      {error ? <p className="mt-2 text-xs text-amber-300">{error}</p> : null}
-    </div>
-  );
-}
-
-type SelectFieldProps = {
-  label: string;
-  options: string[];
-  register: UseFormRegisterReturn;
-  error?: string;
-};
-
-function SelectField({ label, options, register, error }: SelectFieldProps) {
-  return (
-    <div>
-      <label className="text-xs font-semibold uppercase tracking-[0.3em] text-gray-400">{label}</label>
-      <select
-        className="mt-2 w-full rounded-2xl border border-white/15 bg-white/[0.02] px-4 py-3 text-sm text-white outline-none transition focus:border-blue-400"
-        {...register}
-      >
-        <option value="">Select</option>
-        {options.map((option) => (
-          <option key={option} value={option}>
-            {option}
-          </option>
-        ))}
-      </select>
-      {error ? <p className="mt-2 text-xs text-amber-300">{error}</p> : null}
+      </section>
     </div>
   );
 }
