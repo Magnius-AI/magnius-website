@@ -87,7 +87,7 @@ export default function Footer() {
               <img
                 src="/Magnius%20Emblem.png"
                 alt="Magnius Healthcare emblem"
-                className="h-12 w-12 rounded-xl border border-slate-200 bg-white p-2 shadow-sm"
+                className="h-16 w-16"
               />
             </div>
             <p className="max-w-xs text-sm text-slate-600">

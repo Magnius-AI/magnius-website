@@ -263,6 +263,56 @@ export default function HomePage() {
         </div>
       </section>
 
+      <section className="bg-gradient-to-b from-slate-50 to-white py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <motion.div {...fadeInProps} className="space-y-8">
+            <div className="text-center">
+              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-blue-600">
+                See Magnius in Action
+              </p>
+              <h2 className="mt-3 text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
+                Watch how Magnius transforms healthcare practices.
+              </h2>
+              <p className="mx-auto mt-4 max-w-2xl text-lg text-slate-600">
+                See firsthand how our intelligent platform streamlines operations, enhances patient care, and drives practice growth.
+              </p>
+            </div>
+
+            <div className="mx-auto max-w-5xl">
+              <div className="group relative aspect-video overflow-hidden rounded-3xl border border-slate-200 bg-slate-900 shadow-2xl transition hover:shadow-3xl">
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 to-purple-600/20" />
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="relative">
+                    <div className="absolute inset-0 animate-ping rounded-full bg-white opacity-25" />
+                    <button
+                      type="button"
+                      className="flex h-20 w-20 items-center justify-center rounded-full bg-white text-blue-600 shadow-xl transition hover:scale-110 hover:bg-blue-50"
+                      aria-label="Play video"
+                    >
+                      <svg
+                        className="ml-1 h-8 w-8"
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path d="M8 5v14l11-7z" />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-slate-900/90 to-transparent p-6">
+                  <p className="text-sm font-semibold text-white">
+                    Full Platform Demo - 3:45
+                  </p>
+                  <p className="mt-1 text-xs text-slate-300">
+                    Discover how Magnius streamlines scheduling, patient management, billing, and more
+                  </p>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
       <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8" id="features">
         <motion.div {...fadeInProps} className="space-y-12">
           <div className="text-center">

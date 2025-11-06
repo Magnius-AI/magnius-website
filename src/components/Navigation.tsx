@@ -88,14 +88,11 @@ export default function Navigation() {
           <img
             src="/Magnius%20Emblem.png"
             alt="Magnius Healthcare emblem"
-            className="h-12 w-12 rounded-xl border border-slate-200 bg-white p-2 shadow-sm"
+            className="h-16 w-16"
           />
           <div className="hidden flex-col leading-tight md:flex">
-            <span className="text-sm font-semibold tracking-[0.3em] text-slate-900 uppercase">
+            <span className="text-base font-semibold tracking-[0.3em] text-slate-900 uppercase">
               Magnius Healthcare Platform
-            </span>
-            <span className="text-xs font-medium tracking-[0.22em] text-slate-500 uppercase">
-              Intelligent Practice Management
             </span>
           </div>
         </Link>
