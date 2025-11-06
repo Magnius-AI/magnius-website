@@ -5,13 +5,13 @@
 @tailwind utilities;
 
 :root {
-  color-scheme: dark;
-  background-color: #000000;
+  color-scheme: light;
+  background-color: #f8fafc;
 }
 
 @layer base {
   * {
-    @apply border-neutral-800;
+    @apply border-slate-200;
   }
 
   html {
@@ -19,10 +19,10 @@
   }
 
   body {
-    @apply bg-brand-black text-white font-sans antialiased;
+    @apply bg-slate-50 text-slate-900 font-sans antialiased;
   }
 
   ::selection {
-    @apply bg-blue-600/80 text-white;
+    @apply bg-blue-200 text-blue-900;
   }
 }

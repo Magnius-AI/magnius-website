@@ -1,97 +1,107 @@
 import { Link } from 'react-router-dom';
-import { Github, Linkedin, Twitter } from 'lucide-react';
+import { Facebook, Linkedin, Twitter, Youtube } from 'lucide-react';
 
 const socialLinks = [
   {
     label: 'LinkedIn',
-    href: 'https://www.linkedin.com/company/magnius-ai',
+    href: 'https://www.linkedin.com/company/magniushealthcareai',
     icon: Linkedin,
   },
   {
     label: 'Twitter',
-    href: 'https://x.com/magniusai',
+    href: 'https://x.com/magniushealthai',
     icon: Twitter,
   },
   {
-    label: 'GitHub',
-    href: 'https://github.com/magnius-ai',
-    icon: Github,
+    label: 'Facebook',
+    href: 'https://www.facebook.com/magniushealthcareai',
+    icon: Facebook,
+  },
+  {
+    label: 'YouTube',
+    href: 'https://www.youtube.com/@magniushealthcareai',
+    icon: Youtube,
   },
 ];
 
 const footerColumns = [
   {
-    title: 'Platform',
+    title: 'Product',
     links: [
-      { label: 'MAGNIUS Banking', to: '/#risk-intelligence' },
-      { label: 'Solutions Overview', to: '/solutions' },
-      { label: 'Pricing', to: '/pricing' },
-      { label: 'Schedule Demo', to: '/demo' },
+      { label: 'Features', to: '/features' },
+      { label: 'Scheduling', to: '/features#appointment-management' },
+      { label: 'Patient Management', to: '/features#patient-management' },
+      { label: 'Communication Hub', to: '/features#communication-hub' },
+      { label: 'Integrations', to: '/features#integrations' },
     ],
   },
   {
-    title: 'Why MAGNIUS',
+    title: 'Solutions',
     links: [
-      { label: 'Critical Data Flow', to: '/#critical-layer' },
-      { label: 'Network Effects', to: '/#network-effects' },
-      { label: 'Implementation', to: '/company#implementation' },
-      { label: 'Security and Compliance', to: '/#security' },
+      { label: 'Primary Care', to: '/solutions#primary-care' },
+      { label: 'Specialty Practices', to: '/solutions#specialty' },
+      { label: 'Multi-Provider Clinics', to: '/solutions#multi-provider' },
+      { label: 'Telehealth', to: '/solutions#telehealth' },
+      { label: 'See All Solutions', to: '/solutions' },
     ],
   },
   {
     title: 'Resources',
     links: [
-      { label: 'Resource Library', to: '/resources' },
-      { label: 'Early Warning System', to: '/solutions#early-warning' },
-      { label: 'Cloud Migration Guide', to: '/resources#cloud' },
-      { label: 'Status Page', to: '/resources#status' },
+      { label: 'Resource Hub', to: '/resources' },
+      { label: 'Blog', to: '/resources#blog' },
+      { label: 'Documentation', to: '/resources#documentation' },
+      { label: 'Case Studies', to: '/resources#case-studies' },
+      { label: 'Help Center', to: '/resources#help-center' },
     ],
   },
   {
     title: 'Company',
     links: [
-      { label: 'About', to: '/company' },
-      { label: 'Careers', to: '/company#careers' },
-      { label: 'Contact', to: '/demo' },
-      { label: 'Privacy Policy', to: '/privacy' },
+      { label: 'About Us', to: '/about' },
+      { label: 'Careers', to: '/about#careers' },
+      { label: 'Press', to: '/about#press' },
+      { label: 'Partners', to: '/about#partners' },
+      { label: 'Contact', to: '/contact' },
+    ],
+  },
+  {
+    title: 'Legal',
+    links: [
       { label: 'Terms of Service', to: '/terms' },
+      { label: 'Privacy Policy', to: '/privacy' },
+      { label: 'HIPAA Compliance', to: '/security#hipaa' },
+      { label: 'Security Overview', to: '/security' },
+      { label: 'Cookie Policy', to: '/security#privacy' },
     ],
   },
 ];
 
 export default function Footer() {
   return (
-    <footer className="bg-neutral-950 text-gray-400">
+    <footer className="bg-white text-slate-500">
       <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-        <div className="grid gap-12 lg:grid-cols-[320px_repeat(4,minmax(0,1fr))] lg:gap-16">
+        <div className="grid gap-12 lg:grid-cols-[320px_repeat(5,minmax(0,1fr))] lg:gap-16">
           <div className="space-y-6">
-            <div className="flex items-center space-x-3">
+            <div className="flex items-center gap-3">
               <img
-                src="/magnius-icon.png"
-                alt="MAGNIUS"
-                className="h-12 w-12 rounded-xl border border-white/10 bg-white/5 p-1.5"
+                src="/Magnius%20Emblem.png"
+                alt="Magnius Healthcare emblem"
+                className="h-12 w-12 rounded-xl border border-slate-200 bg-white p-2 shadow-sm"
               />
-              <div>
-                <p className="text-xl font-semibold uppercase tracking-[0.4em] text-white">
-                  Magnius
-                </p>
-                <p className="text-xs uppercase tracking-[0.35em] text-blue-400">
-                  Cloud Risk Intelligence for Banking
-                </p>
-              </div>
             </div>
-            <p className="max-w-xs text-sm text-gray-400">
-              Cloud-native, multi-tenant risk intelligence positioned between commercial banks and the Federal Reserve
-              to surface early warnings before crises emerge.
+            <p className="max-w-xs text-sm text-slate-600">
+              Magnius Healthcare AI is a comprehensive, HIPAA-compliant practice management platform that combines
+              intelligent automation, compassionate patient experiences, and trusted operations in one place.
             </p>
-            <div className="flex items-center space-x-4">
+            <div className="flex items-center gap-3">
               {socialLinks.map((link) => (
                 <a
                   key={link.label}
                   href={link.href}
                   target="_blank"
                   rel="noreferrer"
-                  className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 text-gray-200 transition hover:border-blue-500 hover:text-blue-400"
+                  className="flex h-11 w-11 items-center justify-center rounded-full border border-slate-200 text-slate-500 transition hover:border-blue-500 hover:text-blue-600"
                   aria-label={link.label}
                 >
                   <link.icon size={18} />
@@ -102,7 +112,7 @@ export default function Footer() {
 
           {footerColumns.map((column) => (
             <div key={column.title}>
-              <h3 className="text-sm font-semibold uppercase tracking-[0.3em] text-white">
+              <h3 className="text-sm font-semibold uppercase tracking-[0.25em] text-slate-900">
                 {column.title}
               </h3>
               <ul className="mt-5 space-y-3">
@@ -110,7 +120,7 @@ export default function Footer() {
                   <li key={link.label}>
                     <Link
                       to={link.to}
-                      className="text-sm font-medium text-gray-400 transition hover:text-white"
+                      className="text-sm text-slate-600 transition hover:text-blue-600"
                     >
                       {link.label}
                     </Link>
@@ -122,11 +132,11 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="border-t border-white/10 bg-neutral-950">
-        <div className="mx-auto flex flex-col items-center gap-3 px-4 py-6 text-xs font-medium uppercase tracking-[0.3em] text-gray-500 sm:flex-row sm:justify-between sm:px-6 lg:max-w-7xl lg:px-8">
-          <span>(c) 2025 MAGNIUS. All rights reserved.</span>
-          <span>SOC 2 Type II and FFIEC-ready cloud controls.</span>
-          <span>US data residency with tenant isolation.</span>
+      <div className="border-t border-slate-200 bg-slate-50">
+        <div className="mx-auto flex flex-col items-center gap-3 px-4 py-6 text-xs font-medium uppercase tracking-[0.28em] text-slate-500 sm:flex-row sm:justify-between sm:px-6 lg:max-w-7xl lg:px-8">
+          <span>© 2024 Magnius Healthcare AI. All rights reserved.</span>
+          <span>HIPAA Compliant | SOC 2 Type II | 99.9% Uptime</span>
+          <span>USA-Based Support | Inclusive Care for Every Patient</span>
         </div>
       </div>
     </footer>

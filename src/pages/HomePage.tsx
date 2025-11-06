@@ -5,222 +5,179 @@ import {
   Activity,
   ArrowRight,
   BarChart3,
-  BellRing,
+  CalendarCheck,
   Check,
-  Cloud,
-  Gauge,
-  Layers,
-  Lock,
+  LucideIcon,
   Network,
   ShieldCheck,
-  Smartphone,
   Sparkles,
-  UploadCloud,
+  Stethoscope,
   Users,
+  Wallet,
 } from 'lucide-react';
 import clsx from 'clsx';
 
-const heroIndicators = [
-  { icon: Cloud, label: 'Cloud-native, multi-tenant SaaS' },
-  { icon: ShieldCheck, label: 'SOC 2 Type II + FFIEC aligned' },
-  { icon: Gauge, label: 'Real-time ingestion & validation' },
-  { icon: Sparkles, label: 'AI-driven early warnings' },
+const heroTrustBadges = ['HIPAA Compliant', 'SOC 2 Type II Certified', '99.9% Uptime'];
+
+const heroStats = [
+  { metric: '2M+', label: 'Appointments Managed' },
+  { metric: '50K+', label: 'Patients Supported' },
+  { metric: '98%', label: 'Provider Satisfaction' },
+  { metric: '$10M+', label: 'Claims Processed' },
 ];
 
-const platformCoverageStats = [
-  { value: '4 Weeks', label: 'From kickoff to production' },
-  { value: '13,700+', label: 'Bank & credit union targets' },
-  { value: '99.9%', label: 'Uptime backed by SLA' },
-  { value: '24/7', label: 'Security operations coverage' },
-];
-
-const modules = [
+const featureCards = [
   {
-    name: 'Secure Cloud Data Ingestion',
-    icon: UploadCloud,
-    headline: 'Bank-to-Fed data arrives clean, complete, and encrypted.',
-    bullets: [
-      'Connect via SFTP, API, or secure upload for Excel, XML, JSON, CSV.',
-      'Automated schema validation, version control, and exception handling.',
-      'Realtime virus, malware, and PII scanning before data is committed.',
-    ],
+    title: 'Smart Scheduling',
+    description:
+      'AI-assisted scheduling with drag-and-drop calendars, online booking, intelligent waitlists, and predictive no-show alerts.',
+    icon: CalendarCheck,
   },
   {
-    name: 'AI-Powered Anomaly Detection',
-    icon: Activity,
-    headline: 'Machine learning trained on the entire MAGNIUS network.',
-    bullets: [
-      'Detect liquidity drops, capital deterioration, deposit flight, loan spikes.',
-      'Peer benchmarking across all institutions on the platform.',
-      'GPU-accelerated models retrained continuously on aggregated data.',
-    ],
-  },
-  {
-    name: 'Real-Time Risk Intelligence Dashboard',
-    icon: BarChart3,
-    headline: 'Executive dashboards for treasury, risk, and regulators.',
-    bullets: [
-      'Liquidity, capital adequacy, asset quality, concentration risk modules.',
-      'Explainable AI narratives with drill-down to account-level detail.',
-      'Chat assistant for natural-language queries across historical submissions.',
-    ],
-  },
-  {
-    name: 'Early Warning System',
-    icon: BellRing,
-    headline: 'Automated alerting before thresholds are breached.',
-    bullets: [
-      'Critical, High, Medium, and Informational alert tiers.',
-      'Escalations via dashboard, email, SMS, Teams/Slack, and webhook.',
-      'Predictive failure probability driven by multi-bank data patterns.',
-    ],
-  },
-  {
-    name: 'Collaborative Intelligence',
+    title: 'Patient Management',
+    description:
+      'Complete HIPAA-compliant patient profiles with MRN tracking, insurance details, documents, and collaborative care notes.',
     icon: Users,
-    headline: 'Anonymous network benchmarks power smarter decisions.',
-    bullets: [
-      'Peer comparison across asset size, geography, and portfolio mix.',
-      'Regional early warning indicators sourced from anonymized signals.',
-      'Opt-in data contribution with strict data privacy guardrails.',
-    ],
   },
   {
-    name: 'Regulatory Communication Hub',
-    icon: Layers,
-    headline: 'One source of truth for regulators and examiners.',
-    bullets: [
-      'Clean, validated filings forwarded automatically to Central Banks.',
-      'Complete audit trail of every submission, change, and approval.',
-      'Examiner-ready workspaces with read-only access for oversight.',
-    ],
-  },
-  {
-    name: 'Mobile Experience',
-    icon: Smartphone,
-    headline: 'Executive visibility from anywhere.',
-    bullets: [
-      'Native iOS and Android apps with biometric authentication.',
-      'Push notifications for critical alerts and trend changes.',
-      'Mobile-optimized dashboards mirroring the desktop experience.',
-    ],
-  },
-];
-
-const networkEffects = [
-  {
-    title: 'Shared Intelligence',
+    title: 'Communication Hub',
     description:
-      'Every new bank strengthens anomaly detection models and improves peer benchmarking accuracy across the entire network.',
-  },
-  {
-    title: 'Regulator Confidence',
-    description:
-      'Supervisors gain a common operating picture across all participating banks, improving systemic oversight and response time.',
-  },
-  {
-    title: 'Faster Innovation',
-    description:
-      'Cloud delivery enables weekly feature releases, instant security patches, and coordinated response to emerging risk patterns.',
-  },
-];
-
-const alertBands = [
-  {
-    tier: 'Critical',
-    color: 'text-red-400',
-    bg: 'bg-red-500/10',
-    description:
-      'Immediate executive and board escalation. Indicators of imminent failure risk or regulatory breach detected.',
-    channels: 'Dashboard, phone, SMS, email, Teams/Slack, API webhook.',
-  },
-  {
-    tier: 'High',
-    color: 'text-orange-400',
-    bg: 'bg-orange-500/10',
-    description:
-      'Material deviation from liquidity, capital, or concentration thresholds. Requires action within 24 hours.',
-    channels: 'Dashboard, email digest, Teams/Slack.',
-  },
-  {
-    tier: 'Medium',
-    color: 'text-yellow-300',
-    bg: 'bg-yellow-500/10',
-    description:
-      'Emerging risk patterns or data quality concerns flagged for analyst review. Automatically tracked until resolution.',
-    channels: 'Dashboard tasks, weekly briefing, API webhook.',
-  },
-  {
-    tier: 'Informational',
-    color: 'text-blue-300',
-    bg: 'bg-blue-500/10',
-    description:
-      'Positive or neutral signals such as improving liquidity ratios or peer performance benchmarks.',
-    channels: 'Dashboard feed, monthly executive briefing.',
-  },
-];
-
-const implementation = [
-  {
-    week: 'Week 1',
-    focus: 'Connectivity & Data Discovery',
-    details:
-      'Provision tenant, establish secure connections, catalog data exports, and complete compliance onboarding.',
-  },
-  {
-    week: 'Week 2',
-    focus: 'Model Calibration & Benchmarking',
-    details:
-      'Ingest historical submissions, calibrate AI models with peer data, validate results with risk and treasury teams.',
-  },
-  {
-    week: 'Week 3',
-    focus: 'Workflow & Alert Tuning',
-    details:
-      'Configure alert thresholds, escalation paths, collaboration workspaces, and regulatory notification templates.',
-  },
-  {
-    week: 'Week 4',
-    focus: 'Go-Live & Examiner Readiness',
-    details:
-      'Train end users, hand over runbooks, activate mobile access, and provide examiner-ready documentation.',
-  },
-];
-
-const securityPillars = [
-  {
-    title: 'Bank-Grade Controls',
-    description:
-      'SOC 2 Type II, ISO 27001 aligned, with continuous penetration testing and third-party audits.',
-    icon: ShieldCheck,
-  },
-  {
-    title: 'Granular Data Isolation',
-    description:
-      'Logical tenant isolation with dedicated encryption keys per institution managed via AWS KMS.',
-    icon: Lock,
-  },
-  {
-    title: 'Resilient Infrastructure',
-    description:
-      'Multi-region Kubernetes clusters with automated failover and immutable audit logging.',
+      'Secure messaging across email, SMS, and patient portal with templates, automation, and delivery insights.',
     icon: Network,
   },
   {
-    title: 'Data Lifecycle Governance',
+    title: 'Billing & Claims',
     description:
-      'Versioning, retention policies, and federated access controls ensure regulators can trace every change.',
-    icon: Layers,
+      'Automated claim submission, eligibility verification, denial management, and revenue intelligence.',
+    icon: Wallet,
   },
   {
-    title: 'Continuous Monitoring',
+    title: 'Referral Network',
     description:
-      'Real-time telemetry across application, network, and data layers with 24/7 security operations.',
-    icon: Gauge,
+      'Streamlined specialist referrals with authorization tracking, priority routing, and closed-loop feedback.',
+    icon: Stethoscope,
+  },
+  {
+    title: 'Analytics & Reports',
+    description:
+      'Real-time dashboards, provider productivity analytics, custom report builder, and export-ready insights.',
+    icon: BarChart3,
+  },
+  {
+    title: 'AI Automation',
+    description:
+      'Intelligent reminders, workflow triggers, predictive outreach, and automated follow-up tasks built on healthcare data.',
+    icon: Sparkles,
   },
 ];
 
-const fadeIn = {
+const workflowSteps = [
+  {
+    title: 'Set Up Your Practice',
+    description: 'Configure providers, schedules, care teams, rooms, and preferences in minutes with guided onboarding.',
+    icon: ShieldCheck,
+  },
+  {
+    title: 'Manage Your Workflow',
+    description:
+      'Coordinate appointments, patient care, billing, referrals, and communications from one intuitive workspace.',
+    icon: Activity,
+  },
+  {
+    title: 'Grow Your Practice',
+    description: 'Use analytics, automation, and satisfaction insights to increase capacity, retention, and revenue.',
+    icon: ArrowRight,
+  },
+];
+
+type PreviewTab = {
+  key: string;
+  label: string;
+  headline: string;
+  bullets: string[];
+  accent: string;
+  icon: LucideIcon;
+};
+
+const previewTabs: PreviewTab[] = [
+  {
+    key: 'dashboard',
+    label: 'Dashboard',
+    headline: 'Executive visibility across your entire practice.',
+    bullets: [
+      'Real-time KPIs for patient flow, financial health, and provider productivity.',
+      'Configurable widgets with filters by location, provider, care team, and payer.',
+      'AI insights highlight preventable no-shows, revenue leakage, and growth opportunities.',
+    ],
+    accent: 'from-blue-500 via-blue-400 to-blue-500',
+    icon: BarChart3,
+  },
+  {
+    key: 'appointments',
+    label: 'Appointments',
+    headline: 'AI-powered scheduling and patient engagement.',
+    bullets: [
+      'Drag-and-drop calendar with day, week, month, and multi-provider views.',
+      'Online booking, automated reminders, digital intake forms, and waitlist automation.',
+      'Predictive analytics surface gaps, double bookings, and high-risk no-show patterns.',
+    ],
+    accent: 'from-sky-500 via-sky-400 to-sky-500',
+    icon: CalendarCheck,
+  },
+  {
+    key: 'patients',
+    label: 'Patients',
+    headline: 'Complete patient profiles and care collaboration.',
+    bullets: [
+      'Centralized demographics, insurance, medical history, documents, and consent forms.',
+      'Secure communication preferences and HIPAA-compliant messaging in one timeline.',
+      'Care team collaboration with task assignments, shared notes, and follow-up plans.',
+    ],
+    accent: 'from-purple-500 via-purple-400 to-purple-500',
+    icon: Users,
+  },
+];
+
+const testimonials = [
+  {
+    name: 'Dr. Sarah Mitchell, MD',
+    role: 'Family Medicine',
+    practice: 'Mitchell Primary Care',
+    quote:
+      'Magnius Healthcare AI transformed how we manage our practice. Automated reminders alone reduced no-shows by 40%, and our staff adopted the platform in days.',
+    initials: 'SM',
+  },
+  {
+    name: 'James Rodriguez',
+    role: 'Practice Manager',
+    practice: 'Cardiology Associates of Texas',
+    quote:
+      'We replaced three disconnected systems with Magnius. Scheduling, billing, and communication now run in one place - saving us 15 hours every week.',
+    initials: 'JR',
+  },
+  {
+    name: 'Dr. Emily Chen, DO',
+    role: 'Dermatology Specialist',
+    practice: 'Chen Dermatology Group',
+    quote:
+      'Complex referral management and procedure scheduling are finally simple. The analytics help us make confident, data-driven growth decisions.',
+    initials: 'EC',
+  },
+];
+
+const integrations = [
+  'Epic',
+  'Cerner',
+  'Athenahealth',
+  'DrChrono',
+  'Availity',
+  'Change Healthcare',
+  'Stripe',
+  'Twilio',
+  'Zoom',
+];
+
+const fadeInProps = {
   initial: { opacity: 0, y: 24 },
   whileInView: { opacity: 1, y: 0 },
   viewport: { once: true, amount: 0.2 },
@@ -228,355 +185,355 @@ const fadeIn = {
 };
 
 export default function HomePage() {
-  const [activeModule, setActiveModule] = useState(0);
-  const activeModuleData = modules[activeModule];
-  const ActiveModuleIcon = activeModuleData.icon;
+  const [activeTab, setActiveTab] = useState(previewTabs[0].key);
+  const activePreview = previewTabs.find((tab) => tab.key === activeTab) ?? previewTabs[0];
 
   return (
-    <div className="space-y-24 pb-28">
-      <section className="relative overflow-hidden bg-neutral-950">
-        <div className="mx-auto max-w-7xl px-4 pt-24 pb-20 sm:px-6 lg:px-8 lg:pt-32">
-          <motion.div {...fadeIn} className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr]">
+    <div className="space-y-24 pb-24">
+      <section className="relative overflow-hidden bg-gradient-to-br from-blue-50 via-white to-sky-100">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(59,130,246,0.15)_0%,_rgba(255,255,255,0)_60%)]" />
+        <div className="relative mx-auto max-w-7xl px-4 pb-24 pt-32 sm:px-6 lg:px-8 lg:pt-40">
+          <motion.div {...fadeInProps} className="grid gap-16 lg:grid-cols-[minmax(0,1fr)_480px] lg:items-center">
             <div className="space-y-8">
-              <div className="inline-flex items-center gap-2 rounded-full border border-blue-500/40 bg-blue-500/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.35em] text-blue-300">
-                MAGNIUS Banking
+              <div className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-white/80 px-4 py-2 text-xs font-semibold uppercase tracking-[0.35em] text-blue-600 shadow-sm backdrop-blur">
+                Magnius Healthcare AI
               </div>
-              <h1 className="text-4xl font-semibold tracking-tight text-white sm:text-5xl lg:text-6xl">
-                Cloud-native risk intelligence between every bank and the Federal Reserve.
+              <h1 className="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl lg:text-6xl">
+                Modern Healthcare Practice Management, Powered by AI.
               </h1>
-              <p className="text-lg text-gray-300 lg:text-xl">
-                MAGNIUS intercepts daily regulatory submissions in the cloud, validates and analyzes every line, and
-                activates AI-powered early warnings before instability cascades across the financial system.
+              <p className="text-lg text-slate-600 lg:text-xl">
+                Streamline appointments, billing, patient care, and communications in one intelligent platform built for
+                healthcare providers. Automate workflows, deliver compassionate patient experiences, and grow with
+                confidence.
               </p>
-              <div className="flex flex-wrap gap-3">
-                {heroIndicators.map((indicator) => (
-                  <div
-                    key={indicator.label}
-                    className="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-gray-200"
-                  >
-                    <indicator.icon size={16} className="text-blue-400" />
-                    {indicator.label}
-                  </div>
-                ))}
-              </div>
-              <div className="flex flex-wrap gap-4 pt-4">
+              <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
                 <Link
                   to="/demo"
-                  className="inline-flex items-center justify-center rounded-full bg-blue-600 px-6 py-3 text-sm font-semibold uppercase tracking-[0.3em] text-white transition hover:bg-blue-500 hover:shadow-glow"
+                  className="inline-flex items-center justify-center rounded-full bg-blue-600 px-8 py-3 text-base font-semibold text-white shadow-md transition hover:bg-blue-500 hover:shadow-lg"
                 >
-                  Schedule Demo
-                  <ArrowRight size={16} className="ml-2" />
+                  Start Free 30-Day Trial
                 </Link>
                 <Link
-                  to="/#risk-intelligence"
-                  className="inline-flex items-center justify-center rounded-full border border-white/20 px-6 py-3 text-sm font-semibold uppercase tracking-[0.3em] text-white transition hover:border-blue-400 hover:text-blue-200"
+                  to="/demo"
+                  className="inline-flex items-center justify-center rounded-full border border-blue-200 bg-white px-8 py-3 text-base font-semibold text-blue-600 transition hover:border-blue-300 hover:text-blue-500"
                 >
-                  Explore Platform
+                  Schedule a Demo
                 </Link>
+              </div>
+              <div className="flex items-center gap-4 text-sm text-slate-500">
+                {heroTrustBadges.map((badge) => (
+                  <span key={badge} className="flex items-center gap-2">
+                    <ShieldCheck size={18} className="text-blue-500" />
+                    {badge}
+                  </span>
+                ))}
               </div>
             </div>
 
-            <div className="mt-4 space-y-6 rounded-3xl border border-white/5 bg-white/[0.04] p-8 backdrop-blur lg:mt-0">
-              <p className="text-xs uppercase tracking-[0.3em] text-gray-300">Platform coverage</p>
-              <div className="grid gap-4 md:grid-cols-2">
-                {platformCoverageStats.map((item) => (
-                  <div key={item.label} className="rounded-2xl border border-white/10 bg-white/[0.03] p-5">
-                    <p className="text-2xl font-semibold text-white">{item.value}</p>
-                    <p className="mt-2 text-xs uppercase tracking-[0.3em] text-gray-400">{item.label}</p>
+            <div className="rounded-3xl border border-blue-100 bg-white/70 p-8 shadow-xl backdrop-blur">
+              <div className="space-y-6">
+                <div className="rounded-2xl bg-blue-50 p-6">
+                  <div className="flex items-center gap-3 text-blue-600">
+                    <Sparkles size={24} />
+                    <span className="text-sm font-semibold uppercase tracking-[0.3em]">Trusted Nationwide</span>
                   </div>
-                ))}
-              </div>
-              <div className="rounded-2xl border border-blue-500/20 bg-blue-500/10 p-6 text-sm text-blue-100">
-                Designed for commercial banks, credit unions, and regulators that demand real-time visibility into
-                liquidity, capital, and systemic risk across the financial system.
+                  <p className="mt-4 text-2xl font-semibold text-slate-900">
+                    Trusted by 500+ healthcare practices nationwide.
+                  </p>
+                  <p className="mt-2 text-sm text-slate-500">
+                    From single-provider clinics to multi-location health systems, Magnius delivers intelligent
+                    operations you can rely on.
+                  </p>
+                </div>
+
+                <div className="grid gap-4 sm:grid-cols-2">
+                  {heroStats.map((item) => (
+                    <div
+                      key={item.metric}
+                      className="rounded-2xl border border-slate-200 bg-white p-4 text-center shadow-sm"
+                    >
+                      <p className="text-3xl font-bold text-blue-600">{item.metric}</p>
+                      <p className="mt-1 text-xs uppercase tracking-[0.25em] text-slate-500">{item.label}</p>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </motion.div>
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8" id="critical-layer">
-        <motion.div {...fadeIn} className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr]">
-          <div className="space-y-6">
-            <h2 className="text-3xl font-semibold text-white sm:text-4xl">The critical layer between banks and the Fed</h2>
-            <p className="text-base text-gray-300">
-              Legacy workflows push Excel or XML files directly to regulators. MAGNIUS provides the secure, cloud-native
-              layer that validates every submission, applies AI-driven analytics, and forwards clean, actionable
-              intelligence to supervisors.
+      <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8" id="features">
+        <motion.div {...fadeInProps} className="space-y-12">
+          <div className="text-center">
+            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-blue-600">
+              Comprehensive Feature Set
             </p>
-            <ul className="space-y-4 text-sm text-gray-300">
-              <li className="flex items-start gap-3">
-                <Check size={18} className="mt-1 text-blue-400" />
-                Multi-tenant architecture with per-tenant encryption, ensuring rapid onboarding without sacrificing
-                isolation.
-              </li>
-              <li className="flex items-start gap-3">
-                <Check size={18} className="mt-1 text-blue-400" />
-                Streaming ingestion via Kafka/Kinesis and batch pipelines via Airflow keep data synchronized in minutes.
-              </li>
-              <li className="flex items-start gap-3">
-                <Check size={18} className="mt-1 text-blue-400" />
-                Regulators gain read-only dashboards, reducing examiner cycles and accelerating supervisory response.
-              </li>
-            </ul>
-            <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-6 text-sm text-gray-300">
-              <p className="font-semibold text-white">Data Flow:</p>
-              <p className="mt-3">
-                Bank core systems {'->'} MAGNIUS Secure Ingest {'->'} AI Validation {'->'} Risk Intelligence Dashboard {'->'} Central
-                Bank and Federal Reserve portals.
-              </p>
-            </div>
+            <h2 className="mt-3 text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
+              Everything you need to run a modern healthcare practice.
+            </h2>
+            <p className="mx-auto mt-4 max-w-3xl text-lg text-slate-600">
+              Seven core modules work together to automate operations, enhance patient engagement, and deliver
+              actionable intelligence across your practice.
+            </p>
           </div>
-          <div className="space-y-6">
-            <div className="rounded-3xl border border-white/5 bg-gradient-to-br from-blue-500/20 via-transparent to-transparent p-8 backdrop-blur">
-              <p className="text-xs uppercase tracking-[0.3em] text-blue-200">Cloud architecture</p>
-              <div className="mt-6 space-y-4 text-sm text-gray-200">
-                <div className="rounded-2xl border border-white/10 bg-white/[0.05] p-4">
-                  <p className="font-semibold text-white">AWS / Azure foundation</p>
-                  <p className="mt-1">
-                    Kubernetes, Terraform-managed infrastructure with automated compliance baselines and secrets
-                    management.
-                  </p>
+
+          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+            {featureCards.map((feature) => (
+              <div
+                key={feature.title}
+                className="group flex h-full flex-col rounded-3xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:border-blue-200 hover:shadow-lg"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-50 text-blue-600">
+                    <feature.icon size={22} />
+                  </div>
+                  <h3 className="text-xl font-semibold text-slate-900">{feature.title}</h3>
                 </div>
-                <div className="rounded-2xl border border-white/10 bg-white/[0.05] p-4">
-                  <p className="font-semibold text-white">Data platform</p>
-                  <p className="mt-1">
-                    PostgreSQL, TimescaleDB, and object storage enable historical replay, scenario analysis, and long-term
-                    retention.
-                  </p>
-                </div>
-                <div className="rounded-2xl border border-white/10 bg-white/[0.05] p-4">
-                  <p className="font-semibold text-white">AI/ML operations</p>
-                  <p className="mt-1">
-                    Centralized training pipelines with SageMaker and GPU pools ensure models continually adapt as new
-                    banks join.
-                  </p>
-                </div>
+                <p className="mt-4 text-sm text-slate-600">{feature.description}</p>
+                <Link
+                  to="/features"
+                  className="mt-6 inline-flex items-center text-sm font-semibold text-blue-600 transition group-hover:text-blue-500"
+                >
+                  Learn more
+                  <ArrowRight size={16} className="ml-2 transition group-hover:translate-x-1" />
+                </Link>
               </div>
-            </div>
+            ))}
           </div>
         </motion.div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8" id="risk-intelligence">
-        <motion.div {...fadeIn} className="space-y-8">
-          <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-blue-400">Seven mission-critical capabilities</p>
-              <h2 className="mt-3 text-3xl font-semibold text-white sm:text-4xl">
-                Everything a modern risk office needs in one platform.
+      <section className="bg-slate-100/70 py-24" id="how-it-works">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <motion.div {...fadeInProps} className="space-y-12">
+            <div className="text-center">
+              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-blue-600">How it works</p>
+              <h2 className="mt-3 text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
+                Transform your practice in three simple steps.
               </h2>
+              <p className="mx-auto mt-4 max-w-2xl text-lg text-slate-600">
+                Launch quickly with guided onboarding, then let AI automation and real-time analytics keep every team in
+                sync.
+              </p>
             </div>
-            <Link
-              to="/#risk-intelligence"
-              className="inline-flex items-center gap-2 rounded-full border border-blue-500/30 px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-blue-200 transition hover:border-blue-400 hover:text-blue-100"
-            >
-              View detailed product overview
-              <ArrowRight size={14} />
-            </Link>
-          </div>
-          <div className="grid gap-6 lg:grid-cols-[340px_minmax(0,1fr)]">
-            <div className="space-y-3">
-              {modules.map((module, index) => (
+
+            <div className="grid gap-6 md:grid-cols-3">
+              {workflowSteps.map((step, index) => (
+                <div
+                  key={step.title}
+                  className="rounded-3xl border border-slate-200 bg-white p-8 text-center shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
+                >
+                  <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-blue-50 text-blue-600">
+                    <step.icon size={26} />
+                  </div>
+                  <p className="mt-4 text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">
+                    Step {index + 1}
+                  </p>
+                  <h3 className="mt-3 text-xl font-semibold text-slate-900">{step.title}</h3>
+                  <p className="mt-3 text-sm text-slate-600">{step.description}</p>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8" id="platform">
+        <motion.div {...fadeInProps} className="grid gap-12 lg:grid-cols-[360px_minmax(0,1fr)] lg:items-start">
+          <div className="space-y-6">
+            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-blue-600">
+              Platform Preview
+            </p>
+            <h2 className="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
+              See Magnius Healthcare AI in action.
+            </h2>
+            <p className="text-lg text-slate-600">
+              Switch between modules to experience the intuitive workflows providers love and administrators trust.
+              Every screen is purpose-built to save time and simplify complex healthcare operations.
+            </p>
+            <div className="flex flex-wrap gap-3">
+              {previewTabs.map((tab) => (
                 <button
-                  key={module.name}
-                  onClick={() => setActiveModule(index)}
+                  key={tab.key}
                   type="button"
+                  onClick={() => setActiveTab(tab.key)}
                   className={clsx(
-                    'w-full rounded-2xl border px-5 py-4 text-left transition',
-                    activeModule === index
-                      ? 'border-blue-500/40 bg-blue-500/10 text-white'
-                      : 'border-white/5 bg-white/[0.02] text-gray-300 hover:border-blue-500/30 hover:text-white'
+                    'rounded-full border px-4 py-2 text-sm font-semibold transition',
+                    activeTab === tab.key
+                      ? 'border-blue-200 bg-blue-50 text-blue-600'
+                      : 'border-slate-200 bg-white text-slate-600 hover:border-blue-200 hover:text-blue-600'
                   )}
                 >
-                  <div className="flex items-center gap-3">
-                    <module.icon size={18} className="text-blue-300" />
-                    <span className="text-sm font-semibold uppercase tracking-[0.25em]">
-                      {module.name}
-                    </span>
-                  </div>
+                  {tab.label}
                 </button>
               ))}
             </div>
-            <div className="rounded-3xl border border-white/5 bg-white/[0.03] p-8">
-              <div className="flex items-center gap-3">
-                <ActiveModuleIcon size={20} className="text-blue-300" />
-                <h3 className="text-xl font-semibold text-white">{activeModuleData.name}</h3>
-              </div>
-              <p className="mt-4 text-lg text-gray-200">{activeModuleData.headline}</p>
-              <ul className="mt-6 space-y-4 text-sm text-gray-300">
-                {activeModuleData.bullets.map((bullet) => (
+            <Link
+              to="/demo"
+              className="inline-flex items-center text-sm font-semibold text-blue-600 transition hover:text-blue-500"
+            >
+              See it in action
+              <ArrowRight size={16} className="ml-2" />
+            </Link>
+          </div>
+
+          <div className="space-y-6 rounded-3xl border border-slate-200 bg-white p-8 shadow-lg">
+            <div className="space-y-3">
+              <h3 className="text-2xl font-semibold text-slate-900">{activePreview.headline}</h3>
+              <ul className="space-y-3 text-sm text-slate-600">
+                {activePreview.bullets.map((bullet) => (
                   <li key={bullet} className="flex items-start gap-3">
-                    <Check size={16} className="mt-1 text-blue-400" />
-                    {bullet}
+                    <Check size={18} className="mt-1 text-blue-500" />
+                    <span>{bullet}</span>
                   </li>
                 ))}
               </ul>
             </div>
-          </div>
-        </motion.div>
-      </section>
-
-      <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8" id="early-warning">
-        <motion.div {...fadeIn} className="grid gap-10 lg:grid-cols-[1fr_1.05fr]">
-          <div className="space-y-6">
-            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-blue-400">Early warning system</p>
-            <h2 className="text-3xl font-semibold text-white sm:text-4xl">
-              Alerts calibrated to prevent the next bank failure.
-            </h2>
-            <p className="text-base text-gray-300">
-              MAGNIUS continuously scores liquidity, capital, and concentration exposures with context from the
-              entire network. Alerts escalate automatically based on severity and reach every stakeholder needed to
-              respond before contagion spreads.
-            </p>
-            <div className="rounded-3xl border border-white/10 bg-white/[0.03] p-6 text-sm text-gray-200">
-              <p className="font-semibold text-white">Predictive Failure Probability</p>
-              <p className="mt-2">
-                Gradient boosting ensembles trained on anonymized, multi-institution data track leading indicators of
-                distress and simulate stress scenarios across deposits, loans, and securities portfolios.
-              </p>
-            </div>
-          </div>
-          <div className="grid gap-4">
-            {alertBands.map((band) => (
-              <div
-                key={band.tier}
-                className={clsx(
-                  'rounded-3xl border border-white/5 p-6 text-sm transition',
-                  band.bg
-                )}
-              >
-                <div className={clsx('text-lg font-semibold uppercase tracking-[0.3em]', band.color)}>
-                  {band.tier}
+            <div
+              className={clsx(
+                'relative overflow-hidden rounded-2xl border border-slate-200 bg-gradient-to-br p-8 text-white',
+                activePreview.accent
+              )}
+            >
+              <div className="flex items-center gap-3 text-white/90">
+                <activePreview.icon size={28} />
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-[0.3em]">Module Snapshot</p>
+                  <p className="text-lg font-semibold">{activePreview.label}</p>
                 </div>
-                <p className="mt-3 text-gray-100">{band.description}</p>
-                <p className="mt-4 text-xs uppercase tracking-[0.3em] text-gray-300">
-                  Delivery: {band.channels}
-                </p>
               </div>
-            ))}
+              <div className="mt-6 grid gap-4 md:grid-cols-2">
+                {activePreview.bullets.slice(0, 2).map((bullet) => (
+                  <div key={bullet} className="rounded-xl border border-white/20 bg-white/10 p-4 text-sm">
+                    {bullet}
+                  </div>
+                ))}
+              </div>
+              <div className="mt-4 rounded-xl border border-dashed border-white/30 bg-white/10 p-4 text-sm text-white/80">
+                Detailed UI preview coming soon. Request a live demo to explore every workflow.
+              </div>
+            </div>
           </div>
         </motion.div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8" id="network-effects">
-        <motion.div {...fadeIn} className="grid gap-12 lg:grid-cols-[1fr_1fr]">
-          <div className="space-y-6">
-            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-blue-400">Network effects</p>
-            <h2 className="text-3xl font-semibold text-white sm:text-4xl">
-              A platform that gets smarter with every institution.
-            </h2>
-            <p className="text-base text-gray-300">
-              On-premise deployments fragment insight. MAGNIUS Banking unifies the financial ecosystem on a single
-              cloud platform so banks, credit unions, and regulators benefit from collective intelligence without
-              compromising privacy.
-            </p>
-            <div className="rounded-3xl border border-blue-500/20 bg-blue-500/10 p-6 text-sm text-blue-100">
-              <p className="font-semibold text-white">Opt-in data collaboration</p>
-              <p className="mt-2">
-                Banks maintain full ownership of raw data. Only anonymized, aggregated signals contribute to network
-                models, enabling competitive insights while protecting confidentiality.
+      <section className="bg-white py-24" id="testimonials">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <motion.div {...fadeInProps} className="space-y-12">
+            <div className="text-center">
+              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-blue-600">
+                Loved by modern healthcare teams
               </p>
-            </div>
-          </div>
-          <div className="grid gap-5">
-            {networkEffects.map((item) => (
-              <div key={item.title} className="rounded-3xl border border-white/10 bg-white/[0.03] p-6">
-                <h3 className="text-lg font-semibold text-white">{item.title}</h3>
-                <p className="mt-3 text-sm text-gray-300">{item.description}</p>
-              </div>
-            ))}
-          </div>
-        </motion.div>
-      </section>
-
-      <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8" id="implementation">
-        <motion.div {...fadeIn} className="space-y-8">
-          <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-blue-400">Go live in 4 weeks</p>
-              <h2 className="mt-3 text-3xl font-semibold text-white sm:text-4xl">
-                From kickoff to regulator-ready in a month.
+              <h2 className="mt-3 text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
+                Providers trust Magnius Healthcare AI to power patient-first care.
               </h2>
             </div>
-            <Link
-              to="/demo"
-              className="inline-flex items-center gap-2 rounded-full border border-white/20 px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-white transition hover:border-blue-400 hover:text-blue-200"
-            >
-              Talk to implementation team
-              <ArrowRight size={14} />
-            </Link>
-          </div>
-          <div className="grid gap-5 md:grid-cols-2">
-            {implementation.map((phase) => (
-              <div key={phase.week} className="rounded-3xl border border-white/10 bg-white/[0.03] p-6">
-                <p className="text-xs font-semibold uppercase tracking-[0.35em] text-blue-300">
-                  {phase.week}
+
+            <div className="grid gap-6 md:grid-cols-3">
+              {testimonials.map((testimonial) => (
+                <div
+                  key={testimonial.name}
+                  className="flex h-full flex-col rounded-3xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
+                >
+                  <div className="flex items-center gap-4">
+                    <div className="flex h-14 w-14 items-center justify-center rounded-full border border-slate-200 bg-blue-50 text-sm font-semibold text-blue-600">
+                      {testimonial.initials}
+                    </div>
+                    <div>
+                      <p className="font-semibold text-slate-900">{testimonial.name}</p>
+                      <p className="text-sm text-slate-500">
+                        {testimonial.role} - {testimonial.practice}
+                      </p>
+                    </div>
+                  </div>
+                  <p className="mt-4 flex-1 text-sm text-slate-600">“{testimonial.quote}”</p>
+                  <div className="mt-6 flex items-center gap-1 text-amber-400">
+                    {Array.from({ length: 5 }).map((_, index) => (
+                      <span key={index}>★</span>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      <section className="bg-slate-100/70 py-24" id="integrations">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <motion.div {...fadeInProps} className="rounded-3xl border border-slate-200 bg-white p-10 shadow-sm">
+            <div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.35em] text-blue-600">
+                  Integrations
                 </p>
-                <h3 className="mt-3 text-lg font-semibold text-white">{phase.focus}</h3>
-                <p className="mt-3 text-sm text-gray-300">{phase.details}</p>
+                <h2 className="mt-3 text-3xl font-semibold text-slate-900">
+                  Integrates with your existing tools.
+                </h2>
+                <p className="mt-3 max-w-lg text-sm text-slate-600">
+                  Connect Magnius Healthcare AI with EHR systems, telehealth platforms, payment processors, and payer
+                  networks you already use. Keep data flowing securely across your ecosystem.
+                </p>
+                <Link
+                  to="/features#integrations"
+                  className="mt-6 inline-flex items-center text-sm font-semibold text-blue-600 transition hover:text-blue-500"
+                >
+                  View all integrations
+                  <ArrowRight size={16} className="ml-2" />
+                </Link>
               </div>
-            ))}
-          </div>
-        </motion.div>
-      </section>
 
-      <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8" id="security">
-        <motion.div {...fadeIn} className="space-y-8">
-          <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-blue-400">Security & compliance</p>
-              <h2 className="mt-3 text-3xl font-semibold text-white sm:text-4xl">
-                Built for the most scrutinized institutions on earth.
-              </h2>
+              <div className="grid gap-3 sm:grid-cols-3 lg:w-1/2">
+                {integrations.map((integration) => (
+                  <div
+                    key={integration}
+                    className="flex h-16 items-center justify-center rounded-2xl border border-slate-200 bg-white text-sm font-semibold text-slate-600 shadow-sm"
+                  >
+                    {integration}
+                  </div>
+                ))}
+              </div>
             </div>
-            <Link
-              to="/resources#security"
-              className="inline-flex items-center gap-2 rounded-full border border-blue-500/30 px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-blue-200 transition hover:border-blue-400 hover:text-blue-100"
-            >
-              Download security whitepaper
-              <ArrowRight size={14} />
-            </Link>
-          </div>
-          <div className="grid gap-5 lg:grid-cols-3">
-            {securityPillars.map((pillar) => (
-              <div key={pillar.title} className="rounded-3xl border border-white/10 bg-white/[0.03] p-6">
-                <pillar.icon size={20} className="text-blue-300" />
-                <h3 className="mt-4 text-lg font-semibold text-white">{pillar.title}</h3>
-                <p className="mt-3 text-sm text-gray-300">{pillar.description}</p>
-              </div>
-            ))}
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <section className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <motion.div
-          {...fadeIn}
-          className="rounded-3xl border border-white/10 bg-gradient-to-br from-blue-600/20 via-transparent to-transparent p-10 text-center backdrop-blur"
+          {...fadeInProps}
+          className="rounded-3xl border border-blue-200 bg-gradient-to-r from-blue-600 via-blue-500 to-blue-600 p-10 text-white shadow-xl"
         >
-          <p className="text-xs font-semibold uppercase tracking-[0.35em] text-blue-200">Ready to see it live?</p>
-          <h2 className="mt-4 text-3xl font-semibold text-white sm:text-4xl">
-            Prevent the next banking crisis with real-time intelligence.
-          </h2>
-          <p className="mt-4 text-base text-gray-200">
-            Join the growing network of institutions using MAGNIUS Banking to modernize regulatory reporting, protect
-            their balance sheet, and give supervisors the clarity they expect.
-          </p>
-          <div className="mt-6 flex flex-wrap justify-center gap-4">
-            <Link
-              to="/demo"
-              className="inline-flex items-center justify-center rounded-full bg-blue-600 px-6 py-3 text-sm font-semibold uppercase tracking-[0.3em] text-white transition hover:bg-blue-500 hover:shadow-glow"
-            >
-              Schedule Demo
-              <ArrowRight size={16} className="ml-2" />
-            </Link>
-            <Link
-              to="/pricing"
-              className="inline-flex items-center justify-center rounded-full border border-white/20 px-6 py-3 text-sm font-semibold uppercase tracking-[0.3em] text-white transition hover:border-blue-400 hover:text-blue-200"
-            >
-              View Pricing
-            </Link>
+          <div className="flex flex-col items-start gap-6 sm:flex-row sm:items-center sm:justify-between">
+            <div className="space-y-3">
+              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-blue-100">
+                Final call to action
+              </p>
+              <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
+                Ready to transform your practice?
+              </h2>
+              <p className="max-w-2xl text-sm text-blue-100/90">
+                Start your free 30-day trial or connect with a healthcare technology specialist. No credit card required
+                and full onboarding support included.
+              </p>
+              <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+                <Link
+                  to="/demo"
+                  className="inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-sm font-semibold text-blue-600 transition hover:bg-blue-50"
+                >
+                  Start Free 30-Day Trial
+                </Link>
+                <Link
+                  to="/contact"
+                  className="inline-flex items-center justify-center rounded-full border border-white/60 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
+                >
+                  Talk to a Healthcare Expert
+                </Link>
+              </div>
+            </div>
+            <div className="rounded-2xl border border-white/40 bg-blue-500/40 px-6 py-4 text-center text-sm font-semibold uppercase tracking-[0.3em] text-blue-50">
+              No credit card required
+            </div>
           </div>
         </motion.div>
       </section>

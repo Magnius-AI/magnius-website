@@ -1,291 +1,444 @@
+import { ChangeEvent, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import {
-  ArrowRight,
   BadgeCheck,
-  BellRing,
-  Layers,
+  CheckCircle2,
+  CreditCard,
+  DollarSign,
+  ShieldCheck,
   Sparkles,
-  UploadCloud,
+  TimerReset,
 } from 'lucide-react';
 import clsx from 'clsx';
 
-const tiers = [
+type PricingTier = {
+  name: string;
+  price: string;
+  subtitle: string;
+  description: string;
+  badge?: string;
+  features: string[];
+  cta: { label: string; to: string };
+};
+
+const pricingTiers: PricingTier[] = [
   {
-    name: 'Credit Unions',
-    subtitle: 'Assets under $1B',
-    price: '$50K - $125K / year',
-    notes: 'Designed for credit unions modernizing overnight reporting and liquidity oversight.',
-    highlights: [
-      'Full MAGNIUS Banking platform with all seven modules',
-      'SFTP or secure upload ingestion adapters',
-      'Up to 50 named users with role-based access',
-      'Quarterly regulator readiness reviews',
+    name: 'Starter',
+    price: '$199',
+    subtitle: 'Per month',
+    description: 'Perfect for solo practitioners or small practices modernizing operations.',
+    features: [
+      'Up to 2 providers & 500 patients',
+      'Unlimited appointments & online booking',
+      'Smart scheduling & waitlist automation',
+      'Patient management & secure portal',
+      'Email support & onboarding concierge',
+      'HIPAA-compliant messaging and storage',
     ],
+    cta: { label: 'Start Free Trial', to: '/demo' },
   },
   {
-    name: 'Community Banks',
-    subtitle: '$1B - $10B in assets',
-    price: '$150K - $350K / year',
-    notes: 'Perfect for banks needing early warning intelligence without enterprise overhead.',
-    highlights: [
-      'Everything in Credit Unions tier',
-      'Real-time streaming ingestion (Kafka/Kinesis)',
-      'Unlimited alert integrations (email, SMS, Teams/Slack, webhook)',
-      'Dedicated customer success manager',
+    name: 'Professional',
+    price: '$399',
+    subtitle: 'Per month',
+    description: 'Best for growing practices expanding services and care teams.',
+    badge: 'Most Popular',
+    features: [
+      'Up to 5 providers & 2,000 patients',
+      'Everything in Starter',
+      'Communication hub with SMS & campaigns',
+      'Billing & claims automation',
+      'Referral management & analytics',
+      'Phone & priority support + API access',
     ],
+    cta: { label: 'Start Free Trial', to: '/demo' },
   },
   {
-    name: 'Regional Banks',
-    subtitle: '$10B - $100B in assets',
-    price: '$400K - $900K / year',
-    notes: 'Comprehensive platform for multi-branch institutions coordinating with regulators daily.',
-    highlights: [
-      'Everything in Community Banks tier',
-      'Regulator collaboration workspace and examiner seats',
-      'Custom data science sandbox with secure notebooks',
-      '24/7 priority response and quarterly on-site reviews',
+    name: 'Enterprise',
+    price: 'Custom',
+    subtitle: 'Tailored pricing',
+    description: 'Ideal for large clinics and health systems needing advanced automation.',
+    features: [
+      'Unlimited providers & patients',
+      'Everything in Professional',
+      'Advanced analytics & data warehouse sync',
+      'Custom integrations & SSO',
+      'Dedicated account team & SLA guarantees',
+      'White-label options and premium support',
     ],
-  },
-  {
-    name: 'Large Banks',
-    subtitle: '$100B+ in assets',
-    price: '$1.2M - $2.0M / year',
-    notes: 'Enterprise program for systemically important institutions requiring global coverage.',
-    highlights: [
-      'Everything in Regional Banks tier',
-      'Global multi-region deployment with data residency controls',
-      'Dedicated war room and joint incident response program',
-      'Custom model governance workflows and validation support',
-    ],
+    cta: { label: 'Contact Sales', to: '/contact' },
   },
 ];
 
-const inclusions = [
+const comparisonFeatures = [
+  { feature: 'Appointment scheduling & online booking', starter: true, professional: true, enterprise: true },
+  { feature: 'Patient management & document storage', starter: true, professional: true, enterprise: true },
+  { feature: 'HIPAA-compliant messaging (email & portal)', starter: true, professional: true, enterprise: true },
+  { feature: 'SMS & voice communications', starter: false, professional: true, enterprise: true },
+  { feature: 'Billing & claims automation', starter: false, professional: true, enterprise: true },
+  { feature: 'Referral management workflows', starter: false, professional: true, enterprise: true },
+  { feature: 'Analytics & reporting suite', starter: false, professional: true, enterprise: true },
+  { feature: 'AI automation & predictive insights', starter: false, professional: true, enterprise: true },
+  { feature: 'Custom integrations & API access', starter: false, professional: true, enterprise: true },
+  { feature: 'Dedicated account manager', starter: false, professional: false, enterprise: true },
+  { feature: 'White-label & advanced security controls', starter: false, professional: false, enterprise: true },
+];
+
+const addOns = [
+  { label: 'Additional providers', description: '$50/month per provider beyond plan limit' },
+  { label: 'Additional storage', description: '$20/month per additional 50GB' },
+  { label: 'Advanced reporting', description: '$99/month for predictive dashboards & exports' },
+  { label: 'Custom training', description: 'Starting at $500 for on-site or live virtual sessions' },
+];
+
+const faqItems = [
   {
-    icon: UploadCloud,
-    title: 'Secure ingestion & validation',
-    body: 'Automated schema validation, exception management, and encrypted storage with per-tenant keys.',
+    question: 'Do you offer a free trial?',
+    answer:
+      'Yes. Every plan includes a 30-day free trial with full access so you can onboard providers, import data, and test automations risk-free.',
   },
   {
-    icon: BellRing,
-    title: 'Early warning system',
-    body: 'Critical through informational alert tiers across liquidity, capital, and concentration risks.',
+    question: 'What billing cycles are available?',
+    answer:
+      'Choose monthly or annual billing. Annual plans receive a 20% discount and include enhanced onboarding support.',
   },
   {
-    icon: Layers,
-    title: 'Regulatory communication hub',
-    body: 'Forward clean filings, share examiner workspaces, and maintain immutable audit trails.',
+    question: "What's your refund policy?",
+    answer:
+      'If Magnius Healthcare AI is not the right fit within the first 30 days of a paid subscription, we offer a full refund - no questions asked.',
   },
   {
-    icon: Sparkles,
-    title: 'AI intelligence upgrades',
-    body: 'Continuous ML improvements powered by anonymized network data and GPU-accelerated training.',
+    question: 'Which payment methods are accepted?',
+    answer:
+      'We accept all major credit cards, ACH, and invoiced purchase orders for Enterprise customers. HIPAA-compliant billing and receipts are included.',
   },
 ];
 
-const services = [
-  {
-    label: 'Implementation',
-    details: 'Included in every tier. Done-for-you onboarding, security review support, and user enablement.',
-  },
-  {
-    label: 'Security & compliance package',
-    details: 'Examiner-ready documentation, penetration test reports, and shared responsibility matrix.',
-  },
-  {
-    label: 'Executive reporting',
-    details: 'Automated board and ALCO reporting packs customized to your governance cadence.',
-  },
-  {
-    label: 'Predictive simulation add-on',
-    details: 'Stress testing scenarios leveraging cross-network data to simulate market and liquidity shocks.',
-  },
+const trustSignals = [
+  'No long-term contracts',
+  '30-day money-back guarantee',
+  'Free migration assistance',
+  '99.9% uptime SLA',
 ];
 
-const fadeIn = {
+const fadeInProps = {
   initial: { opacity: 0, y: 24 },
   whileInView: { opacity: 1, y: 0 },
   viewport: { once: true, amount: 0.2 },
   transition: { duration: 0.6, ease: 'easeOut' },
 };
 
+const ROI_DEFAULTS = {
+  providers: 5,
+  dailyAppointments: 18,
+  hourlyRate: 180,
+};
+
+type ROIInputs = {
+  providers: number;
+  dailyAppointments: number;
+  hourlyRate: number;
+};
+
+type ROIResult = {
+  hoursSaved: number;
+  annualValue: number;
+  automationScore: number;
+};
+
+const calculateRoi = ({ providers, dailyAppointments, hourlyRate }: ROIInputs): ROIResult => {
+  const automationEfficiency = 0.28; // 28% time savings benchmark
+  const minutesPerAppointment = 8; // admin time saved per appointment
+  const annualWorkdays = 240;
+
+  const appointmentsPerYear = providers * dailyAppointments * annualWorkdays;
+  const totalMinutesSaved = appointmentsPerYear * minutesPerAppointment * automationEfficiency;
+  const hoursSaved = totalMinutesSaved / 60;
+  const annualValue = hoursSaved * hourlyRate;
+  const automationScore = Math.min(100, Math.round(automationEfficiency * 100 + providers * 2));
+
+  return {
+    hoursSaved,
+    annualValue,
+    automationScore,
+  };
+};
+
 export default function PricingPage() {
+  const [roiInputs, setRoiInputs] = useState<ROIInputs>(ROI_DEFAULTS);
+
+  const roiResult = useMemo(() => calculateRoi(roiInputs), [roiInputs]);
+
+  const handleRoiChange =
+    (field: keyof ROIInputs) =>
+    (event: ChangeEvent<HTMLInputElement>) => {
+      const value = Number.parseInt(event.target.value, 10) || 0;
+      setRoiInputs((prev) => ({ ...prev, [field]: Math.max(0, value) }));
+    };
+
   return (
     <div className="space-y-24 pb-24">
-      <section className="relative overflow-hidden bg-neutral-950">
-        <div className="mx-auto max-w-7xl px-4 pt-24 pb-20 sm:px-6 lg:px-8 lg:pt-32">
-          <motion.div {...fadeIn} className="max-w-3xl space-y-8">
-            <div className="inline-flex items-center gap-2 rounded-full border border-blue-500/40 bg-blue-500/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.35em] text-blue-300">
+      <section className="relative overflow-hidden bg-gradient-to-br from-blue-50 via-white to-emerald-100">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(59,130,246,0.2)_0%,_rgba(255,255,255,0)_60%)]" />
+        <div className="relative mx-auto max-w-7xl px-4 pb-24 pt-32 sm:px-6 lg:px-8 lg:pt-40">
+          <motion.div {...fadeInProps} className="max-w-4xl space-y-6">
+            <div className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-white/80 px-4 py-2 text-xs font-semibold uppercase tracking-[0.35em] text-blue-600 shadow-sm">
               Pricing
             </div>
-            <h1 className="text-4xl font-semibold tracking-tight text-white sm:text-5xl lg:text-6xl">
-              Transparent annual pricing aligned to your balance sheet.
+            <h1 className="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl lg:text-6xl">
+              Transparent pricing that grows with your practice.
             </h1>
-            <p className="text-lg text-gray-300 lg:text-xl">
-              MAGNIUS Banking is a cloud-native SaaS platform. Pay a single annual subscription that unlocks all seven
-              modules, continuous AI upgrades, and a four-week implementation delivered by our onboarding team.
+            <p className="text-lg text-slate-600 lg:text-xl">
+              No hidden fees. Cancel anytime. Every plan includes HIPAA compliance, AI automation, and world-class
+              support tailored for healthcare providers.
             </p>
-            <div className="flex flex-wrap gap-3">
-              <span className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-blue-200">
-                No hardware or legacy installs required
+            <div className="flex flex-col gap-3 text-sm text-slate-500 sm:flex-row sm:items-center">
+              <span className="inline-flex items-center rounded-full border border-blue-200 bg-white px-4 py-2 font-semibold text-blue-600">
+                30-day free trial
               </span>
-              <span className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-blue-200">
-                Unlimited updates and enhancements
+              <span className="inline-flex items-center rounded-full border border-blue-200 bg-white px-4 py-2 font-semibold text-blue-600">
+                Annual billing saves 20%
               </span>
-            </div>
-            <div className="flex flex-wrap gap-4 pt-2">
-              <Link
-                to="/demo"
-                className="inline-flex items-center justify-center rounded-full bg-blue-600 px-6 py-3 text-sm font-semibold uppercase tracking-[0.3em] text-white transition hover:bg-blue-500 hover:shadow-glow"
-              >
-                Schedule Pricing Review
-                <ArrowRight size={16} className="ml-2" />
-              </Link>
-              <Link
-                to="/resources"
-                className="inline-flex items-center justify-center rounded-full border border-white/20 px-6 py-3 text-sm font-semibold uppercase tracking-[0.3em] text-white transition hover:border-blue-400 hover:text-blue-200"
-              >
-                Download ROI overview
-              </Link>
             </div>
           </motion.div>
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <motion.div {...fadeIn} className="grid gap-6 lg:grid-cols-2">
-          {tiers.map((tier, index) => (
+      <section className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <motion.div {...fadeInProps} className="grid gap-8 lg:grid-cols-3">
+          {pricingTiers.map((tier) => (
             <div
               key={tier.name}
               className={clsx(
-                'rounded-3xl border p-8',
-                index >= 2
-                  ? 'border-blue-500/40 bg-blue-500/10 text-blue-50'
-                  : 'border-white/10 bg-white/[0.03] text-gray-200'
+                'relative flex flex-col rounded-3xl border border-slate-200 bg-white p-8 shadow-sm transition hover:-translate-y-1 hover:shadow-lg',
+                tier.badge ? 'border-blue-400 ring-2 ring-blue-100' : ''
               )}
             >
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-xs font-semibold uppercase tracking-[0.35em] text-blue-300">{tier.subtitle}</p>
-                  <h2 className="mt-2 text-2xl font-semibold text-white">{tier.name}</h2>
-                </div>
-                <span className="rounded-full border border-white/20 px-3 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-white">
-                  Annual SaaS
+              {tier.badge ? (
+                <span className="absolute -top-4 right-6 rounded-full bg-blue-600 px-4 py-1 text-xs font-semibold uppercase tracking-[0.35em] text-white">
+                  {tier.badge}
                 </span>
+              ) : null}
+              <h2 className="text-2xl font-semibold text-slate-900">{tier.name}</h2>
+              <div className="mt-3 flex items-baseline gap-2">
+                <span className="text-4xl font-bold text-blue-600">{tier.price}</span>
+                <span className="text-sm font-semibold uppercase tracking-[0.3em] text-slate-400">{tier.subtitle}</span>
               </div>
-              <p className="mt-6 text-3xl font-semibold text-white">{tier.price}</p>
-              <p className="mt-3 text-sm">{tier.notes}</p>
-              <ul className="mt-6 space-y-3 text-sm">
-                {tier.highlights.map((item) => (
-                  <li key={item} className="flex items-start gap-3">
-                    <BadgeCheck size={16} className="mt-1 text-blue-200" />
-                    <span>{item}</span>
+              <p className="mt-3 text-sm text-slate-600">{tier.description}</p>
+              <ul className="mt-6 space-y-3 text-sm text-slate-600">
+                {tier.features.map((feature) => (
+                  <li key={feature} className="flex items-start gap-3">
+                    <CheckCircle2 className="mt-0.5 h-4 w-4 text-blue-500" />
+                    <span>{feature}</span>
                   </li>
                 ))}
               </ul>
-              <div className="mt-6 flex flex-wrap gap-3">
-                <Link
-                  to="/demo"
-                  className="inline-flex items-center justify-center rounded-full border border-white/30 px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-white transition hover:border-white hover:text-white"
-                >
-                  Request proposal
-                </Link>
-              </div>
+              <Link
+                to={tier.cta.to}
+                className="mt-8 inline-flex items-center justify-center rounded-full bg-blue-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-blue-500"
+              >
+                {tier.cta.label}
+              </Link>
             </div>
           ))}
         </motion.div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <motion.div {...fadeIn} className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
-          <div className="space-y-6">
-            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-blue-400">
-              Included with every subscription
-            </p>
-            <h2 className="text-3xl font-semibold text-white sm:text-4xl">All seven modules, always on.</h2>
-            <p className="text-base text-gray-300">
-              MAGNIUS Banking is delivered as a complete platform. There are no module add-ons or hidden fees—every
-              customer receives the full stack of ingestion, intelligence, early warning, collaboration, and mobile
-              access.
-            </p>
-            <Link
-              to="/#risk-intelligence"
-              className="inline-flex items-center gap-2 rounded-full border border-blue-500/30 px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-blue-200 transition hover:border-blue-400 hover:text-blue-100"
-            >
-              Explore modules in depth
-              <ArrowRight size={14} />
-            </Link>
-          </div>
-          <div className="grid gap-5 md:grid-cols-2">
-            {inclusions.map((item) => (
-              <div key={item.title} className="rounded-3xl border border-white/10 bg-white/[0.03] p-6">
-                <item.icon size={20} className="text-blue-300" />
-                <h3 className="mt-4 text-lg font-semibold text-white">{item.title}</h3>
-                <p className="mt-3 text-sm text-gray-300">{item.body}</p>
-              </div>
-            ))}
+      <section className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <motion.div {...fadeInProps} className="rounded-3xl border border-slate-200 bg-white shadow-sm">
+          <div className="overflow-x-auto">
+            <table className="min-w-full divide-y divide-slate-200 text-sm">
+              <thead className="bg-slate-50">
+                <tr>
+                  <th className="px-6 py-4 text-left text-sm font-semibold text-slate-600">Feature</th>
+                  <th className="px-6 py-4 text-center text-sm font-semibold text-slate-600">Starter</th>
+                  <th className="px-6 py-4 text-center text-sm font-semibold text-slate-600">Professional</th>
+                  <th className="px-6 py-4 text-center text-sm font-semibold text-slate-600">Enterprise</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-slate-200 bg-white text-center">
+                {comparisonFeatures.map((row) => (
+                  <tr key={row.feature} className="align-middle">
+                    <td className="px-6 py-4 text-left text-sm font-semibold text-slate-700">{row.feature}</td>
+                    <td className="px-6 py-4">{row.starter ? <BadgeCheck className="mx-auto h-5 w-5 text-emerald-500" /> : '-'}</td>
+                    <td className="px-6 py-4">
+                      {row.professional ? <BadgeCheck className="mx-auto h-5 w-5 text-blue-500" /> : '-'}
+                    </td>
+                    <td className="px-6 py-4">
+                      {row.enterprise ? <BadgeCheck className="mx-auto h-5 w-5 text-purple-500" /> : '-'}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </motion.div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8" id="services">
-        <motion.div {...fadeIn} className="rounded-3xl border border-white/10 bg-white/[0.03] p-10">
-          <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-blue-400">Implementation & services</p>
-              <h2 className="mt-3 text-3xl font-semibold text-white sm:text-4xl">
-                Everything required to onboard, operate, and prove compliance.
-              </h2>
+      <section className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <motion.div {...fadeInProps} className="grid gap-8 lg:grid-cols-2">
+          <div className="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm">
+            <h3 className="text-xl font-semibold text-slate-900">Flexible add-ons</h3>
+            <p className="mt-3 text-sm text-slate-600">
+              Build the perfect plan with optional add-ons that scale with your practice.
+            </p>
+            <ul className="mt-6 space-y-4 text-sm text-slate-600">
+              {addOns.map((addOn) => (
+                <li key={addOn.label} className="flex items-start gap-3">
+                  <Sparkles size={18} className="mt-1 text-blue-500" />
+                  <div>
+                    <p className="font-semibold text-slate-900">{addOn.label}</p>
+                    <p>{addOn.description}</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+            <Link
+              to="/contact"
+              className="mt-6 inline-flex items-center text-sm font-semibold text-blue-600 transition hover:text-blue-500"
+            >
+              Talk to sales about customization
+            </Link>
+          </div>
+
+          <div className="rounded-3xl border border-blue-200 bg-blue-50 p-8 shadow-sm">
+            <h3 className="text-xl font-semibold text-slate-900">Accepted payment methods</h3>
+            <p className="mt-3 text-sm text-slate-600">
+              Secure, compliant billing with automated receipts and invoicing.
+            </p>
+            <ul className="mt-6 space-y-3 text-sm text-slate-600">
+              {[
+                ['Credit cards (Visa, Mastercard, AMEX, Discover)', CreditCard],
+                ['ACH & bank transfers', DollarSign],
+                ['Invoiced purchase orders (Enterprise)', ShieldCheck],
+              ].map(([item, Icon]) => (
+                <li key={item} className="flex items-center gap-3">
+                  <Icon className="h-5 w-5 text-blue-500" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </motion.div>
+      </section>
+
+      <section className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <motion.div {...fadeInProps} className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_340px]">
+          <div className="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm">
+            <h3 className="text-xl font-semibold text-slate-900">Frequently asked questions</h3>
+            <div className="mt-6 space-y-5">
+              {faqItems.map((faq) => (
+                <div key={faq.question} className="rounded-2xl border border-slate-200 bg-white p-5">
+                  <h4 className="text-sm font-semibold text-slate-900">{faq.question}</h4>
+                  <p className="mt-3 text-sm text-slate-600">{faq.answer}</p>
+                </div>
+              ))}
             </div>
-            <Link
-              to="/demo"
-              className="inline-flex items-center gap-2 rounded-full border border-white/20 px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-white transition hover:border-blue-400 hover:text-blue-200"
-            >
-              Meet the onboarding team
-              <ArrowRight size={14} />
-            </Link>
           </div>
-          <div className="mt-8 grid gap-6 lg:grid-cols-2">
-            {services.map((item) => (
-              <div key={item.label} className="rounded-3xl border border-white/10 bg-white/[0.04] p-6">
-                <h3 className="text-lg font-semibold text-white">{item.label}</h3>
-                <p className="mt-3 text-sm text-gray-300">{item.details}</p>
+
+          <div className="rounded-3xl border border-blue-200 bg-white p-8 shadow-sm">
+            <div className="rounded-2xl bg-blue-50 p-6">
+              <h3 className="text-lg font-semibold text-slate-900">ROI calculator</h3>
+              <p className="mt-2 text-sm text-slate-600">Estimate hours saved and revenue impact.</p>
+              <div className="mt-4 space-y-4 text-sm">
+                <label className="block">
+                  <span className="text-slate-600">Number of providers</span>
+                  <input
+                    type="number"
+                    min={0}
+                    value={roiInputs.providers}
+                    onChange={handleRoiChange('providers')}
+                    className="mt-2 w-full rounded-xl border border-slate-200 px-4 py-2 focus:border-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-200"
+                  />
+                </label>
+                <label className="block">
+                  <span className="text-slate-600">Appointments per provider each day</span>
+                  <input
+                    type="number"
+                    min={0}
+                    value={roiInputs.dailyAppointments}
+                    onChange={handleRoiChange('dailyAppointments')}
+                    className="mt-2 w-full rounded-xl border border-slate-200 px-4 py-2 focus:border-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-200"
+                  />
+                </label>
+                <label className="block">
+                  <span className="text-slate-600">Average revenue per hour ($)</span>
+                  <input
+                    type="number"
+                    min={0}
+                    value={roiInputs.hourlyRate}
+                    onChange={handleRoiChange('hourlyRate')}
+                    className="mt-2 w-full rounded-xl border border-slate-200 px-4 py-2 focus:border-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-200"
+                  />
+                </label>
               </div>
-            ))}
+            </div>
+            <div className="mt-6 space-y-4 rounded-2xl border border-blue-200 bg-blue-50 p-6 text-sm text-slate-700">
+              <div className="flex items-center gap-3 text-blue-600">
+                <TimerReset />
+                <span className="text-sm font-semibold uppercase tracking-[0.3em] text-blue-600">
+                  Estimated impact
+                </span>
+              </div>
+              <div>
+                <p className="text-3xl font-bold text-blue-600">
+                  {roiResult.hoursSaved.toLocaleString(undefined, { maximumFractionDigits: 0 })} hrs
+                </p>
+                <p className="text-xs uppercase tracking-[0.3em] text-blue-600">Hours saved per year</p>
+              </div>
+              <div>
+                <p className="text-3xl font-bold text-emerald-600">
+                  ${roiResult.annualValue.toLocaleString(undefined, { maximumFractionDigits: 0 })}
+                </p>
+                <p className="text-xs uppercase tracking-[0.3em] text-emerald-500">Estimated annual value</p>
+              </div>
+              <div>
+                <p className="text-2xl font-semibold text-slate-900">{roiResult.automationScore}/100</p>
+                <p className="text-xs uppercase tracking-[0.3em] text-slate-500">Automation readiness score</p>
+              </div>
+              <p>
+                These estimates are based on customer benchmarks. Talk with our team for a tailored ROI assessment that
+                factors in payer mix, specialties, and staffing models.
+              </p>
+            </div>
           </div>
         </motion.div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <motion.div
-          {...fadeIn}
-          className="rounded-3xl border border-white/10 bg-gradient-to-br from-blue-600/20 via-transparent to-transparent p-10 text-center backdrop-blur"
-        >
-          <p className="text-xs font-semibold uppercase tracking-[0.35em] text-blue-200">
-            Ready to tailor MAGNIUS Banking to your institution?
-          </p>
-          <h2 className="mt-4 text-3xl font-semibold text-white sm:text-4xl">
-            We align pricing to your asset size, regulatory cadence, and growth plans.
-          </h2>
-          <p className="mt-4 text-base text-gray-200">
-            Schedule a pricing review to explore the platform, understand implementation effort, and co-develop a launch
-            plan with our team.
-          </p>
-          <div className="mt-6 flex flex-wrap justify-center gap-4">
-            <Link
-              to="/demo"
-              className="inline-flex items-center justify-center rounded-full bg-blue-600 px-6 py-3 text-sm font-semibold uppercase tracking-[0.3em] text-white transition hover:bg-blue-500 hover:shadow-glow"
-            >
-              Schedule Pricing Review
-              <ArrowRight size={16} className="ml-2" />
-            </Link>
-            <Link
-              to="/resources"
-              className="inline-flex items-center justify-center rounded-full border border-white/20 px-6 py-3 text-sm font-semibold uppercase tracking-[0.3em] text-white transition hover:border-blue-400 hover:text-blue-200"
-            >
-              View Resource Library
-            </Link>
+      <section className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+        <motion.div {...fadeInProps} className="rounded-3xl border border-blue-200 bg-gradient-to-r from-blue-600 via-blue-500 to-blue-600 p-10 text-white shadow-xl">
+          <div className="flex flex-col items-start gap-6 sm:flex-row sm:items-center sm:justify-between">
+            <div className="space-y-4">
+              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-blue-100">
+                Trust & assurances
+              </p>
+              <h2 className="text-3xl font-semibold leading-tight sm:text-4xl">
+                Healthcare providers trust Magnius Healthcare AI.
+              </h2>
+              <div className="grid gap-3 text-sm sm:grid-cols-2">
+                {trustSignals.map((signal) => (
+                  <div key={signal} className="flex items-center gap-3">
+                    <CheckCircle2 className="h-5 w-5 text-blue-100" />
+                    <span>{signal}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="flex flex-col gap-3 text-sm">
+              <Link
+                to="/demo"
+                className="inline-flex items-center justify-center rounded-full bg-white px-6 py-3 font-semibold text-blue-600 transition hover:bg-blue-50"
+              >
+                Start Free 30-Day Trial
+              </Link>
+              <Link
+                to="/contact"
+                className="inline-flex items-center justify-center rounded-full border border-white/60 px-6 py-3 font-semibold text-white transition hover:bg-white/10"
+              >
+                Contact Sales
+              </Link>
+            </div>
           </div>
         </motion.div>
       </section>
