@@ -3,16 +3,12 @@ import { Routes, Route, useLocation } from 'react-router-dom';
 import Navigation from './components/Navigation';
 import Footer from './components/Footer';
 import HomePage from './pages/HomePage';
-import FeaturesPage from './pages/FeaturesPage';
+import ProductPage from './pages/ProductPage';
+import EnginesPage from './pages/EnginesPage';
+import UseCasesPage from './pages/UseCasesPage';
 import PricingPage from './pages/PricingPage';
-import SolutionsPage from './pages/SolutionsPage';
-import ResourcesPage from './pages/ResourcesPage';
 import AboutPage from './pages/AboutPage';
-import SecurityPage from './pages/SecurityPage';
-import ContactPage from './pages/ContactPage';
-import DemoPage from './pages/DemoPage';
-import PrivacyPage from './pages/PrivacyPage';
-import TermsPage from './pages/TermsPage';
+import BookDemoPage from './pages/BookDemoPage';
 
 function ScrollToTop() {
   const location = useLocation();
@@ -36,22 +32,18 @@ function ScrollToTop() {
 
 function App() {
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900 font-sans antialiased">
+    <div className="min-h-screen bg-brand-dark text-slate-100 font-sans antialiased">
       <ScrollToTop />
       <Navigation />
-      <main className="pt-20">
+      <main>
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/features" element={<FeaturesPage />} />
+          <Route path="/product" element={<ProductPage />} />
+          <Route path="/engines" element={<EnginesPage />} />
+          <Route path="/use-cases" element={<UseCasesPage />} />
           <Route path="/pricing" element={<PricingPage />} />
-          <Route path="/solutions" element={<SolutionsPage />} />
-          <Route path="/resources" element={<ResourcesPage />} />
-          <Route path="/security" element={<SecurityPage />} />
           <Route path="/about" element={<AboutPage />} />
-          <Route path="/contact" element={<ContactPage />} />
-          <Route path="/demo" element={<DemoPage />} />
-          <Route path="/privacy" element={<PrivacyPage />} />
-          <Route path="/terms" element={<TermsPage />} />
+          <Route path="/book-demo" element={<BookDemoPage />} />
         </Routes>
       </main>
       <Footer />

@@ -1,591 +1,407 @@
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
 import {
-  Activity,
-  ArrowRight,
-  BarChart3,
-  CalendarCheck,
-  Check,
-  LucideIcon,
-  Network,
-  ShieldCheck,
-  Sparkles,
-  Stethoscope,
+  Target,
+  TrendingUp,
   Users,
-  Wallet,
+  Zap,
+  BarChart3,
+  Network,
+  Settings,
+  FileText,
+  ArrowRight,
+  CheckCircle2,
+  XCircle,
 } from 'lucide-react';
-import clsx from 'clsx';
-
-const heroTrustBadges = ['HIPAA Compliant', 'SOC 2 Type II Certified', '99.9% Uptime'];
-
-const heroStats = [
-  { metric: '2M+', label: 'Appointments Managed' },
-  { metric: '50K+', label: 'Patients Supported' },
-  { metric: '98%', label: 'Provider Satisfaction' },
-  { metric: '$10M+', label: 'Claims Processed' },
-];
-
-const featureCards = [
-  {
-    title: 'Smart Scheduling',
-    description:
-      'AI-assisted scheduling with drag-and-drop calendars, online booking, intelligent waitlists, and predictive no-show alerts.',
-    icon: CalendarCheck,
-  },
-  {
-    title: 'Patient Management',
-    description:
-      'Complete HIPAA-compliant patient profiles with MRN tracking, insurance details, documents, and collaborative care notes.',
-    icon: Users,
-  },
-  {
-    title: 'Communication Hub',
-    description:
-      'Secure messaging across email, SMS, and patient portal with templates, automation, and delivery insights.',
-    icon: Network,
-  },
-  {
-    title: 'Billing & Claims',
-    description:
-      'Automated claim submission, eligibility verification, denial management, and revenue intelligence.',
-    icon: Wallet,
-  },
-  {
-    title: 'Referral Network',
-    description:
-      'Streamlined specialist referrals with authorization tracking, priority routing, and closed-loop feedback.',
-    icon: Stethoscope,
-  },
-  {
-    title: 'Analytics & Reports',
-    description:
-      'Real-time dashboards, provider productivity analytics, custom report builder, and export-ready insights.',
-    icon: BarChart3,
-  },
-  {
-    title: 'AI Automation',
-    description:
-      'Intelligent reminders, workflow triggers, predictive outreach, and automated follow-up tasks built on healthcare data.',
-    icon: Sparkles,
-  },
-];
-
-const workflowSteps = [
-  {
-    title: 'Set Up Your Practice',
-    description: 'Configure providers, schedules, care teams, rooms, and preferences in minutes with guided onboarding.',
-    icon: ShieldCheck,
-  },
-  {
-    title: 'Manage Your Workflow',
-    description:
-      'Coordinate appointments, patient care, billing, referrals, and communications from one intuitive workspace.',
-    icon: Activity,
-  },
-  {
-    title: 'Grow Your Practice',
-    description: 'Use analytics, automation, and satisfaction insights to increase capacity, retention, and revenue.',
-    icon: ArrowRight,
-  },
-];
-
-type PreviewTab = {
-  key: string;
-  label: string;
-  headline: string;
-  bullets: string[];
-  accent: string;
-  icon: LucideIcon;
-};
-
-const previewTabs: PreviewTab[] = [
-  {
-    key: 'dashboard',
-    label: 'Dashboard',
-    headline: 'Executive visibility across your entire practice.',
-    bullets: [
-      'Real-time KPIs for patient flow, financial health, and provider productivity.',
-      'Configurable widgets with filters by location, provider, care team, and payer.',
-      'AI insights highlight preventable no-shows, revenue leakage, and growth opportunities.',
-    ],
-    accent: 'from-blue-500 via-blue-400 to-blue-500',
-    icon: BarChart3,
-  },
-  {
-    key: 'appointments',
-    label: 'Appointments',
-    headline: 'AI-powered scheduling and patient engagement.',
-    bullets: [
-      'Drag-and-drop calendar with day, week, month, and multi-provider views.',
-      'Online booking, automated reminders, digital intake forms, and waitlist automation.',
-      'Predictive analytics surface gaps, double bookings, and high-risk no-show patterns.',
-    ],
-    accent: 'from-sky-500 via-sky-400 to-sky-500',
-    icon: CalendarCheck,
-  },
-  {
-    key: 'patients',
-    label: 'Patients',
-    headline: 'Complete patient profiles and care collaboration.',
-    bullets: [
-      'Centralized demographics, insurance, medical history, documents, and consent forms.',
-      'Secure communication preferences and HIPAA-compliant messaging in one timeline.',
-      'Care team collaboration with task assignments, shared notes, and follow-up plans.',
-    ],
-    accent: 'from-purple-500 via-purple-400 to-purple-500',
-    icon: Users,
-  },
-];
-
-const testimonials = [
-  {
-    name: 'Dr. Sarah Mitchell, MD',
-    role: 'Family Medicine',
-    practice: 'Mitchell Primary Care',
-    quote:
-      'Magnius Healthcare AI transformed how we manage our practice. Automated reminders alone reduced no-shows by 40%, and our staff adopted the platform in days.',
-    initials: 'SM',
-  },
-  {
-    name: 'James Rodriguez',
-    role: 'Practice Manager',
-    practice: 'Cardiology Associates of Texas',
-    quote:
-      'We replaced three disconnected systems with Magnius. Scheduling, billing, and communication now run in one place - saving us 15 hours every week.',
-    initials: 'JR',
-  },
-  {
-    name: 'Dr. Emily Chen, DO',
-    role: 'Dermatology Specialist',
-    practice: 'Chen Dermatology Group',
-    quote:
-      'Complex referral management and procedure scheduling are finally simple. The analytics help us make confident, data-driven growth decisions.',
-    initials: 'EC',
-  },
-];
-
-const integrations = [
-  'Epic',
-  'Cerner',
-  'Athenahealth',
-  'DrChrono',
-  'Availity',
-  'Change Healthcare',
-  'Stripe',
-  'Twilio',
-  'Zoom',
-];
-
-const fadeInProps = {
-  initial: { opacity: 0, y: 24 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true, amount: 0.2 },
-  transition: { duration: 0.6, ease: 'easeOut' },
-};
 
 export default function HomePage() {
-  const [activeTab, setActiveTab] = useState(previewTabs[0].key);
-  const activePreview = previewTabs.find((tab) => tab.key === activeTab) ?? previewTabs[0];
-
   return (
-    <div className="space-y-24 pb-24">
-      <section className="relative overflow-hidden bg-gradient-to-br from-blue-50 via-white to-sky-100">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(59,130,246,0.15)_0%,_rgba(255,255,255,0)_60%)]" />
-        <div className="relative mx-auto max-w-7xl px-4 pb-24 pt-32 sm:px-6 lg:px-8 lg:pt-40">
-          <motion.div {...fadeInProps} className="grid gap-16 lg:grid-cols-[minmax(0,1fr)_480px] lg:items-center">
+    <div className="min-h-screen bg-brand-dark">
+      {/* Hero Section */}
+      <section className="relative overflow-hidden pt-32 pb-20 px-4 sm:px-6 lg:px-8">
+        <div className="absolute inset-0 bg-hex-grid opacity-30" style={{ backgroundSize: '40px 40px' }} />
+
+        <div className="relative max-w-7xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Left: Content */}
             <div className="space-y-8">
-              <div className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-white/80 px-4 py-2 text-xs font-semibold uppercase tracking-[0.35em] text-blue-600 shadow-sm backdrop-blur">
-                Magnius Healthcare AI
-              </div>
-              <h1 className="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl lg:text-6xl">
-                Modern Healthcare Practice Management, Powered by AI.
+              <h1 className="text-5xl md:text-6xl font-bold text-white leading-tight">
+                Replace consulting slide decks with a living company OS.
               </h1>
-              <p className="text-lg text-slate-600 lg:text-xl">
-                Streamline appointments, billing, patient care, and communications in one intelligent platform built for
-                healthcare providers. Automate workflows, deliver compassionate patient experiences, and grow with
-                confidence.
+
+              <p className="text-xl text-slate-300 leading-relaxed">
+                Magnius Consulting OS builds a digital twin of your organization, runs what-if simulations on strategy, org design, and operations, and gives you board-ready answers in minutes instead of months.
               </p>
-              <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
+
+              <div className="flex flex-col sm:flex-row gap-4">
                 <Link
-                  to="/demo"
-                  className="inline-flex items-center justify-center rounded-full bg-blue-600 px-8 py-3 text-base font-semibold text-white shadow-md transition hover:bg-blue-500 hover:shadow-lg"
+                  to="/book-demo"
+                  className="inline-flex items-center justify-center px-8 py-4 bg-brand-blue text-white rounded-lg font-semibold hover:bg-blue-600 transition-colors shadow-lg shadow-blue-500/25"
                 >
-                  Start Free 30-Day Trial
+                  Book a strategy demo
+                  <ArrowRight className="ml-2" size={20} />
                 </Link>
-                <Link
-                  to="/demo"
-                  className="inline-flex items-center justify-center rounded-full border border-blue-200 bg-white px-8 py-3 text-base font-semibold text-blue-600 transition hover:border-blue-300 hover:text-blue-500"
+                <a
+                  href="#sample-outputs"
+                  className="inline-flex items-center justify-center px-8 py-4 bg-slate-800 text-white rounded-lg font-semibold hover:bg-slate-700 transition-colors border border-slate-700"
                 >
-                  Schedule a Demo
-                </Link>
+                  See sample outputs
+                </a>
               </div>
-              <div className="flex items-center gap-4 text-sm text-slate-500">
-                {heroTrustBadges.map((badge) => (
-                  <span key={badge} className="flex items-center gap-2">
-                    <ShieldCheck size={18} className="text-blue-500" />
-                    {badge}
-                  </span>
-                ))}
-              </div>
+
+              <p className="text-sm text-slate-400 pt-4">
+                Built for CEOs, strategy teams, internal consulting, and PE operators.
+              </p>
             </div>
 
-            <div className="rounded-3xl border border-blue-100 bg-white/70 p-8 shadow-xl backdrop-blur">
-              <div className="space-y-6">
-                <div className="rounded-2xl bg-blue-50 p-6">
-                  <div className="flex items-center gap-3 text-blue-600">
-                    <Sparkles size={24} />
-                    <span className="text-sm font-semibold uppercase tracking-[0.3em]">Trusted Nationwide</span>
+            {/* Right: Dashboard Mockup */}
+            <div className="relative">
+              <div className="bg-gradient-to-br from-slate-900 to-slate-800 rounded-2xl border border-slate-700 p-6 shadow-2xl shadow-blue-500/10">
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between">
+                    <div className="h-4 w-32 bg-slate-700 rounded" />
+                    <div className="h-4 w-20 bg-slate-700 rounded" />
                   </div>
-                  <p className="mt-4 text-2xl font-semibold text-slate-900">
-                    Trusted by 500+ healthcare practices nationwide.
-                  </p>
-                  <p className="mt-2 text-sm text-slate-500">
-                    From single-provider clinics to multi-location health systems, Magnius delivers intelligent
-                    operations you can rely on.
-                  </p>
-                </div>
-
-                <div className="grid gap-4 sm:grid-cols-2">
-                  {heroStats.map((item) => (
-                    <div
-                      key={item.metric}
-                      className="rounded-2xl border border-slate-200 bg-white p-4 text-center shadow-sm"
-                    >
-                      <p className="text-3xl font-bold text-blue-600">{item.metric}</p>
-                      <p className="mt-1 text-xs uppercase tracking-[0.25em] text-slate-500">{item.label}</p>
+                  <div className="grid grid-cols-3 gap-4">
+                    {[1, 2, 3].map((i) => (
+                      <div key={i} className="bg-slate-800 rounded-lg p-4 border border-slate-700">
+                        <div className="h-3 w-16 bg-slate-600 rounded mb-2" />
+                        <div className="h-6 w-20 bg-brand-blue/20 rounded" />
+                      </div>
+                    ))}
+                  </div>
+                  <div className="bg-slate-800 rounded-lg p-4 border border-slate-700 h-40">
+                    <div className="h-3 w-24 bg-slate-600 rounded mb-4" />
+                    <div className="flex items-end justify-between h-24">
+                      {[60, 80, 65, 90, 75, 85].map((height, i) => (
+                        <div key={i} className="w-8 bg-brand-blue/30 rounded-t" style={{ height: `${height}%` }} />
+                      ))}
                     </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      <section className="bg-gradient-to-b from-slate-50 to-white py-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <motion.div {...fadeInProps} className="space-y-8">
-            <div className="text-center">
-              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-blue-600">
-                See Magnius in Action
-              </p>
-              <h2 className="mt-3 text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
-                Watch how Magnius transforms healthcare practices.
-              </h2>
-              <p className="mx-auto mt-4 max-w-2xl text-lg text-slate-600">
-                See firsthand how our intelligent platform streamlines operations, enhances patient care, and drives practice growth.
-              </p>
-            </div>
-
-            <div className="mx-auto max-w-5xl">
-              <div className="group relative aspect-video overflow-hidden rounded-3xl border border-slate-200 bg-slate-900 shadow-2xl transition hover:shadow-3xl">
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 to-purple-600/20" />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="relative">
-                    <div className="absolute inset-0 animate-ping rounded-full bg-white opacity-25" />
-                    <button
-                      type="button"
-                      className="flex h-20 w-20 items-center justify-center rounded-full bg-white text-blue-600 shadow-xl transition hover:scale-110 hover:bg-blue-50"
-                      aria-label="Play video"
-                    >
-                      <svg
-                        className="ml-1 h-8 w-8"
-                        fill="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path d="M8 5v14l11-7z" />
-                      </svg>
-                    </button>
                   </div>
                 </div>
-                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-slate-900/90 to-transparent p-6">
-                  <p className="text-sm font-semibold text-white">
-                    Full Platform Demo - 3:45
-                  </p>
-                  <p className="mt-1 text-xs text-slate-300">
-                    Discover how Magnius streamlines scheduling, patient management, billing, and more
-                  </p>
-                </div>
               </div>
             </div>
-          </motion.div>
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8" id="features">
-        <motion.div {...fadeInProps} className="space-y-12">
-          <div className="text-center">
-            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-blue-600">
-              Comprehensive Feature Set
-            </p>
-            <h2 className="mt-3 text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
-              Everything you need to run a modern healthcare practice.
-            </h2>
-            <p className="mx-auto mt-4 max-w-3xl text-lg text-slate-600">
-              Seven core modules work together to automate operations, enhance patient engagement, and deliver
-              actionable intelligence across your practice.
-            </p>
           </div>
+        </div>
+      </section>
 
-          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-            {featureCards.map((feature) => (
-              <div
-                key={feature.title}
-                className="group flex h-full flex-col rounded-3xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:border-blue-200 hover:shadow-lg"
-              >
-                <div className="flex items-center gap-3">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-50 text-blue-600">
-                    <feature.icon size={22} />
-                  </div>
-                  <h3 className="text-xl font-semibold text-slate-900">{feature.title}</h3>
-                </div>
-                <p className="mt-4 text-sm text-slate-600">{feature.description}</p>
-                <Link
-                  to="/features"
-                  className="mt-6 inline-flex items-center text-sm font-semibold text-blue-600 transition group-hover:text-blue-500"
-                >
-                  Learn more
-                  <ArrowRight size={16} className="ml-2 transition group-hover:translate-x-1" />
-                </Link>
+      {/* The Problem Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-900/50">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-4xl md:text-5xl font-bold text-white text-center mb-6">
+            Consultants give you static slides. Your business is not static.
+          </h2>
+
+          <p className="text-lg text-slate-300 text-center max-w-4xl mx-auto mb-12">
+            Most consulting projects work like this: a few interviews, a spreadsheet, and a slide deck that is out of date the moment it is presented. There is no living model of your company, no way to continuously simulate decisions, and no memory of past projects. Magnius replaces episodic, one-off engagements with a persistent operating system that actually understands how your company works.
+          </p>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { icon: XCircle, title: 'Slow & expensive', desc: '12–16 week projects with seven-figure price tags.' },
+              { icon: XCircle, title: 'Static outputs', desc: 'PowerPoints no one updates after the engagement.' },
+              { icon: XCircle, title: 'Shallow understanding', desc: 'Limited exposure to real systems and data.' },
+              { icon: XCircle, title: 'No continuity', desc: 'Every new project starts from zero again.' },
+            ].map((item, i) => (
+              <div key={i} className="bg-slate-800/50 rounded-xl p-6 border border-red-900/20">
+                <item.icon className="text-red-400 mb-4" size={32} />
+                <h3 className="text-xl font-semibold text-white mb-2">{item.title}</h3>
+                <p className="text-slate-400">{item.desc}</p>
               </div>
             ))}
           </div>
-        </motion.div>
-      </section>
-
-      <section className="bg-slate-100/70 py-24" id="how-it-works">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <motion.div {...fadeInProps} className="space-y-12">
-            <div className="text-center">
-              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-blue-600">How it works</p>
-              <h2 className="mt-3 text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
-                Transform your practice in three simple steps.
-              </h2>
-              <p className="mx-auto mt-4 max-w-2xl text-lg text-slate-600">
-                Launch quickly with guided onboarding, then let AI automation and real-time analytics keep every team in
-                sync.
-              </p>
-            </div>
-
-            <div className="grid gap-6 md:grid-cols-3">
-              {workflowSteps.map((step, index) => (
-                <div
-                  key={step.title}
-                  className="rounded-3xl border border-slate-200 bg-white p-8 text-center shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
-                >
-                  <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-blue-50 text-blue-600">
-                    <step.icon size={26} />
-                  </div>
-                  <p className="mt-4 text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">
-                    Step {index + 1}
-                  </p>
-                  <h3 className="mt-3 text-xl font-semibold text-slate-900">{step.title}</h3>
-                  <p className="mt-3 text-sm text-slate-600">{step.description}</p>
-                </div>
-              ))}
-            </div>
-          </motion.div>
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8" id="platform">
-        <motion.div {...fadeInProps} className="grid gap-12 lg:grid-cols-[360px_minmax(0,1fr)] lg:items-start">
-          <div className="space-y-6">
-            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-blue-600">
-              Platform Preview
-            </p>
-            <h2 className="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
-              See Magnius Healthcare AI in action.
+      {/* The Solution Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+              A Consulting OS: one brain for your entire organization.
             </h2>
-            <p className="text-lg text-slate-600">
-              Switch between modules to experience the intuitive workflows providers love and administrators trust.
-              Every screen is purpose-built to save time and simplify complex healthcare operations.
+            <p className="text-lg text-slate-300 max-w-3xl mx-auto">
+              Magnius connects to your existing data, builds a structured company brain, and layers specialized engines on top of it. These engines generate strategy, simulate financials, model org dynamics, and translate insights into execution plans and narratives.
             </p>
-            <div className="flex flex-wrap gap-3">
-              {previewTabs.map((tab) => (
-                <button
-                  key={tab.key}
-                  type="button"
-                  onClick={() => setActiveTab(tab.key)}
-                  className={clsx(
-                    'rounded-full border px-4 py-2 text-sm font-semibold transition',
-                    activeTab === tab.key
-                      ? 'border-blue-200 bg-blue-50 text-blue-600'
-                      : 'border-slate-200 bg-white text-slate-600 hover:border-blue-200 hover:text-blue-600'
-                  )}
-                >
-                  {tab.label}
-                </button>
-              ))}
-            </div>
-            <Link
-              to="/demo"
-              className="inline-flex items-center text-sm font-semibold text-blue-600 transition hover:text-blue-500"
-            >
-              See it in action
-              <ArrowRight size={16} className="ml-2" />
-            </Link>
           </div>
 
-          <div className="space-y-6 rounded-3xl border border-slate-200 bg-white p-8 shadow-lg">
-            <div className="space-y-3">
-              <h3 className="text-2xl font-semibold text-slate-900">{activePreview.headline}</h3>
-              <ul className="space-y-3 text-sm text-slate-600">
-                {activePreview.bullets.map((bullet) => (
-                  <li key={bullet} className="flex items-start gap-3">
-                    <Check size={18} className="mt-1 text-blue-500" />
-                    <span>{bullet}</span>
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              {
+                icon: Target,
+                title: 'Model',
+                desc: 'Import your financials, org structure, and key processes into a unified digital twin.',
+              },
+              {
+                icon: TrendingUp,
+                title: 'Simulate',
+                desc: 'Run scenarios on pricing, headcount, market entry, org changes, and more.',
+              },
+              {
+                icon: Zap,
+                title: 'Execute',
+                desc: 'Turn decisions into OKRs, roadmaps, and dashboards tied to live data.',
+              },
+            ].map((item, i) => (
+              <div key={i} className="bg-gradient-to-br from-slate-900 to-slate-800 rounded-xl p-8 border border-slate-700 hover:border-brand-blue transition-colors">
+                <div className="w-12 h-12 bg-brand-blue/10 rounded-lg flex items-center justify-center mb-6">
+                  <item.icon className="text-brand-blue" size={24} />
+                </div>
+                <h3 className="text-2xl font-semibold text-white mb-4">{item.title}</h3>
+                <p className="text-slate-300">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Engines Overview Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-900/50">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+              Engines that work like an internal McKinsey, on demand.
+            </h2>
+            <p className="text-lg text-slate-300 max-w-3xl mx-auto">
+              Magnius is built as a stack of coordinated engines that share the same underlying company model.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              {
+                title: 'Strategy Engine',
+                desc: 'Generates competitive analysis, growth options, and 3–5 year strategy scenarios tailored to your markets and constraints.',
+              },
+              {
+                title: 'Financial Simulation Engine',
+                desc: 'Builds a dynamic model of revenue drivers, costs, headcount, and CapEx/OpEx, so you can see the impact of decisions before you make them.',
+              },
+              {
+                title: 'Organizational Dynamics Engine',
+                desc: 'Maps reporting lines, influence networks, and bottlenecks to highlight where execution will stall and where to intervene.',
+              },
+              {
+                title: 'Operational Engine',
+                desc: 'Simulates processes, throughput, and SLAs, and proposes optimization moves using lean and automation patterns.',
+              },
+              {
+                title: 'Competitive Intelligence Engine',
+                desc: "Monitors competitors' moves, hiring, pricing, and product updates to feed your strategy engine with up-to-date context.",
+              },
+              {
+                title: 'Stakeholder & Political Engine',
+                desc: 'Identifies key players, resistance points, and influence paths to support realistic change plans.',
+              },
+              {
+                title: 'Execution Engine',
+                desc: 'Translates decisions into 30-60-90 day plans, OKRs, roadmaps, and KPI scorecards integrated with tools like Jira and Salesforce.',
+              },
+              {
+                title: 'Narrative & Communication Engine',
+                desc: 'Produces executive memos, board decks, and strategy narratives grounded directly in the live company model.',
+              },
+            ].map((engine, i) => (
+              <div key={i} className="bg-slate-800/50 rounded-xl p-6 border border-slate-700 hover:border-brand-blue transition-colors">
+                <h3 className="text-lg font-semibold text-white mb-3">{engine.title}</h3>
+                <p className="text-sm text-slate-400">{engine.desc}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="text-center mt-12">
+            <Link
+              to="/engines"
+              className="inline-flex items-center px-6 py-3 bg-slate-800 text-white rounded-lg font-medium hover:bg-slate-700 transition-colors border border-slate-700"
+            >
+              Learn more about our engines
+              <ArrowRight className="ml-2" size={18} />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* How It Works Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-4xl md:text-5xl font-bold text-white text-center mb-16">
+            How Magnius fits into your organization.
+          </h2>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              {
+                step: '1',
+                title: 'Connect & Ingest',
+                desc: 'Connect Magnius to your financials, org charts, key process documentation, and SaaS tools. The OS builds a unified, structured model of your company.',
+              },
+              {
+                step: '2',
+                title: 'Configure Engines',
+                desc: 'Select which engines to activate first (for example: Strategy + Financial Simulation + Narrative). Define constraints, goals, and time horizons.',
+              },
+              {
+                step: '3',
+                title: 'Run Scenarios',
+                desc: 'Ask questions like "What if we enter Market X next year?" or "What happens if we cut 10% of overhead?" and get simulated outcomes and recommended plans.',
+              },
+              {
+                step: '4',
+                title: 'Execute & Learn',
+                desc: 'Push plans into your existing systems, track execution, and let Magnius continuously learn from new data and outcomes.',
+              },
+            ].map((item, i) => (
+              <div key={i} className="relative">
+                <div className="bg-gradient-to-br from-slate-900 to-slate-800 rounded-xl p-8 border border-slate-700">
+                  <div className="w-12 h-12 bg-brand-blue/10 rounded-full flex items-center justify-center mb-6 text-brand-blue font-bold text-xl">
+                    {item.step}
+                  </div>
+                  <h3 className="text-xl font-semibold text-white mb-4">{item.title}</h3>
+                  <p className="text-slate-300">{item.desc}</p>
+                </div>
+                {i < 3 && (
+                  <div className="hidden lg:block absolute top-1/2 -right-4 w-8 h-0.5 bg-brand-blue/30" />
+                )}
+              </div>
+            ))}
+          </div>
+
+          <div className="text-center mt-12">
+            <Link
+              to="/product"
+              className="inline-flex items-center px-6 py-3 bg-slate-800 text-white rounded-lg font-medium hover:bg-slate-700 transition-colors border border-slate-700"
+            >
+              View a sample scenario walkthrough
+              <ArrowRight className="ml-2" size={18} />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Who It's For Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-900/50">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-4xl md:text-5xl font-bold text-white text-center mb-16">
+            Built for leaders who own outcomes, not just presentations.
+          </h2>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            {[
+              {
+                icon: Users,
+                title: 'CEOs & Founders',
+                desc: 'Replace gut-feel debates with clear simulations and structured trade-offs.',
+              },
+              {
+                icon: Target,
+                title: 'Strategy & Corporate Development',
+                desc: 'Run M&A scenarios, market entry options, and portfolio reshuffles with a consistent model.',
+              },
+              {
+                icon: TrendingUp,
+                title: 'Private Equity & Operators',
+                desc: 'Stand up a digital twin of portfolio companies and standardize how you diagnose and execute value-creation plans.',
+              },
+              {
+                icon: Settings,
+                title: 'Internal Consulting & Transformation Offices',
+                desc: 'Turn your team into a leverage point for the entire company with reusable models and engines, instead of bespoke slide work.',
+              },
+            ].map((item, i) => (
+              <div key={i} className="bg-gradient-to-br from-slate-900 to-slate-800 rounded-xl p-8 border border-slate-700 hover:border-brand-blue transition-colors">
+                <div className="w-12 h-12 bg-brand-blue/10 rounded-lg flex items-center justify-center mb-6">
+                  <item.icon className="text-brand-blue" size={24} />
+                </div>
+                <h3 className="text-2xl font-semibold text-white mb-4">{item.title}</h3>
+                <p className="text-slate-300">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="text-center mt-12">
+            <Link
+              to="/use-cases"
+              className="inline-flex items-center text-brand-blue hover:text-blue-400 font-medium"
+            >
+              Explore use cases
+              <ArrowRight className="ml-2" size={18} />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Comparison Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-4xl md:text-5xl font-bold text-white text-center mb-16">
+            Why it beats traditional consulting
+          </h2>
+
+          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            {/* Consulting Firms */}
+            <div className="bg-slate-800/30 rounded-xl p-8 border border-red-900/20">
+              <h3 className="text-2xl font-semibold text-white mb-6">Consulting Firms</h3>
+              <ul className="space-y-4">
+                {[
+                  'One-off projects',
+                  'Limited access to real systems and data',
+                  'Static slide decks',
+                  'Knowledge walks out the door',
+                ].map((item, i) => (
+                  <li key={i} className="flex items-start">
+                    <XCircle className="text-red-400 mr-3 mt-1 flex-shrink-0" size={20} />
+                    <span className="text-slate-300">{item}</span>
                   </li>
                 ))}
               </ul>
             </div>
-            <div
-              className={clsx(
-                'relative overflow-hidden rounded-2xl border border-slate-200 bg-gradient-to-br p-8 text-white',
-                activePreview.accent
-              )}
+
+            {/* Magnius Consulting OS */}
+            <div className="bg-gradient-to-br from-slate-900 to-slate-800 rounded-xl p-8 border border-brand-blue">
+              <h3 className="text-2xl font-semibold text-white mb-6">Magnius Consulting OS</h3>
+              <ul className="space-y-4">
+                {[
+                  'Persistent digital twin of your company',
+                  'Directly connected to your data and tools',
+                  'Continuous simulations and updated recommendations',
+                  'Knowledge compounds over time',
+                ].map((item, i) => (
+                  <li key={i} className="flex items-start">
+                    <CheckCircle2 className="text-green-400 mr-3 mt-1 flex-shrink-0" size={20} />
+                    <span className="text-slate-300">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Final CTA Section */}
+      <section id="sample-outputs" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-brand-blue/10 to-brand-purple/10 border-y border-brand-blue/20">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+            Start building your company's OS.
+          </h2>
+          <p className="text-xl text-slate-300 mb-10">
+            See how Magnius can replace your next consulting project with a living, evolving model of your business.
+          </p>
+
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              to="/book-demo"
+              className="inline-flex items-center justify-center px-8 py-4 bg-brand-blue text-white rounded-lg font-semibold hover:bg-blue-600 transition-colors shadow-lg shadow-blue-500/25"
             >
-              <div className="flex items-center gap-3 text-white/90">
-                <activePreview.icon size={28} />
-                <div>
-                  <p className="text-xs font-semibold uppercase tracking-[0.3em]">Module Snapshot</p>
-                  <p className="text-lg font-semibold">{activePreview.label}</p>
-                </div>
-              </div>
-              <div className="mt-6 grid gap-4 md:grid-cols-2">
-                {activePreview.bullets.slice(0, 2).map((bullet) => (
-                  <div key={bullet} className="rounded-xl border border-white/20 bg-white/10 p-4 text-sm">
-                    {bullet}
-                  </div>
-                ))}
-              </div>
-              <div className="mt-4 rounded-xl border border-dashed border-white/30 bg-white/10 p-4 text-sm text-white/80">
-                Detailed UI preview coming soon. Request a live demo to explore every workflow.
-              </div>
-            </div>
+              Book a live demo
+              <ArrowRight className="ml-2" size={20} />
+            </Link>
+            <Link
+              to="/book-demo"
+              className="inline-flex items-center justify-center px-8 py-4 bg-slate-800 text-white rounded-lg font-semibold hover:bg-slate-700 transition-colors border border-slate-700"
+            >
+              Request a pilot for one business unit
+            </Link>
           </div>
-        </motion.div>
-      </section>
-
-      <section className="bg-white py-24" id="testimonials">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <motion.div {...fadeInProps} className="space-y-12">
-            <div className="text-center">
-              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-blue-600">
-                Loved by modern healthcare teams
-              </p>
-              <h2 className="mt-3 text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
-                Providers trust Magnius Healthcare AI to power patient-first care.
-              </h2>
-            </div>
-
-            <div className="grid gap-6 md:grid-cols-3">
-              {testimonials.map((testimonial) => (
-                <div
-                  key={testimonial.name}
-                  className="flex h-full flex-col rounded-3xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
-                >
-                  <div className="flex items-center gap-4">
-                    <div className="flex h-14 w-14 items-center justify-center rounded-full border border-slate-200 bg-blue-50 text-sm font-semibold text-blue-600">
-                      {testimonial.initials}
-                    </div>
-                    <div>
-                      <p className="font-semibold text-slate-900">{testimonial.name}</p>
-                      <p className="text-sm text-slate-500">
-                        {testimonial.role} - {testimonial.practice}
-                      </p>
-                    </div>
-                  </div>
-                  <p className="mt-4 flex-1 text-sm text-slate-600">“{testimonial.quote}”</p>
-                  <div className="mt-6 flex items-center gap-1 text-amber-400">
-                    {Array.from({ length: 5 }).map((_, index) => (
-                      <span key={index}>★</span>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </motion.div>
         </div>
-      </section>
-
-      <section className="bg-slate-100/70 py-24" id="integrations">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <motion.div {...fadeInProps} className="rounded-3xl border border-slate-200 bg-white p-10 shadow-sm">
-            <div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.35em] text-blue-600">
-                  Integrations
-                </p>
-                <h2 className="mt-3 text-3xl font-semibold text-slate-900">
-                  Integrates with your existing tools.
-                </h2>
-                <p className="mt-3 max-w-lg text-sm text-slate-600">
-                  Connect Magnius Healthcare AI with EHR systems, telehealth platforms, payment processors, and payer
-                  networks you already use. Keep data flowing securely across your ecosystem.
-                </p>
-                <Link
-                  to="/features#integrations"
-                  className="mt-6 inline-flex items-center text-sm font-semibold text-blue-600 transition hover:text-blue-500"
-                >
-                  View all integrations
-                  <ArrowRight size={16} className="ml-2" />
-                </Link>
-              </div>
-
-              <div className="grid gap-3 sm:grid-cols-3 lg:w-1/2">
-                {integrations.map((integration) => (
-                  <div
-                    key={integration}
-                    className="flex h-16 items-center justify-center rounded-2xl border border-slate-200 bg-white text-sm font-semibold text-slate-600 shadow-sm"
-                  >
-                    {integration}
-                  </div>
-                ))}
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <motion.div
-          {...fadeInProps}
-          className="rounded-3xl border border-blue-200 bg-gradient-to-r from-blue-600 via-blue-500 to-blue-600 p-10 text-white shadow-xl"
-        >
-          <div className="flex flex-col items-start gap-6 sm:flex-row sm:items-center sm:justify-between">
-            <div className="space-y-3">
-              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-blue-100">
-                Final call to action
-              </p>
-              <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
-                Ready to transform your practice?
-              </h2>
-              <p className="max-w-2xl text-sm text-blue-100/90">
-                Start your free 30-day trial or connect with a healthcare technology specialist. No credit card required
-                and full onboarding support included.
-              </p>
-              <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-                <Link
-                  to="/demo"
-                  className="inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-sm font-semibold text-blue-600 transition hover:bg-blue-50"
-                >
-                  Start Free 30-Day Trial
-                </Link>
-                <Link
-                  to="/contact"
-                  className="inline-flex items-center justify-center rounded-full border border-white/60 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
-                >
-                  Talk to a Healthcare Expert
-                </Link>
-              </div>
-            </div>
-            <div className="rounded-2xl border border-white/40 bg-blue-500/40 px-6 py-4 text-center text-sm font-semibold uppercase tracking-[0.3em] text-blue-50">
-              No credit card required
-            </div>
-          </div>
-        </motion.div>
       </section>
     </div>
   );
