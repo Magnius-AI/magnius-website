@@ -13,7 +13,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-brand-dark border-t border-slate-800/50">
+    <footer className="bg-brand-dark border-t border-brand-blue/20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
           {/* Left: Logo and tagline */}
@@ -21,7 +21,7 @@ export default function Footer() {
             <Link to="/" className="inline-block">
               <span className="text-xl font-bold text-white">Magnius Consulting OS</span>
             </Link>
-            <p className="mt-2 text-sm text-slate-400">
+            <p className="mt-2 text-sm text-brand-ice/70">
               Replace consulting slide decks with a living company OS
             </p>
           </div>
@@ -32,7 +32,7 @@ export default function Footer() {
               <Link
                 key={link.path}
                 to={link.path}
-                className="text-sm text-slate-400 hover:text-white transition-colors"
+                className="text-sm text-brand-ice/70 hover:text-white transition-colors"
               >
                 {link.name}
               </Link>
@@ -41,7 +41,7 @@ export default function Footer() {
 
           {/* Right: Copyright */}
           <div className="text-right">
-            <p className="text-sm text-slate-500">
+            <p className="text-sm text-brand-ice/60">
               © {currentYear} Magnius. All rights reserved.
             </p>
           </div>

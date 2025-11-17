@@ -106,7 +106,7 @@ export default function EnginesPage() {
             <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
               Engines
             </h1>
-            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
+            <p className="text-xl text-brand-ice/80 max-w-3xl mx-auto">
               Each engine is a specialized reasoning system that operates on your company's data model. Together, they form a comprehensive consulting operating system.
             </p>
           </div>
@@ -115,29 +115,29 @@ export default function EnginesPage() {
             {engines.map((engine, index) => (
               <div
                 key={index}
-                className="bg-gradient-to-br from-slate-900 to-slate-800 rounded-xl border border-slate-700 overflow-hidden"
+                className="bg-gradient-to-br from-brand-navy to-brand-steel rounded-xl border border-brand-blue/30 overflow-hidden"
               >
                 <button
                   onClick={() => toggleEngine(index)}
-                  className="w-full px-8 py-6 flex items-center justify-between text-left hover:bg-slate-800/50 transition-colors"
+                  className="w-full px-8 py-6 flex items-center justify-between text-left hover:bg-brand-steel/70 transition-colors"
                 >
                   <h3 className="text-2xl font-semibold text-white">{engine.name}</h3>
                   {openEngine === index ? (
                     <ChevronUp className="text-brand-blue flex-shrink-0" size={24} />
                   ) : (
-                    <ChevronDown className="text-slate-400 flex-shrink-0" size={24} />
+                    <ChevronDown className="text-brand-ice/70 flex-shrink-0" size={24} />
                   )}
                 </button>
 
                 {openEngine === index && (
-                  <div className="px-8 pb-8 space-y-6 border-t border-slate-700 pt-6">
+                  <div className="px-8 pb-8 space-y-6 border-t border-brand-blue/30 pt-6">
                     <div>
                       <h4 className="text-lg font-semibold text-brand-blue mb-3">
                         Questions it answers
                       </h4>
                       <ul className="space-y-2">
                         {engine.questions.map((question, i) => (
-                          <li key={i} className="text-slate-300 pl-4 border-l-2 border-slate-700">
+                          <li key={i} className="text-brand-ice/80 pl-4 border-l-2 border-brand-blue/30">
                             {question}
                           </li>
                         ))}
@@ -148,14 +148,14 @@ export default function EnginesPage() {
                       <h4 className="text-lg font-semibold text-brand-blue mb-3">
                         Inputs it uses
                       </h4>
-                      <p className="text-slate-300">{engine.inputs}</p>
+                      <p className="text-brand-ice/80">{engine.inputs}</p>
                     </div>
 
                     <div>
                       <h4 className="text-lg font-semibold text-brand-blue mb-3">
                         Outputs it generates
                       </h4>
-                      <p className="text-slate-300">{engine.outputs}</p>
+                      <p className="text-brand-ice/80">{engine.outputs}</p>
                     </div>
                   </div>
                 )}

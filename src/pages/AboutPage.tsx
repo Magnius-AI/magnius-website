@@ -13,7 +13,7 @@ export default function AboutPage() {
           {/* Mission */}
           <div className="mb-16">
             <h2 className="text-3xl font-bold text-white mb-6">Why Magnius exists</h2>
-            <div className="space-y-4 text-lg text-slate-300">
+            <div className="space-y-4 text-lg text-brand-ice/80">
               <p>
                 We started Magnius because we were frustrated with the episodic, slide-driven nature of traditional
                 consulting. Companies spend millions on strategy projects that produce beautiful PowerPoints—but no
@@ -32,9 +32,9 @@ export default function AboutPage() {
           </div>
 
           {/* Vision */}
-          <div className="mb-16 bg-gradient-to-br from-slate-900 to-slate-800 rounded-xl p-8 border border-slate-700">
+          <div className="mb-16 bg-gradient-to-br from-brand-navy to-brand-steel rounded-xl p-8 border border-brand-blue/30">
             <h2 className="text-3xl font-bold text-white mb-6">Vision</h2>
-            <p className="text-lg text-slate-300">
+            <p className="text-lg text-brand-ice/80">
               Every serious company will run on an OS like this within 10 years. Just as every company now has a CRM
               for customers and an ERP for operations, they will have a Consulting OS for strategy, simulations, and
               decision-making.
@@ -44,7 +44,7 @@ export default function AboutPage() {
           {/* Founding Story */}
           <div className="mb-16">
             <h2 className="text-3xl font-bold text-white mb-6">Founding story</h2>
-            <div className="space-y-4 text-lg text-slate-300">
+            <div className="space-y-4 text-lg text-brand-ice/80">
               <p>
                 Magnius was founded by a team of former management consultants, data scientists, and AI engineers who
                 spent years building analytical systems for Fortune 500 companies and PE firms.
@@ -62,14 +62,14 @@ export default function AboutPage() {
           </div>
 
           {/* CTA */}
-          <div className="text-center pt-8 border-t border-slate-700">
+          <div className="text-center pt-8 border-t border-brand-blue/30">
             <h2 className="text-2xl font-bold text-white mb-4">Want to learn more?</h2>
-            <p className="text-lg text-slate-300 mb-8">
+            <p className="text-lg text-brand-ice/80 mb-8">
               Book a demo to see how Magnius can work for your organization.
             </p>
             <Link
               to="/book-demo"
-              className="inline-flex items-center px-8 py-4 bg-brand-blue text-white rounded-lg font-semibold hover:bg-blue-600 transition-colors shadow-lg shadow-blue-500/25"
+              className="inline-flex items-center px-8 py-4 bg-brand-blue text-white rounded-lg font-semibold hover:bg-brand-sky transition-colors shadow-lg shadow-brand-blue/25"
             >
               Book a demo
               <ArrowRight className="ml-2" size={20} />
