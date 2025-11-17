@@ -32,7 +32,7 @@ function ScrollToTop() {
 
 function App() {
   return (
-    <div className="min-h-screen bg-brand-dark text-slate-100 font-sans antialiased">
+    <div className="min-h-screen bg-brand-dark text-brand-ice font-sans antialiased">
       <ScrollToTop />
       <Navigation />
       <main>

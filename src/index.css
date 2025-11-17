@@ -6,7 +6,7 @@
 
 :root {
   color-scheme: dark;
-  background-color: #050816;
+  background-color: #01081a;
 }
 
 @layer base {
@@ -19,12 +19,12 @@
   }
 
   body {
-    @apply bg-slate-950 text-slate-100 font-sans antialiased;
+    @apply bg-brand-dark text-brand-ice font-sans antialiased;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   }
 
   ::selection {
-    @apply bg-blue-500/30 text-white;
+    @apply bg-brand-blue/30 text-white;
   }
 
   h1, h2, h3, h4, h5, h6 {

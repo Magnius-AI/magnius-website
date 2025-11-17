@@ -9,11 +9,12 @@ export default {
       },
       colors: {
         brand: {
-          dark: '#050816',
-          navy: '#0f172a',
-          blue: '#3B82F6',
-          purple: '#8B5CF6',
-          teal: '#14B8A6',
+          dark: '#01081A',
+          navy: '#03143A',
+          blue: '#0D3FA5',
+          sky: '#4F7EDD',
+          ice: '#E2E9FF',
+          steel: '#0B1F4A',
         },
       },
       backgroundImage: {
@@ -22,8 +23,8 @@ export default {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
       },
       boxShadow: {
-        glow: '0 0 40px rgba(59, 130, 246, 0.15)',
-        'glow-lg': '0 0 60px rgba(59, 130, 246, 0.2)',
+        glow: '0 0 40px rgba(13, 63, 165, 0.15)',
+        'glow-lg': '0 0 60px rgba(13, 63, 165, 0.25)',
       },
     },
   },

@@ -69,7 +69,7 @@ export default function UseCasesPage() {
             <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
               Use Cases
             </h1>
-            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
+            <p className="text-xl text-brand-ice/80 max-w-3xl mx-auto">
               How organizations use Magnius to replace consulting engagements with a persistent operating system.
             </p>
           </div>
@@ -78,7 +78,7 @@ export default function UseCasesPage() {
             {useCases.map((useCase, index) => (
               <div
                 key={index}
-                className="bg-gradient-to-br from-slate-900 to-slate-800 rounded-2xl p-8 md:p-12 border border-slate-700"
+                className="bg-gradient-to-br from-brand-navy to-brand-steel rounded-2xl p-8 md:p-12 border border-brand-blue/30"
               >
                 <div className="flex items-start gap-6 mb-6">
                   <div className="w-14 h-14 bg-brand-blue/10 rounded-lg flex items-center justify-center flex-shrink-0">
@@ -92,14 +92,14 @@ export default function UseCasesPage() {
                 <div className="space-y-6">
                   <div>
                     <h3 className="text-xl font-semibold text-brand-blue mb-3">The context</h3>
-                    <p className="text-slate-300">{useCase.context}</p>
+                    <p className="text-brand-ice/80">{useCase.context}</p>
                   </div>
 
                   <div>
                     <h3 className="text-xl font-semibold text-brand-blue mb-3">
                       How Magnius addresses it
                     </h3>
-                    <p className="text-slate-300">{useCase.solution}</p>
+                    <p className="text-brand-ice/80">{useCase.solution}</p>
                   </div>
 
                   <div>
@@ -110,7 +110,7 @@ export default function UseCasesPage() {
                       {useCase.success.map((item, i) => (
                         <li key={i} className="flex items-start">
                           <CheckCircle2 className="text-green-400 mr-3 mt-0.5 flex-shrink-0" size={20} />
-                          <span className="text-slate-300">{item}</span>
+                          <span className="text-brand-ice/80">{item}</span>
                         </li>
                       ))}
                     </ul>
@@ -123,7 +123,7 @@ export default function UseCasesPage() {
           <div className="mt-16 text-center">
             <Link
               to="/book-demo"
-              className="inline-flex items-center justify-center px-8 py-4 bg-brand-blue text-white rounded-lg font-semibold hover:bg-blue-600 transition-colors shadow-lg shadow-blue-500/25"
+              className="inline-flex items-center justify-center px-8 py-4 bg-brand-blue text-white rounded-lg font-semibold hover:bg-brand-sky transition-colors shadow-lg shadow-brand-blue/25"
             >
               Discuss your use case
               <ArrowRight className="ml-2" size={20} />

@@ -51,7 +51,7 @@ export default function PricingPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">Pricing</h1>
-            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
+            <p className="text-xl text-brand-ice/80 max-w-3xl mx-auto">
               Flexible plans designed to scale with your organization—from pilots to enterprise deployments.
             </p>
           </div>
@@ -62,8 +62,8 @@ export default function PricingPage() {
                 key={index}
                 className={`rounded-2xl p-8 border ${
                   plan.highlight
-                    ? 'bg-gradient-to-br from-slate-900 to-slate-800 border-brand-blue ring-2 ring-brand-blue/20'
-                    : 'bg-slate-800/50 border-slate-700'
+                    ? 'bg-gradient-to-br from-brand-navy to-brand-steel border-brand-blue ring-2 ring-brand-blue/20'
+                    : 'bg-brand-steel/70 border-brand-blue/30'
                 }`}
               >
                 {plan.highlight && (
@@ -74,13 +74,13 @@ export default function PricingPage() {
                   </div>
                 )}
                 <h3 className="text-2xl font-bold text-white mb-2">{plan.name}</h3>
-                <p className="text-slate-400 mb-6">{plan.description}</p>
+                <p className="text-brand-ice/70 mb-6">{plan.description}</p>
 
                 <ul className="space-y-3 mb-8">
                   {plan.features.map((feature, i) => (
                     <li key={i} className="flex items-start">
                       <CheckCircle2 className="text-green-400 mr-3 mt-0.5 flex-shrink-0" size={20} />
-                      <span className="text-slate-300">{feature}</span>
+                      <span className="text-brand-ice/80">{feature}</span>
                     </li>
                   ))}
                 </ul>
@@ -89,8 +89,8 @@ export default function PricingPage() {
                   to="/book-demo"
                   className={`block w-full text-center px-6 py-3 rounded-lg font-semibold transition-colors ${
                     plan.highlight
-                      ? 'bg-brand-blue text-white hover:bg-blue-600'
-                      : 'bg-slate-700 text-white hover:bg-slate-600'
+                      ? 'bg-brand-blue text-white hover:bg-brand-sky'
+                      : 'bg-brand-steel text-white hover:bg-brand-ice/30'
                   }`}
                 >
                   {plan.cta}
@@ -99,16 +99,16 @@ export default function PricingPage() {
             ))}
           </div>
 
-          <div className="bg-slate-800/30 rounded-xl p-8 border border-slate-700 text-center">
-            <p className="text-lg text-slate-300">
+          <div className="bg-brand-steel/30 rounded-xl p-8 border border-brand-blue/30 text-center">
+            <p className="text-lg text-brand-ice/80">
               All plans are customized based on your specific needs and scale.
             </p>
-            <p className="text-slate-400 mt-2">
+            <p className="text-brand-ice/70 mt-2">
               Contact us for detailed pricing and a tailored proposal.
             </p>
             <Link
               to="/book-demo"
-              className="inline-flex items-center mt-6 px-8 py-3 bg-brand-blue text-white rounded-lg font-semibold hover:bg-blue-600 transition-colors shadow-lg shadow-blue-500/25"
+              className="inline-flex items-center mt-6 px-8 py-3 bg-brand-blue text-white rounded-lg font-semibold hover:bg-brand-sky transition-colors shadow-lg shadow-brand-blue/25"
             >
               Schedule a pricing discussion
               <ArrowRight className="ml-2" size={18} />
