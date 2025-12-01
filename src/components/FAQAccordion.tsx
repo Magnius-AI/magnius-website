@@ -18,7 +18,7 @@ export default function FAQAccordion({ items }: FAQAccordionProps) {
       {items.map((item, index) => {
         const isOpen = openIndex === index;
         return (
-          <div key={item.question} className="border border-brand-blue/20 rounded-xl bg-brand-steel/50">
+          <div key={item.question} className="border border-brand-indigo/20 rounded-xl bg-brand-navy/50">
             <button
               className="w-full flex items-center justify-between px-5 py-4 text-left"
               onClick={() => setOpenIndex(isOpen ? null : index)}

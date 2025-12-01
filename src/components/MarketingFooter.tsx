@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import logo from '../assets/magnius-logo.svg';
 
 const footerLinks = [
   {
@@ -37,14 +38,17 @@ const footerLinks = [
 
 export default function MarketingFooter() {
   return (
-    <footer className="bg-[#F8FAFC] border-t mt-20">
+    <footer className="bg-brand-mist border-t border-brand-ice/30 mt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
         <div className="grid grid-cols-1 md:grid-cols-5 gap-10">
-          <div className="md:col-span-2 space-y-3">
-            <Link to="/" className="text-2xl font-bold lowercase tracking-tight text-[#0F172A] block">
-              magnius
+          <div className="md:col-span-2 space-y-4">
+            <Link to="/" className="flex items-center space-x-3">
+              <img src={logo} alt="Magnius" className="w-10 h-10" />
+              <span className="text-2xl font-bold lowercase tracking-tight text-brand-dark">
+                magnius
+              </span>
             </Link>
-            <p className="text-[#0F172A]/70 text-sm max-w-md leading-relaxed">
+            <p className="text-brand-dark/70 text-sm max-w-md leading-relaxed">
               AI-powered CRM for nonprofits. Unite donor data, automation, and impact reporting inside one modern operating
               system.
             </p>
@@ -52,13 +56,13 @@ export default function MarketingFooter() {
 
           {footerLinks.map((section) => (
             <div key={section.title} className="space-y-3">
-              <h3 className="text-[#0F172A] font-semibold">{section.title}</h3>
+              <h3 className="text-brand-dark font-semibold">{section.title}</h3>
               <div className="space-y-2">
                 {section.links.map((link) => (
                   <Link
                     key={link.path}
                     to={link.path}
-                    className="block text-sm text-[#0F172A]/70 hover:text-[#0F172A] transition-colors"
+                    className="block text-sm text-brand-dark/70 hover:text-brand-indigo transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -68,13 +72,13 @@ export default function MarketingFooter() {
           ))}
         </div>
 
-        <div className="mt-12 flex flex-col md:flex-row justify-between items-center gap-4 border-t pt-6 text-sm text-[#0F172A]/60">
+        <div className="mt-12 flex flex-col md:flex-row justify-between items-center gap-4 border-t border-brand-ice/30 pt-6 text-sm text-brand-dark/60">
           <div>© 2025 Magnius. AI for Good.</div>
           <div className="flex items-center space-x-4">
-            <Link to="/privacy" className="hover:text-[#0F172A]">
+            <Link to="/privacy" className="hover:text-brand-indigo transition-colors">
               Privacy
             </Link>
-            <Link to="/terms" className="hover:text-[#0F172A]">
+            <Link to="/terms" className="hover:text-brand-indigo transition-colors">
               Terms
             </Link>
           </div>

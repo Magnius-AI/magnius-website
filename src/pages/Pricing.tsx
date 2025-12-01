@@ -75,9 +75,9 @@ export default function Pricing() {
 
       <div className="mt-16 max-w-6xl mx-auto">
         <h2 className="text-3xl font-bold text-white mb-6 text-center">Feature comparison</h2>
-        <div className="overflow-x-auto rounded-2xl border border-brand-blue/20">
+        <div className="overflow-x-auto rounded-2xl border border-brand-indigo/20">
           <table className="min-w-full text-left text-sm">
-            <thead className="bg-brand-steel/70 text-white">
+            <thead className="bg-brand-navy/70 text-white">
               <tr>
                 <th className="px-4 py-3">Feature</th>
                 <th className="px-4 py-3">Starter</th>
@@ -88,7 +88,7 @@ export default function Pricing() {
             </thead>
             <tbody>
               {comparison.map((row) => (
-                <tr key={row.feature} className="border-t border-brand-blue/10">
+                <tr key={row.feature} className="border-t border-brand-indigo/10">
                   <td className="px-4 py-3 text-white font-semibold">{row.feature}</td>
                   {row.tiers.map((value, index) => (
                     <td key={index} className="px-4 py-3 text-brand-ice/80">
