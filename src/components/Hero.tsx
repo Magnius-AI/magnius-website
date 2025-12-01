@@ -25,7 +25,7 @@ export default function Hero({ eyebrow, title, subtitle, primaryCta, secondaryCt
           {trustBadges && (
             <div className="flex flex-wrap gap-4 text-sm text-brand-ice/70">
               {trustBadges.map((badge) => (
-                <span key={badge} className="px-3 py-2 rounded-full bg-brand-steel/40 border border-brand-blue/20">
+                <span key={badge} className="px-3 py-2 rounded-full bg-brand-navy/40 border border-brand-indigo/20">
                   {badge}
                 </span>
               ))}
@@ -33,12 +33,12 @@ export default function Hero({ eyebrow, title, subtitle, primaryCta, secondaryCt
           )}
         </div>
         <div className="relative">
-          <div className="absolute inset-0 bg-brand-blue/20 blur-3xl rounded-full" />
-          <div className="relative bg-brand-steel/60 border border-brand-blue/30 rounded-2xl shadow-2xl shadow-brand-blue/10 p-8">
+          <div className="absolute inset-0 bg-brand-indigo/20 blur-3xl rounded-full" />
+          <div className="relative bg-brand-navy/60 border border-brand-indigo/30 rounded-2xl shadow-2xl shadow-brand-indigo/10 p-8">
             {illustration ?? (
               <div className="grid grid-cols-2 gap-4 text-sm text-brand-ice/80">
                 {[1, 2, 3, 4].map((item) => (
-                  <div key={item} className="p-4 rounded-xl bg-brand-navy/70 border border-brand-blue/20">
+                  <div key={item} className="p-4 rounded-xl bg-brand-navy/70 border border-brand-indigo/20">
                     <div className="h-3 w-16 bg-brand-ice/30 rounded mb-3" />
                     <div className="space-y-2">
                       <div className="h-2 w-full bg-brand-ice/20 rounded" />

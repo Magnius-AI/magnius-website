@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
-import logo from '../assets/magnius-logo.svg';
+import logo from '../assets/magnius-logo-light.svg';
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
@@ -19,7 +19,7 @@ export default function Navigation() {
   const isActive = (path: string) => location.pathname === path;
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-brand-dark/90 backdrop-blur-lg border-b border-brand-blue/20">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-brand-dark/90 backdrop-blur-lg border-b border-brand-indigo/20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
@@ -51,7 +51,7 @@ export default function Navigation() {
           <div className="hidden md:flex items-center">
             <Link
               to="/book-demo"
-              className="px-6 py-2.5 bg-brand-blue text-white rounded-lg font-medium hover:bg-brand-sky transition-colors shadow-lg shadow-brand-blue/20"
+              className="px-6 py-2.5 bg-brand-indigo text-white rounded-lg font-medium hover:bg-brand-purple transition-colors shadow-lg shadow-brand-indigo/20"
             >
               Book a Demo
             </Link>
@@ -60,7 +60,7 @@ export default function Navigation() {
           {/* Mobile menu button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-2 rounded-lg text-brand-ice/70 hover:text-white hover:bg-brand-steel/50 transition-colors"
+            className="md:hidden p-2 rounded-lg text-brand-ice/70 hover:text-white hover:bg-brand-navy/50 transition-colors"
           >
             {isOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -69,7 +69,7 @@ export default function Navigation() {
 
       {/* Mobile Navigation */}
       {isOpen && (
-        <div className="md:hidden bg-brand-navy/95 backdrop-blur-lg border-t border-brand-blue/30">
+        <div className="md:hidden bg-brand-navy/95 backdrop-blur-lg border-t border-brand-indigo/30">
           <div className="px-4 py-6 space-y-4">
             {navLinks.map((link) => (
               <Link
@@ -78,8 +78,8 @@ export default function Navigation() {
                 onClick={() => setIsOpen(false)}
                 className={`block px-4 py-2 rounded-lg text-base font-medium transition-colors ${
                   isActive(link.path)
-                    ? 'text-brand-sky bg-brand-steel/60'
-                    : 'text-brand-ice/80 hover:text-white hover:bg-brand-steel/40'
+                    ? 'text-brand-sky bg-brand-navy/60'
+                    : 'text-brand-ice/80 hover:text-white hover:bg-brand-navy/40'
                 }`}
               >
                 {link.name}
@@ -88,7 +88,7 @@ export default function Navigation() {
             <Link
               to="/book-demo"
               onClick={() => setIsOpen(false)}
-              className="block w-full px-4 py-3 bg-brand-blue text-white text-center rounded-lg font-medium hover:bg-brand-sky transition-colors shadow-lg shadow-brand-blue/25"
+              className="block w-full px-4 py-3 bg-brand-indigo text-white text-center rounded-lg font-medium hover:bg-brand-purple transition-colors shadow-lg shadow-brand-indigo/25"
             >
               Book a Demo
             </Link>

@@ -37,14 +37,14 @@ export default function Features() {
         title="See Magnius in action"
         subtitle="Start your free 14-day trial or schedule a guided walkthrough with our team."
         primaryAction={
-          <button className="px-8 py-3 bg-brand-blue text-white rounded-lg font-semibold hover:bg-brand-sky transition-colors">
+          <button className="px-8 py-3 bg-brand-indigo text-white rounded-lg font-semibold hover:bg-brand-purple transition-colors">
             Start Free Trial
           </button>
         }
         secondaryAction={
           <Link
             to="/contact"
-            className="px-8 py-3 bg-brand-steel text-white rounded-lg font-semibold border border-brand-blue/30 hover:bg-brand-steel/80 text-center"
+            className="px-8 py-3 bg-brand-navy text-white rounded-lg font-semibold border border-brand-indigo/30 hover:bg-brand-navy/80 transition-colors text-center"
           >
             Talk to Sales
           </Link>

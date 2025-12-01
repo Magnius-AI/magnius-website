@@ -127,7 +127,7 @@ export default function FeatureDetail() {
           <p className="text-brand-ice/80 text-lg">{feature.description}</p>
         </div>
 
-        <div className="rounded-2xl bg-brand-steel/60 border border-brand-blue/25 p-6">
+        <div className="rounded-2xl bg-brand-navy/60 border border-brand-indigo/25 p-6">
           <h2 className="text-2xl font-semibold text-white mb-4">Key capabilities</h2>
           <ul className="grid md:grid-cols-2 gap-3 text-brand-ice/80">
             {feature.capabilities.map((item) => (
@@ -139,8 +139,8 @@ export default function FeatureDetail() {
           </ul>
         </div>
 
-        <div className="rounded-2xl bg-brand-navy/50 border border-brand-blue/20 p-6">
-          <div className="aspect-video rounded-lg bg-brand-steel/60 border border-brand-blue/20 flex items-center justify-center text-brand-ice/60">
+        <div className="rounded-2xl bg-brand-navy/50 border border-brand-indigo/20 p-6">
+          <div className="aspect-video rounded-lg bg-brand-navy/60 border border-brand-indigo/20 flex items-center justify-center text-brand-ice/60">
             Feature screenshot placeholder
           </div>
         </div>
@@ -150,14 +150,14 @@ export default function FeatureDetail() {
         title="Try it free"
         subtitle="Start a 14-day free trial and explore this module alongside eight others."
         primaryAction={
-          <button className="px-8 py-3 bg-brand-blue text-white rounded-lg font-semibold hover:bg-brand-sky transition-colors">
+          <button className="px-8 py-3 bg-brand-indigo text-white rounded-lg font-semibold hover:bg-brand-purple transition-colors">
             Start Free Trial
           </button>
         }
         secondaryAction={
           <Link
             to="/pricing"
-            className="px-8 py-3 bg-brand-steel text-white rounded-lg font-semibold border border-brand-blue/30 hover:bg-brand-steel/80"
+            className="px-8 py-3 bg-brand-navy text-white rounded-lg font-semibold border border-brand-indigo/30 hover:bg-brand-navy/80 transition-colors"
           >
             View Pricing
           </Link>

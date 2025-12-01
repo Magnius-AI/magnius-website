@@ -13,7 +13,7 @@ export default function About() {
         </div>
 
         <div className="grid md:grid-cols-2 gap-8">
-          <div className="p-6 rounded-2xl bg-brand-steel/60 border border-brand-blue/20 space-y-3">
+          <div className="p-6 rounded-2xl bg-brand-navy/60 border border-brand-indigo/20 space-y-3">
             <h3 className="text-2xl font-semibold text-white">Magnius is the nonprofit CRM we wished existed:</h3>
             <ul className="text-brand-ice/80 space-y-2">
               <li>• Affordable (not $60/user/month)</li>
@@ -22,7 +22,7 @@ export default function About() {
               <li>• AI-powered (not "AI-washed")</li>
             </ul>
           </div>
-          <div className="p-6 rounded-2xl bg-brand-steel/60 border border-brand-blue/20 space-y-3">
+          <div className="p-6 rounded-2xl bg-brand-navy/60 border border-brand-indigo/20 space-y-3">
             <h3 className="text-2xl font-semibold text-white">Mission</h3>
             <p className="text-brand-ice/80">
               Magnius empowers nonprofits with enterprise-grade AI tools at a fraction of the cost—so you can focus on your mission, not your software.
@@ -33,10 +33,10 @@ export default function About() {
           </div>
         </div>
 
-        <div id="careers" className="rounded-2xl bg-brand-navy/50 border border-brand-blue/20 p-6 space-y-3">
+        <div id="careers" className="rounded-2xl bg-brand-navy/50 border border-brand-indigo/20 p-6 space-y-3">
           <h3 className="text-2xl font-semibold text-white">Careers</h3>
           <p className="text-brand-ice/80">We are hiring engineers, nonprofit success managers, and content specialists who care deeply about the sector.</p>
-          <button className="px-6 py-3 bg-brand-blue text-white rounded-lg font-semibold hover:bg-brand-sky transition-colors">
+          <button className="px-6 py-3 bg-brand-indigo text-white rounded-lg font-semibold hover:bg-brand-purple transition-colors">
             View Open Roles
           </button>
         </div>
@@ -46,12 +46,12 @@ export default function About() {
         title="Join us in modernizing nonprofit software"
         subtitle="Start a trial or reach out to partner on product feedback, integrations, and success stories."
         primaryAction={
-          <button className="px-8 py-3 bg-brand-blue text-white rounded-lg font-semibold hover:bg-brand-sky transition-colors">
+          <button className="px-8 py-3 bg-brand-indigo text-white rounded-lg font-semibold hover:bg-brand-purple transition-colors">
             Start Free Trial
           </button>
         }
         secondaryAction={
-          <button className="px-8 py-3 bg-brand-steel text-white rounded-lg font-semibold border border-brand-blue/30 hover:bg-brand-steel/80">
+          <button className="px-8 py-3 bg-brand-navy text-white rounded-lg font-semibold border border-brand-indigo/30 hover:bg-brand-navy/80 transition-colors">
             Contact Us
           </button>
         }

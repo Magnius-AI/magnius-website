@@ -8,26 +8,26 @@ export default function Contact() {
           <p className="text-brand-ice/80">Schedule a demo, ask about pricing, or get help with migration.</p>
         </div>
 
-        <form className="space-y-4 bg-brand-steel/60 border border-brand-blue/20 p-6 rounded-2xl">
+        <form className="space-y-4 bg-brand-navy/60 border border-brand-indigo/20 p-6 rounded-2xl">
           <div className="grid md:grid-cols-2 gap-4">
             <div>
               <label className="block text-sm text-brand-ice/70 mb-1">Name</label>
-              <input className="w-full px-3 py-2 rounded-lg bg-brand-navy/70 border border-brand-blue/20" placeholder="Jane Doe" />
+              <input className="input-dark" placeholder="Jane Doe" />
             </div>
             <div>
               <label className="block text-sm text-brand-ice/70 mb-1">Email</label>
-              <input className="w-full px-3 py-2 rounded-lg bg-brand-navy/70 border border-brand-blue/20" placeholder="you@org.org" />
+              <input className="input-dark" placeholder="you@org.org" />
             </div>
           </div>
           <div>
             <label className="block text-sm text-brand-ice/70 mb-1">Organization</label>
-            <input className="w-full px-3 py-2 rounded-lg bg-brand-navy/70 border border-brand-blue/20" placeholder="Your nonprofit" />
+            <input className="input-dark" placeholder="Your nonprofit" />
           </div>
           <div>
             <label className="block text-sm text-brand-ice/70 mb-1">How can we help?</label>
-            <textarea className="w-full px-3 py-2 rounded-lg bg-brand-navy/70 border border-brand-blue/20" rows={4} placeholder="Tell us about your goals" />
+            <textarea className="input-dark" rows={4} placeholder="Tell us about your goals" />
           </div>
-          <button className="w-full py-3 bg-brand-blue text-white rounded-lg font-semibold hover:bg-brand-sky transition-colors">
+          <button className="w-full py-3 bg-brand-indigo text-white rounded-lg font-semibold hover:bg-brand-purple transition-colors">
             Submit
           </button>
         </form>

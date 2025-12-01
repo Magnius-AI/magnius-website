@@ -12,9 +12,9 @@ export default function DemoModal({ isOpen, onClose, children }: DemoModalProps)
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm px-4">
-      <div className="bg-brand-dark border border-brand-blue/30 rounded-2xl shadow-2xl shadow-brand-blue/20 max-w-3xl w-full relative">
+      <div className="bg-brand-dark border border-brand-indigo/30 rounded-2xl shadow-2xl shadow-brand-indigo/20 max-w-3xl w-full relative">
         <button
-          className="absolute right-4 top-4 text-brand-ice/70 hover:text-white"
+          className="absolute right-4 top-4 text-brand-ice/70 hover:text-white transition-colors"
           onClick={onClose}
           aria-label="Close demo modal"
         >
