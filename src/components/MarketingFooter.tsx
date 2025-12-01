@@ -5,9 +5,16 @@ const footerLinks = [
     title: 'Product',
     links: [
       { label: 'Features', path: '/features' },
-      { label: 'Pricing', path: '/pricing' },
       { label: 'Solutions', path: '/solutions' },
-      { label: 'Security', path: '/privacy' },
+      { label: 'Pricing', path: '/pricing' },
+    ],
+  },
+  {
+    title: 'Resources',
+    links: [
+      { label: 'Blog', path: '/blog' },
+      { label: 'Help Center', path: '/resources' },
+      { label: 'Privacy', path: '/privacy' },
     ],
   },
   {
@@ -19,40 +26,39 @@ const footerLinks = [
     ],
   },
   {
-    title: 'Resources',
+    title: 'Impact',
     links: [
-      { label: 'Blog', path: '/blog' },
-      { label: 'Help Center', path: '/resources' },
-      { label: 'Changelog', path: '/resources#changelog' },
+      { label: 'Case Studies', path: '/resources#case-studies' },
+      { label: 'Security', path: '/privacy' },
+      { label: 'Terms', path: '/terms' },
     ],
   },
 ];
 
 export default function MarketingFooter() {
-  const currentYear = new Date().getFullYear();
-
   return (
-    <footer className="bg-brand-navy border-t border-brand-blue/20 mt-24">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
-          <div>
-            <Link to="/" className="text-2xl font-bold text-white block mb-3">
-              Magnius
+    <footer className="bg-[#F8FAFC] border-t mt-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-10">
+          <div className="md:col-span-2 space-y-3">
+            <Link to="/" className="text-2xl font-bold lowercase tracking-tight text-[#0F172A] block">
+              magnius
             </Link>
-            <p className="text-brand-ice/70 text-sm max-w-xs">
-              The AI-first CRM built exclusively for nonprofits. Manage donors, grants, fundraising, and events in one platform.
+            <p className="text-[#0F172A]/70 text-sm max-w-md leading-relaxed">
+              AI-powered CRM for nonprofits. Unite donor data, automation, and impact reporting inside one modern operating
+              system.
             </p>
           </div>
 
           {footerLinks.map((section) => (
-            <div key={section.title}>
-              <h3 className="text-white font-semibold mb-4">{section.title}</h3>
+            <div key={section.title} className="space-y-3">
+              <h3 className="text-[#0F172A] font-semibold">{section.title}</h3>
               <div className="space-y-2">
                 {section.links.map((link) => (
                   <Link
                     key={link.path}
                     to={link.path}
-                    className="block text-brand-ice/70 hover:text-white text-sm transition-colors"
+                    className="block text-sm text-[#0F172A]/70 hover:text-[#0F172A] transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -62,13 +68,13 @@ export default function MarketingFooter() {
           ))}
         </div>
 
-        <div className="mt-12 flex flex-col md:flex-row justify-between items-center gap-4 border-t border-brand-blue/10 pt-6">
-          <div className="text-brand-ice/60 text-sm">© {currentYear} Magnius. All rights reserved.</div>
-          <div className="flex items-center space-x-4 text-sm text-brand-ice/60">
-            <Link to="/privacy" className="hover:text-white">
+        <div className="mt-12 flex flex-col md:flex-row justify-between items-center gap-4 border-t pt-6 text-sm text-[#0F172A]/60">
+          <div>© 2025 Magnius. AI for Good.</div>
+          <div className="flex items-center space-x-4">
+            <Link to="/privacy" className="hover:text-[#0F172A]">
               Privacy
             </Link>
-            <Link to="/terms" className="hover:text-white">
+            <Link to="/terms" className="hover:text-[#0F172A]">
               Terms
             </Link>
           </div>
