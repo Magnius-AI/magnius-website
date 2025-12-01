@@ -5,30 +5,32 @@ import logo from '../assets/magnius-logo.svg';
 
 const navLinks = [
   { name: 'Features', path: '/features' },
-  { name: 'Pricing', path: '/pricing' },
   { name: 'Solutions', path: '/solutions' },
   { name: 'Resources', path: '/resources' },
+  { name: 'Pricing', path: '/pricing' },
 ];
 
 export default function MarketingNavbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   const linkClasses = ({ isActive }: { isActive: boolean }) =>
-    `text-sm font-medium transition-colors ${isActive ? 'text-white' : 'text-brand-ice/80 hover:text-white'}`;
+    `text-sm font-medium transition-colors ${
+      isActive ? 'text-[#0D3FA5]' : 'text-[#0F172A]/70 hover:text-[#0F172A]'
+    }`;
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-brand-dark/90 backdrop-blur border-b border-brand-blue/20">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur border-b">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           <Link to="/" className="flex items-center space-x-3">
             <img src={logo} alt="Magnius" className="w-10 h-10" />
             <div className="flex flex-col leading-tight">
-              <span className="text-xl font-bold text-white">Magnius</span>
-              <span className="text-xs text-brand-ice/70">AI-First Nonprofit CRM</span>
+              <span className="text-xl font-bold lowercase tracking-tight text-[#0F172A]">magnius</span>
+              <span className="text-xs text-[#0F172A]/60">AI CRM for Nonprofits</span>
             </div>
           </Link>
 
-          <div className="hidden lg:flex items-center space-x-8">
+          <div className="hidden lg:flex items-center space-x-10">
             {navLinks.map((link) => (
               <NavLink key={link.path} to={link.path} className={linkClasses}>
                 {link.name}
@@ -36,20 +38,27 @@ export default function MarketingNavbar() {
             ))}
           </div>
 
-          <div className="hidden lg:flex items-center space-x-3">
-            <NavLink to="/login" className={linkClasses}>
-              Login
+          <div className="hidden lg:flex items-center space-x-4">
+            <NavLink
+              to="/login"
+              className={({ isActive }) =>
+                `text-sm font-medium transition-colors ${
+                  isActive ? 'text-[#0D3FA5]' : 'text-[#0F172A]/70 hover:text-[#0F172A]'
+                }`
+              }
+            >
+              Log In
             </NavLink>
             <Link
               to="/signup"
-              className="px-5 py-2.5 bg-brand-blue text-white rounded-lg font-semibold hover:bg-brand-sky transition-colors shadow-lg shadow-brand-blue/25"
+              className="px-5 py-2.5 bg-[#0D3FA5] hover:bg-[#4F7EDD] text-white font-medium rounded-full transition-colors"
             >
-              Start Free Trial
+              Get Started
             </Link>
           </div>
 
           <button
-            className="lg:hidden p-2 rounded-lg text-brand-ice/80 hover:text-white hover:bg-brand-steel/50"
+            className="lg:hidden p-2 rounded-lg text-[#0F172A]/70 hover:text-[#0F172A] hover:bg-[#F8FAFC]"
             onClick={() => setIsOpen((prev) => !prev)}
             aria-label="Toggle navigation"
           >
@@ -59,7 +68,7 @@ export default function MarketingNavbar() {
       </div>
 
       {isOpen && (
-        <div className="lg:hidden bg-brand-navy/95 border-t border-brand-blue/20">
+        <div className="lg:hidden bg-white border-t">
           <div className="px-4 py-6 space-y-4">
             {navLinks.map((link) => (
               <NavLink
@@ -67,7 +76,7 @@ export default function MarketingNavbar() {
                 to={link.path}
                 className={({ isActive }) =>
                   `block px-4 py-2 rounded-lg text-base font-medium transition-colors ${
-                    isActive ? 'text-white bg-brand-steel/70' : 'text-brand-ice/80 hover:text-white hover:bg-brand-steel/50'
+                    isActive ? 'text-[#0D3FA5] bg-[#F8FAFC]' : 'text-[#0F172A]/70 hover:text-[#0F172A] hover:bg-[#F8FAFC]'
                   }`
                 }
                 onClick={() => setIsOpen(false)}
@@ -80,19 +89,19 @@ export default function MarketingNavbar() {
                 to="/login"
                 className={({ isActive }) =>
                   `block w-full px-4 py-3 text-center rounded-lg font-medium transition-colors ${
-                    isActive ? 'text-white bg-brand-steel/70' : 'text-brand-ice/80 hover:text-white hover:bg-brand-steel/50'
+                    isActive ? 'text-[#0D3FA5] bg-[#F8FAFC]' : 'text-[#0F172A]/70 hover:text-[#0F172A] hover:bg-[#F8FAFC]'
                   }`
                 }
                 onClick={() => setIsOpen(false)}
               >
-                Login
+                Log In
               </NavLink>
               <Link
                 to="/signup"
                 onClick={() => setIsOpen(false)}
-                className="block w-full px-4 py-3 text-center bg-brand-blue text-white rounded-lg font-semibold hover:bg-brand-sky transition-colors"
+                className="block w-full px-4 py-3 text-center bg-[#0D3FA5] hover:bg-[#4F7EDD] text-white rounded-full font-medium transition-colors"
               >
-                Start Free Trial
+                Get Started
               </Link>
             </div>
           </div>

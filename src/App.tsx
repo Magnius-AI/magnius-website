@@ -17,7 +17,7 @@ import Signup from './pages/Signup';
 
 function App() {
   return (
-    <div className="min-h-screen bg-brand-dark text-brand-ice font-sans antialiased">
+    <div className="min-h-screen bg-white text-[#0F172A] font-sans antialiased">
       <MarketingNavbar />
       <main>
         <Routes>
