@@ -1,52 +1,42 @@
-import { useEffect } from 'react';
-import { Routes, Route, useLocation } from 'react-router-dom';
-import Navigation from './components/Navigation';
-import Footer from './components/Footer';
-import HomePage from './pages/HomePage';
-import ProductPage from './pages/ProductPage';
-import EnginesPage from './pages/EnginesPage';
-import UseCasesPage from './pages/UseCasesPage';
-import PricingPage from './pages/PricingPage';
-import AboutPage from './pages/AboutPage';
-import BookDemoPage from './pages/BookDemoPage';
-
-function ScrollToTop() {
-  const location = useLocation();
-
-  useEffect(() => {
-    if (location.hash) {
-      const targetId = location.hash.replace('#', '');
-      const element = document.getElementById(targetId);
-      if (element) {
-        requestAnimationFrame(() => {
-          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        });
-      }
-      return;
-    }
-    window.scrollTo({ top: 0, behavior: 'auto' });
-  }, [location.pathname, location.hash]);
-
-  return null;
-}
+import { Routes, Route } from 'react-router-dom';
+import MarketingNavbar from './components/MarketingNavbar';
+import MarketingFooter from './components/MarketingFooter';
+import Home from './pages/Home';
+import Features from './pages/Features';
+import FeatureDetail from './pages/FeatureDetail';
+import Pricing from './pages/Pricing';
+import Solutions from './pages/Solutions';
+import About from './pages/About';
+import Contact from './pages/Contact';
+import Blog from './pages/Blog';
+import Privacy from './pages/Privacy';
+import Terms from './pages/Terms';
+import Resources from './pages/Resources';
+import Login from './pages/Login';
+import Signup from './pages/Signup';
 
 function App() {
   return (
     <div className="min-h-screen bg-brand-dark text-brand-ice font-sans antialiased">
-      <ScrollToTop />
-      <Navigation />
+      <MarketingNavbar />
       <main>
         <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/product" element={<ProductPage />} />
-          <Route path="/engines" element={<EnginesPage />} />
-          <Route path="/use-cases" element={<UseCasesPage />} />
-          <Route path="/pricing" element={<PricingPage />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/book-demo" element={<BookDemoPage />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/features" element={<Features />} />
+          <Route path="/features/:slug" element={<FeatureDetail />} />
+          <Route path="/pricing" element={<Pricing />} />
+          <Route path="/solutions" element={<Solutions />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/resources" element={<Resources />} />
+          <Route path="/privacy" element={<Privacy />} />
+          <Route path="/terms" element={<Terms />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
         </Routes>
       </main>
-      <Footer />
+      <MarketingFooter />
     </div>
   );
 }
