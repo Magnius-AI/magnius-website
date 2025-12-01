@@ -1,6 +1,5 @@
 import { useParams, Link } from 'react-router-dom';
-import { ArrowLeft } from 'lucide-react';
-import CTASection from '../components/CTASection';
+import { ArrowLeft, Check } from 'lucide-react';
 
 const featureContent: Record<
   string,
@@ -103,10 +102,10 @@ export default function FeatureDetail() {
 
   if (!feature) {
     return (
-      <div className="bg-brand-dark text-brand-ice min-h-screen pt-32 px-4 sm:px-6 lg:px-8">
+      <div className="bg-white min-h-screen pt-32 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto text-center space-y-4">
-          <h1 className="text-3xl font-bold text-white">Feature not found</h1>
-          <Link to="/features" className="text-brand-sky font-semibold inline-flex items-center gap-2">
+          <h1 className="text-3xl font-bold text-brand-dark">Feature not found</h1>
+          <Link to="/features" className="text-brand-indigo font-semibold inline-flex items-center gap-2 hover:text-brand-purple transition-colors">
             <ArrowLeft size={18} /> Back to all features
           </Link>
         </div>
@@ -115,54 +114,61 @@ export default function FeatureDetail() {
   }
 
   return (
-    <div className="bg-brand-dark text-brand-ice min-h-screen pt-28 pb-16 px-4 sm:px-6 lg:px-8">
-      <Link to="/features" className="text-brand-sky font-semibold inline-flex items-center gap-2 mb-6">
-        <ArrowLeft size={18} /> Back to all features
-      </Link>
+    <div className="bg-white min-h-screen pt-28 pb-16 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-5xl mx-auto">
+        <Link to="/features" className="text-brand-indigo font-semibold inline-flex items-center gap-2 mb-6 hover:text-brand-purple transition-colors">
+          <ArrowLeft size={18} /> Back to all features
+        </Link>
 
-      <div className="max-w-5xl mx-auto space-y-10">
-        <div className="space-y-4">
-          <p className="text-brand-sky font-semibold text-sm uppercase tracking-wide">{feature.title}</p>
-          <h1 className="text-4xl font-bold text-white">{feature.subheadline}</h1>
-          <p className="text-brand-ice/80 text-lg">{feature.description}</p>
-        </div>
+        <div className="space-y-10">
+          <div className="space-y-4">
+            <p className="text-sm font-semibold text-brand-indigo uppercase tracking-[0.14em]">{feature.title}</p>
+            <h1 className="text-4xl font-bold text-brand-dark">{feature.subheadline}</h1>
+            <p className="text-brand-dark/70 text-lg">{feature.description}</p>
+          </div>
 
-        <div className="rounded-2xl bg-brand-navy/60 border border-brand-indigo/25 p-6">
-          <h2 className="text-2xl font-semibold text-white mb-4">Key capabilities</h2>
-          <ul className="grid md:grid-cols-2 gap-3 text-brand-ice/80">
-            {feature.capabilities.map((item) => (
-              <li key={item} className="flex items-start">
-                <span className="text-brand-sky mr-2">•</span>
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
+          <div className="rounded-2xl bg-brand-mist border border-brand-ice p-8">
+            <h2 className="text-2xl font-semibold text-brand-dark mb-6">Key capabilities</h2>
+            <ul className="grid md:grid-cols-2 gap-4 text-brand-dark/80">
+              {feature.capabilities.map((item) => (
+                <li key={item} className="flex items-start">
+                  <Check size={18} className="text-brand-indigo mr-3 mt-0.5 flex-shrink-0" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-        <div className="rounded-2xl bg-brand-navy/50 border border-brand-indigo/20 p-6">
-          <div className="aspect-video rounded-lg bg-brand-navy/60 border border-brand-indigo/20 flex items-center justify-center text-brand-ice/60">
-            Feature screenshot placeholder
+          <div className="rounded-2xl bg-brand-mist border border-brand-ice p-6">
+            <div className="aspect-video rounded-lg bg-white border border-brand-ice flex items-center justify-center text-brand-dark/40">
+              Feature screenshot placeholder
+            </div>
           </div>
         </div>
-      </div>
 
-      <CTASection
-        title="Try it free"
-        subtitle="Start a 14-day free trial and explore this module alongside eight others."
-        primaryAction={
-          <button className="px-8 py-3 bg-brand-indigo text-white rounded-lg font-semibold hover:bg-brand-purple transition-colors">
-            Start Free Trial
-          </button>
-        }
-        secondaryAction={
-          <Link
-            to="/pricing"
-            className="px-8 py-3 bg-brand-navy text-white rounded-lg font-semibold border border-brand-indigo/30 hover:bg-brand-navy/80 transition-colors"
-          >
-            View Pricing
-          </Link>
-        }
-      />
+        <section className="py-16 mt-8">
+          <div className="max-w-6xl mx-auto rounded-2xl bg-brand-indigo/5 border border-brand-indigo/20 p-10 text-center">
+            <h2 className="text-3xl md:text-4xl font-bold text-brand-dark mb-4">Try it free</h2>
+            <p className="text-brand-dark/70 mb-8 max-w-3xl mx-auto">
+              Start a 14-day free trial and explore this module alongside eight others.
+            </p>
+            <div className="flex flex-col sm:flex-row justify-center gap-4">
+              <Link
+                to="/signup"
+                className="px-8 py-3 bg-brand-indigo text-white rounded-lg font-semibold hover:bg-brand-purple transition-colors"
+              >
+                Start Free Trial
+              </Link>
+              <Link
+                to="/pricing"
+                className="px-8 py-3 bg-white text-brand-dark rounded-lg font-semibold border border-brand-ice hover:border-brand-indigo transition-colors"
+              >
+                View Pricing
+              </Link>
+            </div>
+          </div>
+        </section>
+      </div>
     </div>
   );
 }
