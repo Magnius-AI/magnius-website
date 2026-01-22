@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+  <defs>
+    <linearGradient id="solidGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#06b6d4;stop-opacity:1" /> <!-- Cyan-500 -->
+      <stop offset="50%" style="stop-color:#3b82f6;stop-opacity:1" /> <!-- Blue-500 -->
+      <stop offset="100%" style="stop-color:#8b5cf6;stop-opacity:1" /> <!-- Violet-500 -->
+    </linearGradient>
+    <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Solid, Bold Abstract 'M' Monogram -->
+  <!-- Constructed from three vertical pillars with connecting angles, forming a sturdy M -->
+  <g filter="url(#softGlow)">
+    <path 
+      d="M80 400 V 112 A 32 32 0 0 1 112 80 H 144 A 32 32 0 0 1 176 112 V 220 L 235 140 A 32 32 0 0 1 277 140 L 336 220 V 112 A 32 32 0 0 1 368 80 H 400 A 32 32 0 0 1 432 112 V 400 A 32 32 0 0 1 400 432 H 368 A 32 32 0 0 1 336 400 V 280 L 275 365 A 32 32 0 0 1 237 365 L 176 280 V 400 A 32 32 0 0 1 144 432 H 112 A 32 32 0 0 1 80 400 Z" 
+      fill="url(#solidGradient)" 
+    />
+  </g>
+</svg>
