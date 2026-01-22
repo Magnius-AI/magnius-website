@@ -1,0 +1,18 @@
+<svg width="64" height="64" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Magnius Icon - Light version for dark backgrounds -->
+
+  <!-- Head -->
+  <ellipse cx="50" cy="24" rx="5" ry="6" fill="none" stroke="#FFFFFF" stroke-width="4.5" stroke-linecap="round"/>
+
+  <!-- Left wing -->
+  <path d="M20 72 C20 52, 22 42, 35 38 C42 36, 46 38, 50 48"
+        stroke="#FFFFFF" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+
+  <!-- Right wing -->
+  <path d="M80 72 C80 52, 78 42, 65 38 C58 36, 54 38, 50 48"
+        stroke="#FFFFFF" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+
+  <!-- Center teardrop -->
+  <path d="M50 48 C46 56, 46 64, 50 72 C54 64, 54 56, 50 48"
+        stroke="#FFFFFF" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+</svg>
