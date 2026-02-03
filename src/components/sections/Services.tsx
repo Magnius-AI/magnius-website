@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { SERVICES } from '../../lib/constants';
 import { staggerContainer, fadeInUp } from '../../lib/animations';
 
@@ -68,7 +69,7 @@ export function Services() {
                   </div>
 
                   {/* Features */}
-                  <ul className="space-y-3">
+                  <ul className="space-y-3 mb-6">
                     {service.features.map((feature, idx) => (
                       <li key={idx} className="flex items-start gap-3 text-sm text-silver">
                         <svg className="w-5 h-5 text-cyan flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -78,6 +79,19 @@ export function Services() {
                       </li>
                     ))}
                   </ul>
+
+                  {/* Learn More Link */}
+                  {service.id === 'ai-support' && (
+                    <Link
+                      to="/support-agent"
+                      className="inline-flex items-center gap-2 text-cyan hover:text-teal transition-colors text-sm font-medium"
+                    >
+                      Learn More
+                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </Link>
+                  )}
                 </div>
               </motion.div>
             );
