@@ -1,34 +1,33 @@
 import { motion } from 'framer-motion';
-import { Brain, TrendingUp, Target, Lightbulb } from 'lucide-react';
+import { Brain, TrendingUp, Target, Lightbulb, Calendar } from 'lucide-react';
 import { NoiseTexture, GradientMesh } from '../components/effects';
 import { GlowCard } from '../components/ui';
-import { WaitlistForm } from '../components/sections';
-import { BRAND, ENGINES } from '../lib/constants';
+import { BRAND, SERVICES } from '../lib/constants';
 import { fadeInUp, staggerContainer, viewportSettings } from '../lib/animations';
 
 const visionPoints = [
   {
     icon: Brain,
-    title: 'Continuous Intelligence',
-    description: 'Replace static consulting reports with always-on AI that evolves with your business.',
+    title: 'Persistent Memory',
+    description: 'Our AI agents remember every interaction, building context over time.',
     color: '#00d4ff',
   },
   {
     icon: TrendingUp,
-    title: 'Democratized Strategy',
-    description: 'Enterprise-grade strategic analysis accessible to companies of all sizes.',
+    title: 'Democratized Automation',
+    description: 'Enterprise-grade AI agents accessible to companies of all sizes.',
     color: '#00b8a9',
   },
   {
     icon: Target,
-    title: 'Actionable Insights',
-    description: 'Move from recommendations to execution with integrated tracking and accountability.',
+    title: 'Results-Focused',
+    description: 'We measure success by leads booked, tickets resolved, and content published.',
     color: '#0066ff',
   },
   {
     icon: Lightbulb,
-    title: 'Compounding Knowledge',
-    description: 'Every engagement builds on the last. Your AI gets smarter over time.',
+    title: 'Continuous Improvement',
+    description: 'Your AI agents learn and improve with every interaction.',
     color: '#7c3aed',
   },
 ];
@@ -62,16 +61,16 @@ export default function AboutPage() {
               variants={fadeInUp}
               className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-frost mb-6"
             >
-              Reimagining how businesses{' '}
-              <span className="text-gradient">make decisions</span>
+              AI agents that work{' '}
+              <span className="text-gradient">while you sleep</span>
             </motion.h1>
 
             <motion.p
               variants={fadeInUp}
               className="max-w-2xl mx-auto text-lg text-silver"
             >
-              Traditional consulting is broken. We're building the future of strategic intelligence
-              - continuous, AI-powered, and accessible to every organization.
+              We deploy AI agents that handle your sales outreach, customer support, and content marketing — 
+              so you can focus on what matters most: growing your business.
             </motion.p>
           </motion.div>
         </div>
@@ -91,24 +90,24 @@ export default function AboutPage() {
           >
             <motion.div variants={fadeInUp}>
               <h2 className="font-display text-3xl sm:text-4xl font-bold text-frost mb-6">
-                The problem with traditional consulting
+                The problem with hiring
               </h2>
               <div className="space-y-4 text-silver">
                 <p>
-                  <span className="text-frost font-semibold">$500K-$5M</span> per engagement,
-                  limiting access to large enterprises.
+                  <span className="text-frost font-semibold">$50-100K/year</span> for a single
+                  SDR, support rep, or content marketer.
                 </p>
                 <p>
-                  <span className="text-frost font-semibold">Static deliverables</span> that
-                  become obsolete within months.
+                  <span className="text-frost font-semibold">Limited hours</span> — humans
+                  need sleep, vacations, and sick days.
                 </p>
                 <p>
-                  <span className="text-frost font-semibold">No execution tracking</span> -
-                  consultants leave, implementation fails.
+                  <span className="text-frost font-semibold">Training overhead</span> — 
+                  3-6 months before new hires become productive.
                 </p>
                 <p>
-                  <span className="text-frost font-semibold">12-16 week projects</span> for
-                  time-sensitive decisions.
+                  <span className="text-frost font-semibold">Inconsistent output</span> — 
+                  quality varies by mood, motivation, and tenure.
                 </p>
               </div>
             </motion.div>
@@ -119,17 +118,17 @@ export default function AboutPage() {
                   The Magnius approach
                 </h3>
                 <p className="text-silver mb-6">
-                  Eight coordinated AI engines that function as your company's always-on
-                  "strategic brain" - continuously learning, monitoring, and adapting.
+                  AI agents with persistent memory that work 24/7, learn from every interaction,
+                  and deliver consistent, high-quality output at a fraction of the cost.
                 </p>
                 <div className="grid grid-cols-2 gap-4">
                   <div className="text-center p-4 rounded-xl bg-graphite/50">
-                    <div className="text-2xl font-bold text-gradient">90%</div>
-                    <div className="text-xs text-muted">Cost reduction</div>
+                    <div className="text-2xl font-bold text-gradient">10x</div>
+                    <div className="text-xs text-muted">Cheaper than hiring</div>
                   </div>
                   <div className="text-center p-4 rounded-xl bg-graphite/50">
                     <div className="text-2xl font-bold text-gradient">24/7</div>
-                    <div className="text-xs text-muted">Continuous intel</div>
+                    <div className="text-xs text-muted">Always working</div>
                   </div>
                 </div>
               </GlowCard>
@@ -149,10 +148,10 @@ export default function AboutPage() {
           >
             <motion.div variants={fadeInUp} className="text-center mb-16">
               <h2 className="font-display text-3xl sm:text-4xl font-bold text-frost mb-4">
-                Our vision
+                What makes us different
               </h2>
               <p className="max-w-2xl mx-auto text-silver">
-                We believe every organization deserves access to world-class strategic intelligence.
+                We're not just another automation tool. We deploy AI agents that think, learn, and adapt.
               </p>
             </motion.div>
 
@@ -188,7 +187,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Engines Overview */}
+      {/* Services Overview */}
       <section className="relative py-24 overflow-hidden">
         <div
           className="absolute inset-0"
@@ -206,20 +205,21 @@ export default function AboutPage() {
           >
             <motion.div variants={fadeInUp} className="text-center mb-12">
               <h2 className="font-display text-3xl sm:text-4xl font-bold text-frost mb-4">
-                Eight coordinated engines
+                Three specialized agents
               </h2>
               <p className="max-w-2xl mx-auto text-silver">
-                Working together to deliver comprehensive strategic intelligence.
+                Each designed to excel at one job. Deploy one or all three.
               </p>
             </motion.div>
 
             <motion.div variants={fadeInUp} className="flex flex-wrap justify-center gap-4">
-              {ENGINES.map((engine) => (
+              {SERVICES.map((service) => (
                 <div
-                  key={engine.id}
-                  className="px-4 py-2 rounded-xl bg-graphite/60 border border-slate/40 text-sm text-silver hover:border-cyan/30 hover:text-frost transition-all duration-300"
+                  key={service.id}
+                  className="px-6 py-3 rounded-xl bg-graphite/60 border border-slate/40 text-silver hover:border-cyan/30 hover:text-frost transition-all duration-300"
                 >
-                  {engine.shortName}
+                  <span className="font-semibold">{service.name}</span>
+                  <span className="text-muted ml-2">${service.price}/mo</span>
                 </div>
               ))}
             </motion.div>
@@ -237,14 +237,20 @@ export default function AboutPage() {
             variants={fadeInUp}
           >
             <h2 className="font-display text-3xl font-bold text-frost mb-6">
-              Join us on this journey
+              Ready to deploy your AI team?
             </h2>
             <p className="text-silver mb-8">
-              Be among the first to experience the future of strategic intelligence.
+              Book a 15-minute call. We'll show you exactly how it works.
             </p>
-            <div className="max-w-md mx-auto">
-              <WaitlistForm size="lg" />
-            </div>
+            <a
+              href={BRAND.calendly}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-cyan to-teal text-void font-semibold rounded-lg hover:opacity-90 transition-opacity"
+            >
+              <Calendar className="w-5 h-5" />
+              Book a Call
+            </a>
           </motion.div>
         </div>
       </section>

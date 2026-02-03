@@ -1,66 +1,46 @@
 import { motion } from 'framer-motion';
-import { WaitlistForm } from './WaitlistForm';
-import { fadeInUp, viewportSettings } from '../../lib/animations';
+import { Calendar, ArrowRight } from 'lucide-react';
+import { GradientMesh } from '../effects';
+import { BRAND } from '../../lib/constants';
 
 export function FinalCTA() {
   return (
-    <section className="relative py-32 overflow-hidden">
-      {/* Background effects */}
-      <div className="absolute inset-0">
-        <div
-          className="absolute inset-0"
-          style={{
-            background: `
-              radial-gradient(ellipse 100% 100% at 50% 0%, rgba(0, 212, 255, 0.08) 0%, transparent 50%),
-              radial-gradient(ellipse 80% 60% at 80% 100%, rgba(0, 184, 169, 0.06) 0%, transparent 50%),
-              radial-gradient(ellipse 60% 50% at 20% 80%, rgba(0, 102, 255, 0.05) 0%, transparent 50%)
-            `,
-          }}
-        />
+    <section className="relative py-24 sm:py-32 overflow-hidden">
+      {/* Background */}
+      <div className="absolute inset-0 opacity-50">
+        <GradientMesh />
       </div>
 
-      {/* Grid background */}
-      <div className="absolute inset-0 grid-bg opacity-20" />
-
-      <div className="relative mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
+      <div className="relative z-10 mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
         <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={viewportSettings}
-          variants={fadeInUp}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
         >
-          {/* Headline */}
-          <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-frost mb-6">
-            Ready to{' '}
-            <span className="text-gradient">transform</span>
-            {' '}your business?
+          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-frost mb-6">
+            Ready to deploy your <span className="text-gradient">AI team</span>?
           </h2>
-
-          <p className="text-lg sm:text-xl text-silver mb-12 max-w-2xl mx-auto">
-            Be among the first to experience AI-powered consulting intelligence.
-            Join our exclusive waitlist today.
+          <p className="text-lg sm:text-xl text-silver mb-10 max-w-2xl mx-auto">
+            Book a 15-minute call. We'll show you exactly how our AI agents can work for your business — and have you up and running within 48 hours.
           </p>
 
-          {/* Waitlist Form */}
-          <div className="max-w-lg mx-auto">
-            <WaitlistForm size="lg" />
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href={BRAND.calendly}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-cyan to-teal text-void font-semibold rounded-lg hover:opacity-90 transition-opacity"
+            >
+              <Calendar className="w-5 h-5" />
+              Book Your Call
+              <ArrowRight className="w-5 h-5" />
+            </a>
           </div>
 
-          {/* Trust indicators */}
-          <div className="mt-16 pt-12 border-t border-slate/20">
-            <p className="text-sm text-muted mb-6">Trusted by forward-thinking enterprises</p>
-            <div className="flex flex-wrap justify-center items-center gap-8 opacity-40">
-              {/* Placeholder logos - using text for now */}
-              {['Fortune 500', 'Tech Leaders', 'Growth Companies', 'Innovators'].map((text) => (
-                <span
-                  key={text}
-                  className="text-sm font-semibold text-silver uppercase tracking-wider"
-                >
-                  {text}
-                </span>
-              ))}
-            </div>
-          </div>
+          <p className="mt-6 text-sm text-muted">
+            No commitment required. See if we're a fit.
+          </p>
         </motion.div>
       </div>
     </section>

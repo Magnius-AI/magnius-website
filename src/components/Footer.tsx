@@ -85,9 +85,12 @@ export default function Footer() {
           </div>
 
           {/* Copyright */}
-          <div className="pt-8 border-t border-slate/20 w-full">
+          <div className="pt-8 border-t border-slate/20 w-full space-y-2">
             <p className="text-xs text-muted text-center">
               {FOOTER.copyright}
+            </p>
+            <p className="text-xs text-silver text-center">
+              {FOOTER.parent}
             </p>
           </div>
         </div>
