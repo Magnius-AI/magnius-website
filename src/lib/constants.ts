@@ -16,9 +16,9 @@ import {
 
 export const BRAND = {
   name: 'Magnius',
-  tagline: 'AI Agents That Work 24/7 For Your Business',
+  tagline: 'AI SDR That Delivers Ready-to-Close Appointments',
   description:
-    'Deploy AI agents that handle your sales outreach, customer support, and content marketing — while you focus on closing deals and growing your business.',
+    'Not just cold email. Our AI SDR qualifies prospects, warms them with pre-call assets, and delivers appointments where they already want to work with you.',
   email: 'kishor@relius.ai',
   calendly: 'https://calendly.com/kishor-relius',
   parent: 'A Relius Company',
@@ -71,10 +71,10 @@ export interface Service {
 
 export const SERVICES: Service[] = [
   {
-    id: 'ai-sdr',
-    name: 'AI SDR Agent',
-    shortName: 'SDR',
-    description: 'Automated sales outreach that books meetings while you sleep',
+    id: 'ai-sdr-standard',
+    name: 'AI SDR Standard',
+    shortName: 'Standard',
+    description: 'Automated outreach that gets you qualified replies',
     icon: Mail,
     color: COLORS.cyan,
     gradient: 'from-cyan to-teal',
@@ -82,63 +82,46 @@ export const SERVICES: Service[] = [
     features: [
       '500 personalized outreach emails/month',
       '5-touch automated follow-up sequences',
-      'AI-powered lead qualification',
+      'AI-powered lead scoring',
+      'Reply detection & classification',
       'Daily performance reports',
       'CRM integration (HubSpot, Salesforce)',
-      'Custom email templates & voice',
+    ],
+  },
+  {
+    id: 'ai-sdr-premium',
+    name: 'AI SDR Premium',
+    shortName: 'Premium',
+    description: 'Full-funnel system that delivers ready-to-close appointments',
+    icon: Users,
+    color: COLORS.electric,
+    gradient: 'from-electric to-violet',
+    price: 1500,
+    features: [
+      'Everything in Standard, plus:',
+      'AI triage & qualification calls',
+      'Pre-call asset landing pages',
+      'Prospect warming automation',
+      'Engagement tracking & scoring',
+      'Appointment setting (not just replies)',
     ],
     popular: true,
   },
-  {
-    id: 'ai-support',
-    name: 'AI Support Agent',
-    shortName: 'Support',
-    description: 'Customer support that remembers every conversation',
-    icon: MessageSquare,
-    color: COLORS.electric,
-    gradient: 'from-electric to-violet',
-    price: 500,
-    features: [
-      'Email & chat support coverage',
-      'Persistent customer memory',
-      'Smart escalation to humans',
-      '< 1 hour response time (business hours)',
-      'Multi-language support',
-      'Knowledge base integration',
-    ],
-  },
-  {
-    id: 'ai-content',
-    name: 'AI Content Agent',
-    shortName: 'Content',
-    description: 'Consistent content that builds your brand',
-    icon: FileText,
-    color: COLORS.violet,
-    gradient: 'from-violet to-cyan',
-    price: 500,
-    features: [
-      '4 SEO-optimized blog posts/month',
-      '20 social posts (LinkedIn + X)',
-      'Scheduled publishing',
-      'Brand voice consistency',
-      'Content calendar management',
-      'Performance analytics',
-    ],
-  },
 ];
 
+// Legacy bundle removed - now single product with tiers
 export const BUNDLE = {
-  name: 'Full Stack Bundle',
-  description: 'All 3 AI agents working together',
+  name: 'AI SDR Premium',
+  description: 'Full-funnel appointment setting',
   price: 1500,
-  savings: 250,
+  savings: 0,
   features: [
-    'Everything in SDR Agent',
-    'Everything in Support Agent',
-    'Everything in Content Agent',
-    'Priority support',
-    'Custom integrations',
-    'Dedicated success manager',
+    'Everything in Standard',
+    'AI triage & qualification',
+    'Pre-call asset system',
+    'Prospect warming automation',
+    'Engagement tracking',
+    'Ready-to-close appointments',
   ],
 };
 
@@ -147,18 +130,18 @@ export const BUNDLE = {
 // ============================================
 
 export const HERO = {
-  badge: 'AI Agents Available Now',
-  headline: 'Your AI team that never sleeps.',
+  badge: 'AI SDR — Now with Triage & Pre-Call Assets',
+  headline: 'Stop chasing leads. Start closing deals.',
   subheadline:
-    'Deploy AI agents that handle your sales outreach, customer support, and content marketing — 24/7, at a fraction of the cost of hiring.',
+    'Our AI SDR doesn\'t just send emails — it qualifies prospects, warms them up, and delivers ready-to-buy appointments. Show up to discovery calls where they already know they want to work with you.',
   cta: {
     primary: 'Book a Call',
-    secondary: 'See Pricing',
+    secondary: 'See How It Works',
   },
   stats: [
-    { value: '24/7', label: 'Always working' },
-    { value: '10x', label: 'Cheaper than hiring' },
-    { value: '< 1hr', label: 'Response time' },
+    { value: '500', label: 'Emails/month' },
+    { value: '2-3x', label: 'Close rate lift' },
+    { value: '$750', label: 'Starting price' },
   ],
 } as const;
 
@@ -168,18 +151,18 @@ export const HERO = {
 
 export const VALUE_PROPS = [
   {
-    title: 'Not just automation',
-    description: 'AI agents with persistent memory that learn and improve over time',
+    title: 'Beyond cold email',
+    description: 'Triage calls + pre-call assets = prospects show up warmed, informed, and ready to buy',
     icon: Zap,
   },
   {
-    title: '10x cheaper than hiring',
-    description: 'Get the output of a full team for less than one employee',
+    title: 'One-call closes',
+    description: 'Stop doing 3-4 calls to close. Our system delivers qualified, educated prospects',
     icon: TrendingUp,
   },
   {
-    title: 'Always on, never sick',
-    description: 'Your AI agents work nights, weekends, and holidays',
+    title: '10x cheaper than hiring',
+    description: 'Full SDR output for $750-1,500/mo vs $60K+/year for a human',
     icon: Clock,
   },
 ] as const;
@@ -191,17 +174,17 @@ export const VALUE_PROPS = [
 export const TARGET_CUSTOMERS = [
   {
     title: 'SaaS Founders',
-    description: 'Scale your outreach without scaling headcount',
+    description: 'Fill your pipeline without hiring expensive SDRs',
     icon: Users,
   },
   {
-    title: 'Marketing Agencies',
-    description: 'Deliver more for clients without hiring more',
+    title: 'Agency Owners',
+    description: 'Get client acquisition on autopilot',
     icon: TrendingUp,
   },
   {
     title: 'Consultants & Coaches',
-    description: 'Focus on delivery while AI handles lead gen',
+    description: 'Stop chasing leads, start closing deals',
     icon: Shield,
   },
 ] as const;
@@ -236,23 +219,27 @@ export const FOOTER = {
 
 export const FAQ = [
   {
-    question: 'How is this different from regular automation?',
-    answer: 'Our AI agents have persistent memory — they remember every interaction with your prospects and customers. They learn your brand voice, understand context, and improve over time. It\'s not just sending emails on a schedule; it\'s intelligent outreach that adapts.',
+    question: 'How is this different from other AI SDR tools?',
+    answer: 'Most AI SDR tools just blast emails. We go further: AI-powered triage qualifies prospects, then pre-call assets educate them before your discovery call. By the time you talk to them, they know who you are, what you do, and they\'re ready to buy. It\'s the difference between cold outreach and warm appointments.',
+  },
+  {
+    question: 'What are pre-call assets?',
+    answer: 'A personalized landing page sent between booking and your discovery call. It includes a video explaining your offer, FAQ, case studies, and "why not" content that eliminates competing options. Prospects show up informed and ready to make a decision.',
+  },
+  {
+    question: 'How does the AI triage work?',
+    answer: 'When a prospect replies positively, our AI engages in a qualifying conversation — confirming they\'re the decision-maker, understanding their current situation, and identifying pain points. Only qualified leads get booked on your calendar.',
+  },
+  {
+    question: 'What\'s the difference between Standard and Premium?',
+    answer: 'Standard ($750/mo) gives you AI-powered cold email sequences that generate replies. Premium ($1,500/mo) adds triage automation, pre-call assets, and appointment setting — so you get ready-to-close appointments, not just replies.',
   },
   {
     question: 'How quickly can I get started?',
-    answer: 'Most clients are up and running within 48-72 hours. We\'ll have an onboarding call to understand your business, configure your AI agents, and you\'ll start seeing results immediately.',
+    answer: 'Most clients are live within 48-72 hours. We\'ll have an onboarding call to understand your ICP, configure your sequences, and you\'ll start seeing outreach go out immediately.',
   },
   {
-    question: 'What if the AI makes a mistake?',
-    answer: 'All sensitive actions go through approval workflows. For support tickets, the AI knows when to escalate to humans. For outreach, you can review and approve messages before they go out. You\'re always in control.',
-  },
-  {
-    question: 'Can I cancel anytime?',
-    answer: 'Yes, all plans are month-to-month with no long-term commitment. We\'re confident you\'ll see ROI within the first month.',
-  },
-  {
-    question: 'Do you integrate with my existing tools?',
-    answer: 'Yes — we integrate with HubSpot, Salesforce, Slack, Discord, Gmail, and many more. If you use a tool we don\'t support yet, let us know and we\'ll add it.',
+    question: 'Do you integrate with my CRM?',
+    answer: 'Yes — we integrate with HubSpot, Salesforce, and other major CRMs. Leads, engagement data, and meeting bookings all sync automatically.',
   },
 ] as const;

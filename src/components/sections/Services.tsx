@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
 import { SERVICES } from '../../lib/constants';
 import { staggerContainer, fadeInUp } from '../../lib/animations';
 
@@ -16,10 +15,10 @@ export function Services() {
           className="text-center mb-16"
         >
           <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-frost mb-4">
-            Meet Your <span className="text-gradient">AI Agents</span>
+            Choose Your <span className="text-gradient">AI SDR</span> Plan
           </h2>
           <p className="max-w-2xl mx-auto text-lg text-silver">
-            Three specialized AI agents, each designed to excel at one job. Deploy one or all three.
+            From cold outreach to ready-to-close appointments. Pick the level that fits your sales process.
           </p>
         </motion.div>
 
@@ -29,7 +28,7 @@ export function Services() {
           whileInView="visible"
           viewport={{ once: true }}
           variants={staggerContainer}
-          className="grid grid-cols-1 md:grid-cols-3 gap-8"
+          className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto"
         >
           {SERVICES.map((service) => {
             const Icon = service.icon;
@@ -80,18 +79,6 @@ export function Services() {
                     ))}
                   </ul>
 
-                  {/* Learn More Link */}
-                  {service.id === 'ai-support' && (
-                    <Link
-                      to="/support-agent"
-                      className="inline-flex items-center gap-2 text-cyan hover:text-teal transition-colors text-sm font-medium"
-                    >
-                      Learn More
-                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                      </svg>
-                    </Link>
-                  )}
                 </div>
               </motion.div>
             );

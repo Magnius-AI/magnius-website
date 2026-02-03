@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
-import { Calendar, Check, Sparkles } from 'lucide-react';
-import { SERVICES, BUNDLE, BRAND } from '../../lib/constants';
+import { Calendar, Check } from 'lucide-react';
+import { SERVICES, BRAND } from '../../lib/constants';
 import { staggerContainer, fadeInUp } from '../../lib/animations';
 
 export function Pricing() {
@@ -23,15 +23,14 @@ export function Pricing() {
           </p>
         </motion.div>
 
-        {/* Pricing Cards */}
+        {/* Pricing Cards - 2 column layout */}
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           variants={staggerContainer}
-          className="grid grid-cols-1 lg:grid-cols-4 gap-6"
+          className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto"
         >
-          {/* Individual Services */}
           {SERVICES.map((service) => {
             const Icon = service.icon;
             return (
@@ -40,37 +39,42 @@ export function Pricing() {
                 variants={fadeInUp}
                 className="relative"
               >
-                <div className={`relative p-6 rounded-2xl bg-graphite/40 backdrop-blur-sm border ${service.popular ? 'border-cyan' : 'border-slate/40'} h-full flex flex-col`}>
+                <div className={`relative p-8 rounded-2xl backdrop-blur-sm border h-full flex flex-col ${
+                  service.popular 
+                    ? 'bg-gradient-to-br from-cyan/10 to-violet/10 border-cyan' 
+                    : 'bg-graphite/40 border-slate/40'
+                }`}>
                   {/* Popular Badge */}
                   {service.popular && (
                     <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                      <span className="px-3 py-1 bg-gradient-to-r from-cyan to-teal text-void text-xs font-semibold rounded-full">
-                        Most Popular
+                      <span className="px-4 py-1 bg-gradient-to-r from-cyan to-teal text-void text-xs font-semibold rounded-full">
+                        Recommended
                       </span>
                     </div>
                   )}
 
                   {/* Header */}
                   <div className="mb-4">
-                    <div className={`inline-flex p-2 rounded-lg bg-gradient-to-r ${service.gradient} mb-3`}>
-                      <Icon className="w-5 h-5 text-void" />
+                    <div className={`inline-flex p-3 rounded-xl bg-gradient-to-r ${service.gradient} mb-4`}>
+                      <Icon className="w-6 h-6 text-void" />
                     </div>
-                    <h3 className="font-display text-lg font-bold text-frost">
+                    <h3 className="font-display text-2xl font-bold text-frost">
                       {service.name}
                     </h3>
+                    <p className="text-silver mt-1">{service.description}</p>
                   </div>
 
                   {/* Price */}
                   <div className="mb-6">
-                    <span className="font-display text-4xl font-bold text-frost">${service.price}</span>
-                    <span className="text-muted">/mo</span>
+                    <span className="font-display text-5xl font-bold text-frost">${service.price}</span>
+                    <span className="text-muted text-lg">/mo</span>
                   </div>
 
                   {/* Features */}
-                  <ul className="space-y-2 mb-6 flex-grow">
-                    {service.features.slice(0, 4).map((feature, idx) => (
-                      <li key={idx} className="flex items-start gap-2 text-sm text-silver">
-                        <Check className="w-4 h-4 text-cyan flex-shrink-0 mt-0.5" />
+                  <ul className="space-y-3 mb-8 flex-grow">
+                    {service.features.map((feature, idx) => (
+                      <li key={idx} className="flex items-start gap-3 text-silver">
+                        <Check className="w-5 h-5 text-cyan flex-shrink-0 mt-0.5" />
                         {feature}
                       </li>
                     ))}
@@ -81,66 +85,19 @@ export function Pricing() {
                     href={BRAND.calendly}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="block w-full py-3 text-center text-sm font-semibold rounded-lg border border-slate/60 text-frost hover:bg-slate/20 transition-colors"
+                    className={`flex items-center justify-center gap-2 w-full py-4 text-center font-semibold rounded-lg transition-all ${
+                      service.popular
+                        ? 'bg-gradient-to-r from-cyan to-teal text-void hover:opacity-90'
+                        : 'border border-slate/60 text-frost hover:bg-slate/20'
+                    }`}
                   >
-                    Get Started
+                    <Calendar className="w-5 h-5" />
+                    Book a Call
                   </a>
                 </div>
               </motion.div>
             );
           })}
-
-          {/* Bundle Card */}
-          <motion.div
-            variants={fadeInUp}
-            className="relative lg:row-span-1"
-          >
-            <div className="relative p-6 rounded-2xl bg-gradient-to-br from-cyan/10 to-violet/10 backdrop-blur-sm border border-cyan h-full flex flex-col">
-              {/* Best Value Badge */}
-              <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                <span className="px-3 py-1 bg-gradient-to-r from-violet to-cyan text-void text-xs font-semibold rounded-full flex items-center gap-1">
-                  <Sparkles className="w-3 h-3" />
-                  Best Value
-                </span>
-              </div>
-
-              {/* Header */}
-              <div className="mb-4">
-                <h3 className="font-display text-lg font-bold text-frost">
-                  {BUNDLE.name}
-                </h3>
-                <p className="text-sm text-silver">{BUNDLE.description}</p>
-              </div>
-
-              {/* Price */}
-              <div className="mb-2">
-                <span className="font-display text-4xl font-bold text-frost">${BUNDLE.price}</span>
-                <span className="text-muted">/mo</span>
-              </div>
-              <p className="text-sm text-cyan mb-6">Save ${BUNDLE.savings}/month</p>
-
-              {/* Features */}
-              <ul className="space-y-2 mb-6 flex-grow">
-                {BUNDLE.features.map((feature, idx) => (
-                  <li key={idx} className="flex items-start gap-2 text-sm text-silver">
-                    <Check className="w-4 h-4 text-cyan flex-shrink-0 mt-0.5" />
-                    {feature}
-                  </li>
-                ))}
-              </ul>
-
-              {/* CTA */}
-              <a
-                href={BRAND.calendly}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 w-full py-3 text-center text-sm font-semibold rounded-lg bg-gradient-to-r from-cyan to-teal text-void hover:opacity-90 transition-opacity"
-              >
-                <Calendar className="w-4 h-4" />
-                Book a Call
-              </a>
-            </div>
-          </motion.div>
         </motion.div>
 
         {/* Trust Badges */}

@@ -5,7 +5,6 @@ import Footer from './components/Footer';
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import ContactPage from './pages/ContactPage';
-import SupportAgentPage from './pages/SupportAgentPage';
 
 function ScrollToTop() {
   const location = useLocation();
@@ -36,7 +35,6 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/contact" element={<ContactPage />} />
-        <Route path="/support-agent" element={<SupportAgentPage />} />
       </Routes>
       <Footer />
     </div>
