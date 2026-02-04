@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
-import { ChevronDown, Calendar } from 'lucide-react';
+import { ChevronDown, Calendar, ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { NetworkCanvas, GradientMesh } from '../effects';
 import { HERO, BRAND } from '../../lib/constants';
 import { heroHeadline, heroSubtext, heroCTA, staggerContainer, fadeInUp } from '../../lib/animations';
@@ -86,12 +87,13 @@ export function Hero() {
             <Calendar className="w-5 h-5" />
             {HERO.cta.primary}
           </a>
-          <button
-            onClick={scrollToPricing}
+          <Link
+            to="/how-it-works"
             className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-graphite/60 backdrop-blur-sm border border-slate/40 text-frost font-semibold rounded-lg hover:bg-graphite/80 transition-colors"
           >
             {HERO.cta.secondary}
-          </button>
+            <ArrowRight className="w-5 h-5" />
+          </Link>
         </motion.div>
 
         {/* Stats */}

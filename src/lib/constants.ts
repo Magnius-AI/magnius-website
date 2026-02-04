@@ -195,6 +195,7 @@ export const TARGET_CUSTOMERS = [
 
 export const NAV_LINKS = [
   { label: 'Home', href: '/' },
+  { label: 'How It Works', href: '/how-it-works' },
   { label: 'Services', href: '/#services' },
   { label: 'Pricing', href: '/#pricing' },
   { label: 'Contact', href: '/contact' },
