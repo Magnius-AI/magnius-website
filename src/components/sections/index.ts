@@ -5,4 +5,5 @@ export { Pricing } from './Pricing';
 export { FAQ } from './FAQ';
 export { FinalCTA } from './FinalCTA';
 export { WaitlistForm } from './WaitlistForm';
+export { BookCallCTA } from './BookCallCTA';
 // EngineShowcase deprecated - replaced with Services

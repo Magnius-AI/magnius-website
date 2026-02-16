@@ -1,8 +1,7 @@
 import { motion } from 'framer-motion';
-import { Mail, Linkedin, Twitter, MapPin } from 'lucide-react';
+import { Mail, Linkedin, Twitter, MapPin, ArrowRight } from 'lucide-react';
 import { NoiseTexture, GradientMesh } from '../components/effects';
 import { GlowCard } from '../components/ui';
-import { WaitlistForm } from '../components/sections';
 import { BRAND } from '../lib/constants';
 import { fadeInUp, staggerContainer, viewportSettings } from '../lib/animations';
 
@@ -141,13 +140,21 @@ export default function ContactPage() {
             variants={fadeInUp}
           >
             <h2 className="font-display text-3xl sm:text-4xl font-bold text-frost mb-6">
-              Want early access?
+              Ready to fill your pipeline?
             </h2>
             <p className="text-silver mb-8">
-              Join our waitlist to be among the first to experience AI-powered consulting intelligence.
+              Book a call to see how Magnius can fill your sales pipeline with qualified meetings.
             </p>
             <div className="max-w-md mx-auto">
-              <WaitlistForm size="lg" />
+              <a
+                href={BRAND.calendly}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 w-full max-w-md px-8 py-4 bg-gradient-to-r from-cyan to-teal text-void font-semibold rounded-xl hover:shadow-glow-cyan hover:scale-105 transition-all"
+              >
+                <span>Book a Call</span>
+                <ArrowRight className="w-5 h-5" />
+              </a>
             </div>
           </motion.div>
         </div>

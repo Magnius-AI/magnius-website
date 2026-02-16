@@ -28,14 +28,6 @@ export default function Navigation() {
     return () => clearTimeout(timer);
   }, []);
 
-  const scrollToWaitlist = () => {
-    const waitlistSection = document.getElementById('waitlist');
-    if (waitlistSection) {
-      waitlistSection.scrollIntoView({ behavior: 'smooth' });
-    }
-    setMobileOpen(false);
-  };
-
   return (
     <motion.header
       variants={heroNav}
@@ -87,8 +79,10 @@ export default function Navigation() {
 
         {/* Desktop CTA */}
         <div className="hidden md:flex items-center gap-4">
-          <button
-            onClick={scrollToWaitlist}
+          <a
+            href={BRAND.calendly}
+            target="_blank"
+            rel="noopener noreferrer"
             className={clsx(
               'relative px-6 py-2.5 rounded-xl',
               'font-body text-sm font-semibold',
@@ -98,8 +92,8 @@ export default function Navigation() {
               'focus:outline-none focus:ring-2 focus:ring-cyan/50'
             )}
           >
-            <span className="relative z-10">Join Waitlist</span>
-          </button>
+            <span className="relative z-10">Book a Call</span>
+          </a>
         </div>
 
         {/* Mobile Menu Button */}
@@ -151,22 +145,25 @@ export default function Navigation() {
               </nav>
 
               {/* Mobile CTA */}
-              <button
-                onClick={scrollToWaitlist}
+              <a
+                href={BRAND.calendly}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setMobileOpen(false)}
                 className={clsx(
-                  'w-full py-4 rounded-xl',
+                  'w-full py-4 rounded-xl text-center',
                   'font-body text-base font-semibold',
                   'bg-gradient-to-r from-cyan to-teal text-void',
                   'transition-all duration-300',
                   'hover:shadow-glow-cyan'
                 )}
               >
-                Join Waitlist
-              </button>
+                Book a Call
+              </a>
 
               {/* Mobile Tagline */}
               <p className="text-xs text-muted text-center pt-4 border-t border-slate/20">
-                AI-powered consulting for the modern enterprise
+                AI-powered sales development for modern businesses
               </p>
             </div>
           </motion.div>

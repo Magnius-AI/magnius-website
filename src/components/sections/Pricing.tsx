@@ -100,16 +100,19 @@ export function Pricing() {
           })}
         </motion.div>
 
-        {/* Trust Badges */}
+        {/* Trust Badges & Beta Pricing Note */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.4, duration: 0.6 }}
-          className="mt-12 text-center"
+          className="mt-12 text-center space-y-3"
         >
           <p className="text-muted text-sm">
             ✓ No setup fees &nbsp;&nbsp; ✓ Cancel anytime &nbsp;&nbsp; ✓ 48-hour onboarding
+          </p>
+          <p className="text-cyan text-sm font-medium">
+            🎉 Beta pricing: Standard $500/mo (normally $750)
           </p>
         </motion.div>
       </div>
