@@ -3,9 +3,9 @@ import { Routes, Route, useLocation } from 'react-router-dom';
 import Navigation from './components/Navigation';
 import Footer from './components/Footer';
 import HomePage from './pages/HomePage';
+import FeaturesPage from './pages/FeaturesPage';
 import AboutPage from './pages/AboutPage';
 import ContactPage from './pages/ContactPage';
-import HowItWorksPage from './pages/HowItWorksPage';
 
 function ScrollToTop() {
   const location = useLocation();
@@ -34,7 +34,7 @@ function App() {
       <Navigation />
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/how-it-works" element={<HowItWorksPage />} />
+        <Route path="/features" element={<FeaturesPage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/contact" element={<ContactPage />} />
       </Routes>

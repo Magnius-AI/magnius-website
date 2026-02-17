@@ -1,12 +1,13 @@
 import {
-  Mail,
+  Video,
+  Layout,
   MessageSquare,
-  FileText,
-  Users,
-  Clock,
-  TrendingUp,
+  Sparkles,
+  PlayCircle,
+  BarChart3,
   Zap,
-  Shield,
+  TrendingUp,
+  Clock,
   type LucideIcon,
 } from 'lucide-react';
 
@@ -16,10 +17,10 @@ import {
 
 export const BRAND = {
   name: 'Magnius',
-  tagline: 'AI SDR That Delivers Ready-to-Close Appointments',
+  tagline: 'AI-Powered Webinars That Convert',
   description:
-    'Not just cold email. Our AI SDR qualifies prospects, warms them with pre-call assets, and delivers appointments where they already want to work with you.',
-  email: 'kishor@relius.ai',
+    'The modern webinar platform with AI-powered content generation, high-converting registration pages, and reliable streaming. Built for coaches, creators, and businesses.',
+  email: 'hello@magnius.ai',
   calendly: 'https://calendly.com/kishor-relius',
   parent: 'A Relius Company',
   social: {
@@ -33,30 +34,25 @@ export const BRAND = {
 // ============================================
 
 export const COLORS = {
-  // Dark backgrounds
   void: '#050508',
   night: '#0a0a0f',
   charcoal: '#141419',
   graphite: '#1c1c24',
   slate: '#2a2a35',
-
-  // Brand gradients
   cyan: '#00d4ff',
   teal: '#00b8a9',
   electric: '#0066ff',
   violet: '#7c3aed',
-
-  // Text
   frost: '#e8eaed',
   silver: '#9ca3af',
   muted: '#6b7280',
 } as const;
 
 // ============================================
-// SERVICE DATA (The 3 AI Agent Services)
+// FEATURES DATA
 // ============================================
 
-export interface Service {
+export interface Feature {
   id: string;
   name: string;
   shortName: string;
@@ -64,84 +60,222 @@ export interface Service {
   icon: LucideIcon;
   color: string;
   gradient: string;
-  price: number;
-  features: string[];
-  popular?: boolean;
+  details: string[];
 }
 
-export const SERVICES: Service[] = [
+export const FEATURES: Feature[] = [
   {
-    id: 'ai-sdr-standard',
-    name: 'AI SDR Standard',
-    shortName: 'Standard',
-    description: 'Automated outreach that gets you qualified replies',
-    icon: Mail,
+    id: 'live-streaming',
+    name: 'Live Streaming',
+    shortName: 'Streaming',
+    description: 'Low-latency WebRTC streaming with automatic HLS fallback. Reliable at any scale.',
+    icon: Video,
     color: COLORS.cyan,
     gradient: 'from-cyan to-teal',
-    price: 750,
-    features: [
-      '500 personalized outreach emails/month',
-      '5-touch automated follow-up sequences',
-      'AI-powered lead scoring',
-      'Reply detection & classification',
-      'Daily performance reports',
-      'CRM integration (HubSpot, Salesforce)',
+    details: [
+      'WebRTC-powered sub-second latency for presenters',
+      'Automatic HLS fallback for large audiences (500+)',
+      'Multi-presenter support (up to 6 on screen)',
+      'Screen sharing and slide presentation mode',
+      'Automatic recording of every session',
     ],
   },
   {
-    id: 'ai-sdr-premium',
-    name: 'AI SDR Premium',
-    shortName: 'Premium',
-    description: 'Full-funnel system that delivers ready-to-close appointments',
-    icon: Users,
+    id: 'registration-pages',
+    name: 'Registration Pages',
+    shortName: 'Reg Pages',
+    description: 'Beautiful, high-converting landing pages with templates, countdown timers, and social proof.',
+    icon: Layout,
+    color: COLORS.teal,
+    gradient: 'from-teal to-cyan',
+    details: [
+      'Pre-built high-converting templates',
+      'Custom fields and branding',
+      'Countdown timers and urgency elements',
+      'Social proof widgets (attendee count, testimonials)',
+      'A/B testing for optimization',
+    ],
+  },
+  {
+    id: 'interactive-tools',
+    name: 'Interactive Tools',
+    shortName: 'Engagement',
+    description: 'Live chat, polls, Q&A, hand raises, and timed CTA overlays to keep your audience engaged.',
+    icon: MessageSquare,
     color: COLORS.electric,
     gradient: 'from-electric to-violet',
-    price: 1500,
-    features: [
-      'Everything in Standard, plus:',
-      'AI triage & qualification calls',
-      'Pre-call asset landing pages',
-      'Prospect warming automation',
-      'Engagement tracking & scoring',
-      'Appointment setting (not just replies)',
+    details: [
+      'Real-time live chat with moderation',
+      'Interactive polls with live results',
+      'Q&A with upvoting and moderator view',
+      'Hand raises and attendee spotlighting',
+      'Timed CTA overlays and offer popups',
     ],
-    popular: true,
+  },
+  {
+    id: 'ai-content',
+    name: 'AI Content Assistant',
+    shortName: 'AI Content',
+    description: 'Generate webinar slides, scripts, follow-up emails, and recap docs from a topic outline.',
+    icon: Sparkles,
+    color: COLORS.violet,
+    gradient: 'from-violet to-electric',
+    details: [
+      'Generate slide decks from a topic or outline',
+      'AI-written presenter scripts with talking points',
+      'Automated follow-up email sequences',
+      'Post-webinar recap docs from transcripts',
+      'Personalized content for attendees vs no-shows',
+    ],
+  },
+  {
+    id: 'automated-webinars',
+    name: 'Automated Webinars',
+    shortName: 'Evergreen',
+    description: 'Pre-recorded evergreen webinars that feel live. Schedule replays with simulated chat and timed offers.',
+    icon: PlayCircle,
+    color: COLORS.cyan,
+    gradient: 'from-cyan to-electric',
+    details: [
+      'Record once, replay on any schedule',
+      'Simulated live chat for authentic feel',
+      'Timed CTA overlays and offer popups',
+      'Urgency elements (limited seats, countdown)',
+      'On-demand replay pages with gated access',
+    ],
+  },
+  {
+    id: 'analytics',
+    name: 'Analytics Dashboard',
+    shortName: 'Analytics',
+    description: 'Attendance rates, drop-off points, engagement scores, and conversion tracking in real-time.',
+    icon: BarChart3,
+    color: COLORS.teal,
+    gradient: 'from-teal to-violet',
+    details: [
+      'Real-time attendee count and engagement metrics',
+      'Drop-off curve visualization',
+      'Engagement scoring per attendee',
+      'CTA click and conversion tracking',
+      'Export reports and integrate with your CRM',
+    ],
   },
 ];
 
-// Legacy bundle removed - now single product with tiers
-export const BUNDLE = {
-  name: 'AI SDR Premium',
-  description: 'Full-funnel appointment setting',
-  price: 1500,
-  savings: 0,
-  features: [
-    'Everything in Standard',
-    'AI triage & qualification',
-    'Pre-call asset system',
-    'Prospect warming automation',
-    'Engagement tracking',
-    'Ready-to-close appointments',
-  ],
-};
+// ============================================
+// PRICING TIERS
+// ============================================
+
+export interface PricingTier {
+  id: string;
+  name: string;
+  price: number;
+  period: string;
+  description: string;
+  attendees: string;
+  features: string[];
+  popular?: boolean;
+  cta: string;
+  gradient: string;
+}
+
+export const PRICING_TIERS: PricingTier[] = [
+  {
+    id: 'free',
+    name: 'Free',
+    price: 0,
+    period: 'forever',
+    description: 'Try Magnius with no commitment',
+    attendees: '25 attendees',
+    features: [
+      '1 webinar/month',
+      '30 min max duration',
+      'Basic analytics',
+      'Live chat',
+      'Magnius branding',
+    ],
+    cta: 'Get Started Free',
+    gradient: 'from-slate to-graphite',
+  },
+  {
+    id: 'starter',
+    name: 'Starter',
+    price: 39,
+    period: '/mo',
+    description: 'Everything you need to start hosting',
+    attendees: '100 attendees',
+    features: [
+      'Unlimited webinars',
+      '2 hour max duration',
+      'Registration pages',
+      'Chat, polls & Q&A',
+      'Email reminders',
+      'AI content (5/mo)',
+      'Custom branding',
+      'Recording & replay',
+    ],
+    popular: true,
+    cta: 'Start Free Trial',
+    gradient: 'from-cyan to-teal',
+  },
+  {
+    id: 'pro',
+    name: 'Pro',
+    price: 79,
+    period: '/mo',
+    description: 'For growing businesses that need more',
+    attendees: '500 attendees · 3 hosts',
+    features: [
+      'Everything in Starter, plus:',
+      'Evergreen webinars',
+      'CTA overlays & offers',
+      'Conversion tracking',
+      'AI content (unlimited)',
+      'Integrations (HubSpot, GHL, Zapier)',
+      'Advanced analytics',
+      'Follow-up automation',
+    ],
+    cta: 'Start Free Trial',
+    gradient: 'from-electric to-violet',
+  },
+  {
+    id: 'business',
+    name: 'Business',
+    price: 149,
+    period: '/mo',
+    description: 'For agencies and enterprises',
+    attendees: '2,000 attendees · 6 hosts',
+    features: [
+      'Everything in Pro, plus:',
+      'White-label branding',
+      'Priority support',
+      'API access',
+      'SSO authentication',
+      'Custom integrations',
+      'Dedicated account manager',
+    ],
+    cta: 'Contact Sales',
+    gradient: 'from-violet to-cyan',
+  },
+];
 
 // ============================================
 // HERO CONTENT
 // ============================================
 
 export const HERO = {
-  badge: 'AI SDR — Now with Triage & Pre-Call Assets',
-  headline: 'Stop chasing leads. Start closing deals.',
+  badge: 'Now in Beta — Join the Waitlist',
+  headline: 'Webinars that sell.',
   subheadline:
-    'Our AI SDR doesn\'t just send emails — it qualifies prospects, warms them up, and delivers ready-to-buy appointments. Show up to discovery calls where they already know they want to work with you.',
+    'The AI-powered webinar platform built for coaches, creators, and businesses. Reliable streaming, high-converting pages, and AI that writes your content.',
   cta: {
-    primary: 'Book a Call',
-    secondary: 'See How It Works',
+    primary: 'Start Free',
+    secondary: 'See Features',
   },
   stats: [
-    { value: '500', label: 'Emails/month' },
-    { value: '2-3x', label: 'Close rate lift' },
-    { value: '$750', label: 'Starting price' },
+    { value: '500+', label: 'Attendees supported' },
+    { value: '99.9%', label: 'Uptime' },
+    { value: 'AI', label: 'Powered' },
   ],
 } as const;
 
@@ -151,43 +285,64 @@ export const HERO = {
 
 export const VALUE_PROPS = [
   {
-    title: 'Beyond cold email',
-    description: 'Triage calls + pre-call assets = prospects show up warmed, informed, and ready to buy',
+    title: 'Streaming that doesn\'t crash',
+    description: 'WebRTC-powered streaming with HLS fallback. Your webinar stays live even at 500+ attendees.',
     icon: Zap,
   },
   {
-    title: 'One-call closes',
-    description: 'Stop doing 3-4 calls to close. Our system delivers qualified, educated prospects',
+    title: 'Pages that convert',
+    description: 'High-converting registration pages with countdown timers, social proof, and A/B testing built in.',
     icon: TrendingUp,
   },
   {
-    title: '10x cheaper than hiring',
-    description: 'Full SDR output for $750-1,500/mo vs $60K+/year for a human',
-    icon: Clock,
+    title: 'AI does the heavy lifting',
+    description: 'Generate slides, scripts, follow-up emails, and recap docs from just a topic. Your AI content assistant.',
+    icon: Sparkles,
   },
 ] as const;
 
 // ============================================
-// SOCIAL PROOF / TARGET CUSTOMERS
+// COMPARISON DATA
 // ============================================
 
-export const TARGET_CUSTOMERS = [
+export const COMPARISON_DATA = [
   {
-    title: 'SaaS Founders',
-    description: 'Fill your pipeline without hiring expensive SDRs',
-    icon: Users,
+    feature: 'Reliable streaming',
+    webinarjam: { value: '❌ Crashes often', negative: true },
+    zoom: { value: '✅ Solid', positive: true },
+    magnius: { value: '✅ WebRTC + HLS', positive: true },
   },
   {
-    title: 'Agency Owners',
-    description: 'Get client acquisition on autopilot',
-    icon: TrendingUp,
+    feature: 'AI content generation',
+    webinarjam: { value: '❌ None', negative: true },
+    zoom: { value: '❌ None', negative: true },
+    magnius: { value: '✅ Built-in', positive: true },
   },
   {
-    title: 'Consultants & Coaches',
-    description: 'Stop chasing leads, start closing deals',
-    icon: Shield,
+    feature: 'Sales CTAs & offers',
+    webinarjam: { value: '✅ Basic', positive: true },
+    zoom: { value: '❌ None', negative: true },
+    magnius: { value: '✅ Advanced', positive: true },
   },
-] as const;
+  {
+    feature: 'Registration pages',
+    webinarjam: { value: '⚠️ Basic', negative: false },
+    zoom: { value: '❌ None', negative: true },
+    magnius: { value: '✅ Builder', positive: true },
+  },
+  {
+    feature: 'Evergreen webinars',
+    webinarjam: { value: '✅ EverWebinar', positive: true },
+    zoom: { value: '❌ None', negative: true },
+    magnius: { value: '✅ Built-in', positive: true },
+  },
+  {
+    feature: 'Starting price',
+    webinarjam: { value: '$49/mo', negative: false },
+    zoom: { value: '$79/mo add-on', negative: true },
+    magnius: { value: 'Free', positive: true },
+  },
+];
 
 // ============================================
 // NAVIGATION
@@ -195,8 +350,7 @@ export const TARGET_CUSTOMERS = [
 
 export const NAV_LINKS = [
   { label: 'Home', href: '/' },
-  { label: 'How It Works', href: '/how-it-works' },
-  { label: 'Services', href: '/#services' },
+  { label: 'Features', href: '/features' },
   { label: 'Pricing', href: '/#pricing' },
   { label: 'Contact', href: '/contact' },
 ] as const;
@@ -220,27 +374,49 @@ export const FOOTER = {
 
 export const FAQ = [
   {
-    question: 'How is this different from other AI SDR tools?',
-    answer: 'Most AI SDR tools just blast emails. We go further: AI-powered triage qualifies prospects, then pre-call assets educate them before your discovery call. By the time you talk to them, they know who you are, what you do, and they\'re ready to buy. It\'s the difference between cold outreach and warm appointments.',
+    question: 'How is Magnius different from WebinarJam?',
+    answer: 'We\'re built on modern infrastructure (WebRTC + HLS), so your webinars don\'t crash mid-presentation. Plus, we have native AI content generation — generate slides, scripts, and follow-up emails automatically. And our pricing starts at free.',
   },
   {
-    question: 'What are pre-call assets?',
-    answer: 'A personalized landing page sent between booking and your discovery call. It includes a video explaining your offer, FAQ, case studies, and "why not" content that eliminates competing options. Prospects show up informed and ready to make a decision.',
+    question: 'What about Zoom Webinars?',
+    answer: 'Zoom is great for meetings but wasn\'t built for sales webinars. No registration page builder, no CTA overlays, no evergreen webinars, no AI content assistant. Magnius is purpose-built for webinars that convert.',
   },
   {
-    question: 'How does the AI triage work?',
-    answer: 'When a prospect replies positively, our AI engages in a qualifying conversation — confirming they\'re the decision-maker, understanding their current situation, and identifying pain points. Only qualified leads get booked on your calendar.',
+    question: 'How does the AI content assistant work?',
+    answer: 'Give it a topic or outline, and it generates webinar slide decks, a full presenter script with talking points, follow-up email sequences (different for attendees vs no-shows), and post-webinar recap docs from the recording transcript.',
   },
   {
-    question: 'What\'s the difference between Standard and Premium?',
-    answer: 'Standard ($750/mo) gives you AI-powered cold email sequences that generate replies. Premium ($1,500/mo) adds triage automation, pre-call assets, and appointment setting — so you get ready-to-close appointments, not just replies.',
+    question: 'Can I run automated/evergreen webinars?',
+    answer: 'Yes. Record once, then schedule automated replays that feel live — complete with simulated chat, timed CTA overlays, urgency elements, and offer popups. Perfect for evergreen funnels.',
   },
   {
-    question: 'How quickly can I get started?',
-    answer: 'Most clients are live within 48-72 hours. We\'ll have an onboarding call to understand your ICP, configure your sequences, and you\'ll start seeing outreach go out immediately.',
+    question: 'What integrations do you support?',
+    answer: 'HubSpot, GoHighLevel (GHL), Stripe, Mailchimp, ConvertKit, ActiveCampaign, Zapier, and more. Plus webhooks and a public API for custom integrations on our Business plan.',
   },
   {
-    question: 'Do you integrate with my CRM?',
-    answer: 'Yes — we integrate with HubSpot, Salesforce, and other major CRMs. Leads, engagement data, and meeting bookings all sync automatically.',
+    question: 'How many attendees can I host?',
+    answer: 'Up to 2,000 on our Business plan, with custom capacity for Enterprise. Our WebRTC + HLS hybrid architecture ensures smooth, reliable streaming regardless of audience size.',
+  },
+] as const;
+
+// ============================================
+// TARGET CUSTOMERS
+// ============================================
+
+export const TARGET_CUSTOMERS = [
+  {
+    title: 'Coaches & Creators',
+    description: 'Host weekly webinars that convert viewers into clients and course buyers.',
+    icon: Sparkles,
+  },
+  {
+    title: 'Marketing Agencies',
+    description: 'White-label webinar hosting for your clients. Scale without limits.',
+    icon: TrendingUp,
+  },
+  {
+    title: 'SaaS Companies',
+    description: 'Product demos, onboarding webinars, and customer education at scale.',
+    icon: Zap,
   },
 ] as const;

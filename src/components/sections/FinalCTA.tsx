@@ -1,9 +1,15 @@
 import { motion } from 'framer-motion';
-import { Calendar, ArrowRight } from 'lucide-react';
+import { Rocket, ArrowRight } from 'lucide-react';
 import { GradientMesh } from '../effects';
-import { BRAND } from '../../lib/constants';
 
 export function FinalCTA() {
+  const scrollToPricing = () => {
+    const pricingSection = document.getElementById('pricing');
+    if (pricingSection) {
+      pricingSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section className="relative py-24 sm:py-32 overflow-hidden">
       {/* Background */}
@@ -19,27 +25,26 @@ export function FinalCTA() {
           transition={{ duration: 0.6 }}
         >
           <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-frost mb-6">
-            Ready to deploy your <span className="text-gradient">AI team</span>?
+            Ready to host webinars that{' '}
+            <span className="text-gradient">actually convert</span>?
           </h2>
           <p className="text-lg sm:text-xl text-silver mb-10 max-w-2xl mx-auto">
-            Book a 15-minute call. We'll show you exactly how our AI agents can work for your business — and have you up and running within 48 hours.
+            Join the beta. Start hosting for free. No credit card required.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href={BRAND.calendly}
-              target="_blank"
-              rel="noopener noreferrer"
+            <button
+              onClick={scrollToPricing}
               className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-cyan to-teal text-void font-semibold rounded-lg hover:opacity-90 transition-opacity"
             >
-              <Calendar className="w-5 h-5" />
-              Book Your Call
+              <Rocket className="w-5 h-5" />
+              Start Free
               <ArrowRight className="w-5 h-5" />
-            </a>
+            </button>
           </div>
 
           <p className="mt-6 text-sm text-muted">
-            No commitment required. See if we're a fit.
+            No credit card required. Free plan available forever.
           </p>
         </motion.div>
       </div>

@@ -1,10 +1,10 @@
 import { motion } from 'framer-motion';
-import { SERVICES } from '../../lib/constants';
+import { FEATURES } from '../../lib/constants';
 import { staggerContainer, fadeInUp } from '../../lib/animations';
 
 export function Services() {
   return (
-    <section id="services" className="relative py-24 sm:py-32">
+    <section id="features" className="relative py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
@@ -15,70 +15,43 @@ export function Services() {
           className="text-center mb-16"
         >
           <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-frost mb-4">
-            Choose Your <span className="text-gradient">AI SDR</span> Plan
+            Everything You Need to{' '}
+            <span className="text-gradient">Host, Engage, and Convert</span>
           </h2>
           <p className="max-w-2xl mx-auto text-lg text-silver">
-            From cold outreach to ready-to-close appointments. Pick the level that fits your sales process.
+            One platform. No more duct-taping tools together.
           </p>
         </motion.div>
 
-        {/* Services Grid */}
+        {/* Features Grid */}
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           variants={staggerContainer}
-          className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
         >
-          {SERVICES.map((service) => {
-            const Icon = service.icon;
+          {FEATURES.map((feature) => {
+            const Icon = feature.icon;
             return (
               <motion.div
-                key={service.id}
+                key={feature.id}
                 variants={fadeInUp}
                 className="relative group"
               >
                 <div className="relative p-8 rounded-2xl bg-graphite/40 backdrop-blur-sm border border-slate/40 hover:border-cyan/50 transition-colors h-full">
-                  {/* Popular Badge */}
-                  {service.popular && (
-                    <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                      <span className="px-3 py-1 bg-gradient-to-r from-cyan to-teal text-void text-xs font-semibold rounded-full">
-                        Most Popular
-                      </span>
-                    </div>
-                  )}
-
                   {/* Icon */}
-                  <div className={`inline-flex p-3 rounded-xl bg-gradient-to-r ${service.gradient} mb-6`}>
+                  <div className={`inline-flex p-3 rounded-xl bg-gradient-to-r ${feature.gradient} mb-6`}>
                     <Icon className="w-6 h-6 text-void" />
                   </div>
 
                   {/* Content */}
                   <h3 className="font-display text-xl font-bold text-frost mb-2">
-                    {service.name}
+                    {feature.name}
                   </h3>
-                  <p className="text-silver mb-6">
-                    {service.description}
+                  <p className="text-silver">
+                    {feature.description}
                   </p>
-
-                  {/* Price */}
-                  <div className="mb-6">
-                    <span className="font-display text-3xl font-bold text-frost">${service.price}</span>
-                    <span className="text-muted">/month</span>
-                  </div>
-
-                  {/* Features */}
-                  <ul className="space-y-3 mb-6">
-                    {service.features.map((feature, idx) => (
-                      <li key={idx} className="flex items-start gap-3 text-sm text-silver">
-                        <svg className="w-5 h-5 text-cyan flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                        </svg>
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-
                 </div>
               </motion.div>
             );

@@ -1,9 +1,9 @@
 export { Hero } from './Hero';
 export { ValueProp } from './ValueProp';
 export { Services } from './Services';
+export { Comparison } from './Comparison';
 export { Pricing } from './Pricing';
 export { FAQ } from './FAQ';
 export { FinalCTA } from './FinalCTA';
 export { WaitlistForm } from './WaitlistForm';
 export { BookCallCTA } from './BookCallCTA';
-// EngineShowcase deprecated - replaced with Services

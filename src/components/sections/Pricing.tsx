@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
-import { Calendar, Check } from 'lucide-react';
-import { SERVICES, BRAND } from '../../lib/constants';
+import { Check, ArrowRight } from 'lucide-react';
+import { PRICING_TIERS } from '../../lib/constants';
 import { staggerContainer, fadeInUp } from '../../lib/animations';
 
 export function Pricing() {
@@ -19,88 +19,88 @@ export function Pricing() {
             Simple, <span className="text-gradient">Transparent</span> Pricing
           </h2>
           <p className="max-w-2xl mx-auto text-lg text-silver">
-            No hidden fees. No long-term contracts. Cancel anytime.
+            Start free. Upgrade when you're ready.
           </p>
         </motion.div>
 
-        {/* Pricing Cards - 2 column layout */}
+        {/* Pricing Cards */}
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           variants={staggerContainer}
-          className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
         >
-          {SERVICES.map((service) => {
-            const Icon = service.icon;
-            return (
-              <motion.div
-                key={service.id}
-                variants={fadeInUp}
-                className="relative"
-              >
-                <div className={`relative p-8 rounded-2xl backdrop-blur-sm border h-full flex flex-col ${
-                  service.popular 
-                    ? 'bg-gradient-to-br from-cyan/10 to-violet/10 border-cyan' 
-                    : 'bg-graphite/40 border-slate/40'
-                }`}>
-                  {/* Popular Badge */}
-                  {service.popular && (
-                    <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                      <span className="px-4 py-1 bg-gradient-to-r from-cyan to-teal text-void text-xs font-semibold rounded-full">
-                        Recommended
-                      </span>
-                    </div>
-                  )}
-
-                  {/* Header */}
-                  <div className="mb-4">
-                    <div className={`inline-flex p-3 rounded-xl bg-gradient-to-r ${service.gradient} mb-4`}>
-                      <Icon className="w-6 h-6 text-void" />
-                    </div>
-                    <h3 className="font-display text-2xl font-bold text-frost">
-                      {service.name}
-                    </h3>
-                    <p className="text-silver mt-1">{service.description}</p>
+          {PRICING_TIERS.map((tier) => (
+            <motion.div
+              key={tier.id}
+              variants={fadeInUp}
+              className="relative"
+            >
+              <div className={`relative p-6 rounded-2xl backdrop-blur-sm border h-full flex flex-col ${
+                tier.popular
+                  ? 'bg-gradient-to-br from-cyan/10 to-violet/10 border-cyan'
+                  : 'bg-graphite/40 border-slate/40'
+              }`}>
+                {/* Popular Badge */}
+                {tier.popular && (
+                  <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+                    <span className="px-4 py-1 bg-gradient-to-r from-cyan to-teal text-void text-xs font-semibold rounded-full">
+                      Most Popular
+                    </span>
                   </div>
+                )}
 
-                  {/* Price */}
-                  <div className="mb-6">
-                    <span className="font-display text-5xl font-bold text-frost">${service.price}</span>
-                    <span className="text-muted text-lg">/mo</span>
-                  </div>
-
-                  {/* Features */}
-                  <ul className="space-y-3 mb-8 flex-grow">
-                    {service.features.map((feature, idx) => (
-                      <li key={idx} className="flex items-start gap-3 text-silver">
-                        <Check className="w-5 h-5 text-cyan flex-shrink-0 mt-0.5" />
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-
-                  {/* CTA */}
-                  <a
-                    href={BRAND.calendly}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`flex items-center justify-center gap-2 w-full py-4 text-center font-semibold rounded-lg transition-all ${
-                      service.popular
-                        ? 'bg-gradient-to-r from-cyan to-teal text-void hover:opacity-90'
-                        : 'border border-slate/60 text-frost hover:bg-slate/20'
-                    }`}
-                  >
-                    <Calendar className="w-5 h-5" />
-                    Book a Call
-                  </a>
+                {/* Header */}
+                <div className="mb-4">
+                  <h3 className="font-display text-xl font-bold text-frost">
+                    {tier.name}
+                  </h3>
+                  <p className="text-silver text-sm mt-1">{tier.description}</p>
                 </div>
-              </motion.div>
-            );
-          })}
+
+                {/* Price */}
+                <div className="mb-2">
+                  {tier.price === 0 ? (
+                    <span className="font-display text-4xl font-bold text-frost">Free</span>
+                  ) : (
+                    <>
+                      <span className="font-display text-4xl font-bold text-frost">${tier.price}</span>
+                      <span className="text-muted text-lg">{tier.period}</span>
+                    </>
+                  )}
+                </div>
+
+                {/* Attendees */}
+                <p className="text-cyan text-sm font-medium mb-4">{tier.attendees}</p>
+
+                {/* Features */}
+                <ul className="space-y-2.5 mb-6 flex-grow">
+                  {tier.features.map((feature, idx) => (
+                    <li key={idx} className="flex items-start gap-2.5 text-sm text-silver">
+                      <Check className="w-4 h-4 text-cyan flex-shrink-0 mt-0.5" />
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+
+                {/* CTA */}
+                <button
+                  className={`flex items-center justify-center gap-2 w-full py-3 text-center font-semibold rounded-lg transition-all text-sm ${
+                    tier.popular
+                      ? 'bg-gradient-to-r from-cyan to-teal text-void hover:opacity-90'
+                      : 'border border-slate/60 text-frost hover:bg-slate/20'
+                  }`}
+                >
+                  {tier.cta}
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+              </div>
+            </motion.div>
+          ))}
         </motion.div>
 
-        {/* Trust Badges & Beta Pricing Note */}
+        {/* Trust Badges */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -109,10 +109,10 @@ export function Pricing() {
           className="mt-12 text-center space-y-3"
         >
           <p className="text-muted text-sm">
-            ✓ No setup fees &nbsp;&nbsp; ✓ Cancel anytime &nbsp;&nbsp; ✓ 48-hour onboarding
+            ✓ No credit card required &nbsp;&nbsp; ✓ 14-day free trial &nbsp;&nbsp; ✓ Cancel anytime
           </p>
           <p className="text-cyan text-sm font-medium">
-            🎉 Beta pricing: Standard $500/mo (normally $750)
+            💰 Annual billing: save 20%
           </p>
         </motion.div>
       </div>

@@ -32,19 +32,13 @@ const contactMethods = [
 export default function ContactPage() {
   return (
     <main className="relative">
-      {/* Noise overlay */}
       <NoiseTexture opacity={0.025} />
 
       {/* Hero Section */}
       <section className="relative min-h-[50vh] flex items-center overflow-hidden">
         <GradientMesh />
-
         <div className="relative z-10 mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-32 text-center">
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            variants={staggerContainer}
-          >
+          <motion.div initial="hidden" animate="visible" variants={staggerContainer}>
             <motion.div
               variants={fadeInUp}
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-graphite/60 backdrop-blur-sm border border-slate/40 mb-8"
@@ -65,7 +59,7 @@ export default function ContactPage() {
               variants={fadeInUp}
               className="max-w-xl mx-auto text-lg text-silver"
             >
-              Have questions about Magnius? Want to learn more about our platform?
+              Questions about Magnius? Want a personalized demo of our webinar platform?
               We'd love to hear from you.
             </motion.p>
           </motion.div>
@@ -120,7 +114,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* Waitlist CTA */}
+      {/* CTA */}
       <section className="relative py-24 overflow-hidden">
         <div
           className="absolute inset-0"
@@ -131,7 +125,6 @@ export default function ContactPage() {
             `,
           }}
         />
-
         <div className="relative mx-auto max-w-2xl px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial="hidden"
@@ -140,27 +133,33 @@ export default function ContactPage() {
             variants={fadeInUp}
           >
             <h2 className="font-display text-3xl sm:text-4xl font-bold text-frost mb-6">
-              Ready to fill your pipeline?
+              Ready to host webinars that convert?
             </h2>
             <p className="text-silver mb-8">
-              Book a call to see how Magnius can fill your sales pipeline with qualified meetings.
+              Book a demo or start hosting for free today.
             </p>
-            <div className="max-w-md mx-auto">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
               <a
                 href={BRAND.calendly}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 w-full max-w-md px-8 py-4 bg-gradient-to-r from-cyan to-teal text-void font-semibold rounded-xl hover:shadow-glow-cyan hover:scale-105 transition-all"
+                className="inline-flex items-center justify-center gap-2 flex-1 px-6 py-4 bg-gradient-to-r from-cyan to-teal text-void font-semibold rounded-xl hover:shadow-glow-cyan hover:scale-105 transition-all"
               >
-                <span>Book a Call</span>
+                <span>Book a Demo</span>
                 <ArrowRight className="w-5 h-5" />
+              </a>
+              <a
+                href="/#pricing"
+                className="inline-flex items-center justify-center gap-2 flex-1 px-6 py-4 bg-graphite/60 border border-slate/40 text-frost font-semibold rounded-xl hover:bg-graphite/80 transition-colors"
+              >
+                Start Free
               </a>
             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* Location Placeholder */}
+      {/* Location */}
       <section className="relative py-16 border-t border-slate/20">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
           <motion.div

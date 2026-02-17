@@ -80,9 +80,7 @@ export default function Navigation() {
         {/* Desktop CTA */}
         <div className="hidden md:flex items-center gap-4">
           <a
-            href={BRAND.calendly}
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/#pricing"
             className={clsx(
               'relative px-6 py-2.5 rounded-xl',
               'font-body text-sm font-semibold',
@@ -92,7 +90,7 @@ export default function Navigation() {
               'focus:outline-none focus:ring-2 focus:ring-cyan/50'
             )}
           >
-            <span className="relative z-10">Book a Call</span>
+            <span className="relative z-10">Start Free</span>
           </a>
         </div>
 
@@ -146,9 +144,7 @@ export default function Navigation() {
 
               {/* Mobile CTA */}
               <a
-                href={BRAND.calendly}
-                target="_blank"
-                rel="noopener noreferrer"
+                href="/#pricing"
                 onClick={() => setMobileOpen(false)}
                 className={clsx(
                   'w-full py-4 rounded-xl text-center',
@@ -158,12 +154,12 @@ export default function Navigation() {
                   'hover:shadow-glow-cyan'
                 )}
               >
-                Book a Call
+                Start Free
               </a>
 
               {/* Mobile Tagline */}
               <p className="text-xs text-muted text-center pt-4 border-t border-slate/20">
-                AI-powered sales development for modern businesses
+                AI-powered webinars that convert
               </p>
             </div>
           </motion.div>

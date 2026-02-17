@@ -1,33 +1,33 @@
 import { motion } from 'framer-motion';
-import { Brain, TrendingUp, Target, Lightbulb, Calendar } from 'lucide-react';
+import { Shield, Sparkles, Target, DollarSign, Rocket } from 'lucide-react';
 import { NoiseTexture, GradientMesh } from '../components/effects';
 import { GlowCard } from '../components/ui';
-import { BRAND, SERVICES } from '../lib/constants';
+import { BRAND, TARGET_CUSTOMERS } from '../lib/constants';
 import { fadeInUp, staggerContainer, viewportSettings } from '../lib/animations';
 
 const visionPoints = [
   {
-    icon: Brain,
-    title: 'Persistent Memory',
-    description: 'Our AI agents remember every interaction, building context over time.',
+    icon: Shield,
+    title: 'Reliability First',
+    description: 'Built on WebRTC with HLS fallback. No more mid-webinar crashes that cost you sales.',
     color: '#00d4ff',
   },
   {
-    icon: TrendingUp,
-    title: 'Democratized Automation',
-    description: 'Enterprise-grade AI agents accessible to companies of all sizes.',
+    icon: Sparkles,
+    title: 'AI-Native',
+    description: 'Content generation isn\'t bolted on — it\'s built into every workflow from slides to follow-ups.',
     color: '#00b8a9',
   },
   {
     icon: Target,
-    title: 'Results-Focused',
-    description: 'We measure success by leads booked, tickets resolved, and content published.',
+    title: 'Built for Conversion',
+    description: 'Every feature exists to help you sell. CTAs, offers, urgency timers, and follow-up automation.',
     color: '#0066ff',
   },
   {
-    icon: Lightbulb,
-    title: 'Continuous Improvement',
-    description: 'Your AI agents learn and improve with every interaction.',
+    icon: DollarSign,
+    title: 'Fair Pricing',
+    description: 'Start free. No $500/mo surprises. Scale your plan as your audience grows.',
     color: '#7c3aed',
   },
 ];
@@ -35,19 +35,13 @@ const visionPoints = [
 export default function AboutPage() {
   return (
     <main className="relative">
-      {/* Noise overlay */}
       <NoiseTexture opacity={0.025} />
 
       {/* Hero Section */}
       <section className="relative min-h-[60vh] flex items-center overflow-hidden">
         <GradientMesh />
-
         <div className="relative z-10 mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-32 text-center">
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            variants={staggerContainer}
-          >
+          <motion.div initial="hidden" animate="visible" variants={staggerContainer}>
             <motion.div
               variants={fadeInUp}
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-graphite/60 backdrop-blur-sm border border-slate/40 mb-8"
@@ -61,16 +55,16 @@ export default function AboutPage() {
               variants={fadeInUp}
               className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-frost mb-6"
             >
-              AI agents that work{' '}
-              <span className="text-gradient">while you sleep</span>
+              We built Magnius because{' '}
+              <span className="text-gradient">webinars deserve better</span>
             </motion.h1>
 
             <motion.p
               variants={fadeInUp}
               className="max-w-2xl mx-auto text-lg text-silver"
             >
-              We deploy AI agents that handle your sales outreach, customer support, and content marketing — 
-              so you can focus on what matters most: growing your business.
+              Tired of paying $500/mo for webinar software that crashes mid-presentation.
+              We're building the modern, AI-native alternative.
             </motion.p>
           </motion.div>
         </div>
@@ -79,7 +73,6 @@ export default function AboutPage() {
       {/* Problem Section */}
       <section className="relative py-24 overflow-hidden">
         <div className="absolute inset-0 bg-charcoal/50" />
-
         <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <motion.div
             initial="hidden"
@@ -90,24 +83,20 @@ export default function AboutPage() {
           >
             <motion.div variants={fadeInUp}>
               <h2 className="font-display text-3xl sm:text-4xl font-bold text-frost mb-6">
-                The problem with hiring
+                The webinar industry is broken
               </h2>
               <div className="space-y-4 text-silver">
                 <p>
-                  <span className="text-frost font-semibold">$50-100K/year</span> for a single
-                  SDR, support rep, or content marketer.
+                  <span className="text-frost font-semibold">WebinarJam</span> crashes during your most important presentations and feels like software from 2015.
                 </p>
                 <p>
-                  <span className="text-frost font-semibold">Limited hours</span> — humans
-                  need sleep, vacations, and sick days.
+                  <span className="text-frost font-semibold">Zoom Webinars</span> is great for meetings but wasn't built for sales — no CTAs, no registration pages, no conversion tools.
                 </p>
                 <p>
-                  <span className="text-frost font-semibold">Training overhead</span> — 
-                  3-6 months before new hires become productive.
+                  <span className="text-frost font-semibold">Nobody has AI</span> — you're still manually creating slides, writing scripts, and crafting follow-up emails for every webinar.
                 </p>
                 <p>
-                  <span className="text-frost font-semibold">Inconsistent output</span> — 
-                  quality varies by mood, motivation, and tenure.
+                  <span className="text-frost font-semibold">Pricing is absurd</span> — $500+/mo for basic webinar features that should cost a fraction of that.
                 </p>
               </div>
             </motion.div>
@@ -118,17 +107,16 @@ export default function AboutPage() {
                   The Magnius approach
                 </h3>
                 <p className="text-silver mb-6">
-                  AI agents with persistent memory that work 24/7, learn from every interaction,
-                  and deliver consistent, high-quality output at a fraction of the cost.
+                  Modern streaming infrastructure, AI-powered content generation, and conversion tools — all in one platform that starts free.
                 </p>
                 <div className="grid grid-cols-2 gap-4">
                   <div className="text-center p-4 rounded-xl bg-graphite/50">
-                    <div className="text-2xl font-bold text-gradient">10x</div>
-                    <div className="text-xs text-muted">Cheaper than hiring</div>
+                    <div className="text-2xl font-bold text-gradient">Free</div>
+                    <div className="text-xs text-muted">To get started</div>
                   </div>
                   <div className="text-center p-4 rounded-xl bg-graphite/50">
-                    <div className="text-2xl font-bold text-gradient">24/7</div>
-                    <div className="text-xs text-muted">Always working</div>
+                    <div className="text-2xl font-bold text-gradient">AI</div>
+                    <div className="text-xs text-muted">Content assistant</div>
                   </div>
                 </div>
               </GlowCard>
@@ -151,7 +139,7 @@ export default function AboutPage() {
                 What makes us different
               </h2>
               <p className="max-w-2xl mx-auto text-silver">
-                We're not just another automation tool. We deploy AI agents that think, learn, and adapt.
+                Not another WebinarJam clone. A fundamentally different approach to webinar hosting.
               </p>
             </motion.div>
 
@@ -187,7 +175,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Services Overview */}
+      {/* Who It's For */}
       <section className="relative py-24 overflow-hidden">
         <div
           className="absolute inset-0"
@@ -195,7 +183,6 @@ export default function AboutPage() {
             background: 'radial-gradient(ellipse 80% 50% at 50% 50%, rgba(0, 212, 255, 0.03) 0%, transparent 60%)',
           }}
         />
-
         <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <motion.div
             initial="hidden"
@@ -205,21 +192,19 @@ export default function AboutPage() {
           >
             <motion.div variants={fadeInUp} className="text-center mb-12">
               <h2 className="font-display text-3xl sm:text-4xl font-bold text-frost mb-4">
-                Three specialized agents
+                Built for people who sell with webinars
               </h2>
-              <p className="max-w-2xl mx-auto text-silver">
-                Each designed to excel at one job. Deploy one or all three.
-              </p>
             </motion.div>
 
-            <motion.div variants={fadeInUp} className="flex flex-wrap justify-center gap-4">
-              {SERVICES.map((service) => (
+            <motion.div variants={fadeInUp} className="grid md:grid-cols-3 gap-6">
+              {TARGET_CUSTOMERS.map((customer) => (
                 <div
-                  key={service.id}
-                  className="px-6 py-3 rounded-xl bg-graphite/60 border border-slate/40 text-silver hover:border-cyan/30 hover:text-frost transition-all duration-300"
+                  key={customer.title}
+                  className="px-6 py-6 rounded-xl bg-graphite/60 border border-slate/40 text-center"
                 >
-                  <span className="font-semibold">{service.name}</span>
-                  <span className="text-muted ml-2">${service.price}/mo</span>
+                  <customer.icon className="w-8 h-8 text-cyan mx-auto mb-3" />
+                  <span className="font-display font-semibold text-frost block mb-2">{customer.title}</span>
+                  <p className="text-silver text-sm">{customer.description}</p>
                 </div>
               ))}
             </motion.div>
@@ -237,19 +222,17 @@ export default function AboutPage() {
             variants={fadeInUp}
           >
             <h2 className="font-display text-3xl font-bold text-frost mb-6">
-              Ready to deploy your AI team?
+              Ready to host webinars that convert?
             </h2>
             <p className="text-silver mb-8">
-              Book a 15-minute call. We'll show you exactly how it works.
+              Start free. No credit card required.
             </p>
             <a
-              href={BRAND.calendly}
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/#pricing"
               className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-cyan to-teal text-void font-semibold rounded-lg hover:opacity-90 transition-opacity"
             >
-              <Calendar className="w-5 h-5" />
-              Book a Call
+              <Rocket className="w-5 h-5" />
+              Get Started
             </a>
           </motion.div>
         </div>

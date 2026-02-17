@@ -1,5 +1,5 @@
 import { NoiseTexture } from '../components/effects';
-import { Hero, ValueProp, Services, Pricing, FAQ, FinalCTA } from '../components/sections';
+import { Hero, ValueProp, Services, Comparison, Pricing, FAQ, FinalCTA } from '../components/sections';
 
 export default function HomePage() {
   return (
@@ -13,10 +13,13 @@ export default function HomePage() {
       {/* Value Proposition Section */}
       <ValueProp />
 
-      {/* Services Section */}
-      <section id="services">
+      {/* Features Section */}
+      <section id="features-section">
         <Services />
       </section>
+
+      {/* Comparison Section */}
+      <Comparison />
 
       {/* Pricing Section */}
       <Pricing />
