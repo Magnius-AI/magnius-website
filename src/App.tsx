@@ -6,6 +6,7 @@ import HomePage from './pages/HomePage';
 import FeaturesPage from './pages/FeaturesPage';
 import AboutPage from './pages/AboutPage';
 import ContactPage from './pages/ContactPage';
+import SystemMapPage from './pages/SystemMapPage';
 
 function ScrollToTop() {
   const location = useLocation();
@@ -28,17 +29,21 @@ function ScrollToTop() {
 }
 
 function App() {
+  const location = useLocation();
+  const hideChrome = location.pathname === '/system-map';
+
   return (
-    <div className="min-h-screen bg-void text-frost font-body antialiased">
+    <div className={hideChrome ? '' : 'min-h-screen bg-void text-frost font-body antialiased'}>
       <ScrollToTop />
-      <Navigation />
+      {!hideChrome && <Navigation />}
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/features" element={<FeaturesPage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/contact" element={<ContactPage />} />
+        <Route path="/system-map" element={<SystemMapPage />} />
       </Routes>
-      <Footer />
+      {!hideChrome && <Footer />}
     </div>
   );
 }
