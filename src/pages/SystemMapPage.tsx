@@ -13,16 +13,11 @@ const NODES = [
   { id: "attrib_recon", label: "Attribution Reconciliation", group: "infra", desc: "Resolves Hyros vs Facebook attribution discrepancies with configurable trust policies." },
   { id: "canonical_model", label: "Canonical Data Model", group: "infra", desc: "Unified schema: Contact, Campaign, WebinarSession, Appointment, CallOutcome, RevenueEvent." },
 
-  // Paid Acquisition
-  { id: "ad_spend", label: "Ad Spend (Total)", group: "ads", desc: "Total monthly/weekly ad budget across all platforms." },
-  { id: "ad_spend_google", label: "Google Ads Spend", group: "ads", desc: "Google Ads budget \u2014 Search, Display, YouTube pre-roll." },
+  // Paid Acquisition (Meta only)
+  { id: "ad_spend", label: "Ad Spend (Total)", group: "ads", desc: "Total monthly/weekly Meta ad budget." },
   { id: "ad_spend_meta", label: "Meta Ads Spend", group: "ads", desc: "Facebook + Instagram ad spend \u2014 retargeting, lookalikes, cold audiences." },
   { id: "ad_spend_other", label: "Other Channels", group: "ads", desc: "TikTok, LinkedIn, YouTube organic, podcast sponsorships, affiliate spend." },
-  { id: "impressions", label: "Impressions", group: "ads", desc: "Total ad impressions served across all platforms." },
-  { id: "clicks", label: "Clicks", group: "ads", desc: "Total ad clicks driving traffic to landing pages." },
-  { id: "ctr", label: "CTR", group: "ads", desc: "Click-Through Rate = Clicks \u00f7 Impressions. Benchmark: 2\u20135% search." },
-  { id: "cpc", label: "CPC", group: "ads", desc: "Cost per Click = Ad Spend \u00f7 Clicks." },
-  { id: "lp_views", label: "Landing Page Views", group: "ads", desc: "Clicks that actually loaded the page. Gap vs clicks = speed issues." },
+  { id: "lp_views", label: "Landing Page Views", group: "ads", desc: "Traffic that actually loaded the page from Meta ads." },
   { id: "lp_conv_rate", label: "LP Conversion Rate", group: "ads", desc: "Opt-ins \u00f7 LP Views. Benchmark: 15\u201335% for high-ticket." },
   { id: "optins", label: "Opt-ins / Leads", group: "ads", desc: "Form fills, registrations, booked calls from paid traffic." },
   { id: "cpl", label: "CPL (Cost per Lead)", group: "ads", desc: "Ad Spend \u00f7 Opt-ins. Benchmark: $20\u2013$80 high-ticket." },
@@ -128,22 +123,16 @@ const EDGES = [
   { from: "data_quality", to: "alert_notifs", insight: "When quality checks fail, alerts fire immediately to Slack. Team knows within minutes." },
 
   // Infra -> Ads
-  { from: "canonical_model", to: "ad_spend", insight: "Canonical model aggregates ad spend from all platforms into a single reconciled total." },
-  { from: "canonical_model", to: "impressions", insight: "Impression data flows from canonical model after deduplication and source validation." },
+  { from: "canonical_model", to: "ad_spend", insight: "Canonical model aggregates Meta ad spend into a single reconciled total." },
 
   // Ads internal
-  { from: "ad_spend", to: "ad_spend_google", insight: "Compare Google's share of spend against its share of closed deals." },
-  { from: "ad_spend", to: "ad_spend_meta", insight: "Evaluate whether Meta deserves more or less budget based on deal contribution." },
-  { from: "ad_spend", to: "ad_spend_other", insight: "Track experimental channels vs Google/Meta CPL benchmarks." },
-  { from: "impressions", to: "clicks", insight: "Drop-off reveals ad creative effectiveness \u2014 large gap = creative isn't stopping the scroll." },
-  { from: "clicks", to: "lp_views", insight: "Gap between clicks and LP views = bounce before load. Over 20% = page speed issues." },
+  { from: "ad_spend", to: "ad_spend_meta", insight: "Meta is the primary paid channel. Track spend vs deal contribution." },
+  { from: "ad_spend", to: "ad_spend_other", insight: "Track experimental channels vs Meta CPL benchmarks." },
+  { from: "ad_spend", to: "lp_views", insight: "Ad spend drives traffic to landing pages. More spend = more LP views if targeting holds." },
   { from: "lp_views", to: "optins", insight: "LP view to opt-in is the #1 marketing lever \u2014 10% improvement compounds through entire funnel." },
   { from: "lp_views", to: "lp_conv_rate", insight: "LP views are the denominator. If views rise but opt-ins don't, messaging doesn't match the ad." },
   { from: "ad_spend", to: "cpl", insight: "Ad spend is CPL numerator. If spend scales but CPL holds, you found a scalable audience." },
   { from: "optins", to: "cpl", insight: "Opt-ins are CPL denominator. More opt-ins at same spend = more efficient funnel." },
-  { from: "impressions", to: "ctr", insight: "Impressions are CTR denominator. Growing impressions with flat clicks = creative fatigue." },
-  { from: "clicks", to: "ctr", insight: "Clicks are CTR numerator. Rising clicks with stable impressions = creative is resonating." },
-  { from: "ad_spend", to: "cpc", insight: "Spend \u00f7 clicks = blended CPC. If CPC rises while CPL stays flat, LP is compensating." },
 
   // Ads -> Input
   { from: "optins", to: "setter_dials", insight: "Paid opt-ins become the call list setters work through." },
