@@ -507,7 +507,12 @@ export default function SystemMapPage() {
                             setNodeTooltip(null);
                           }}
                           onClick={() => {
-                            setPinnedNode((prev) => prev === node.id ? null : node.id);
+                            // If already pinned, always unpin first (clicking same or different box)
+                            if (pinnedNode) {
+                              setPinnedNode(null);
+                            } else {
+                              setPinnedNode(node.id);
+                            }
                           }}
                           style={{
                             background: isPinned ? meta.color + "22" : isHovered ? meta.color + "18" : "rgba(255,255,255,0.025)",
