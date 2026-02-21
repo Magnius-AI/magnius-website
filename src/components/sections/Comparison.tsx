@@ -34,8 +34,8 @@ export function Comparison() {
           {/* Header */}
           <div className="grid grid-cols-4 bg-graphite p-4 sm:p-6 gap-4">
             <div className="font-display font-semibold text-frost text-sm sm:text-base">Feature</div>
-            <div className="text-center font-display font-semibold text-muted text-sm sm:text-base">WebinarJam</div>
-            <div className="text-center font-display font-semibold text-muted text-sm sm:text-base">Zoom</div>
+            <div className="text-center font-display font-semibold text-muted text-sm sm:text-base">Standard BI</div>
+            <div className="text-center font-display font-semibold text-muted text-sm sm:text-base">Spreadsheets</div>
             <div className="text-center font-display font-semibold text-cyan text-sm sm:text-base">Magnius</div>
           </div>
 
@@ -43,16 +43,15 @@ export function Comparison() {
           {COMPARISON_DATA.map((row, idx) => (
             <div
               key={row.feature}
-              className={`grid grid-cols-4 p-4 sm:p-6 gap-4 ${
-                idx % 2 === 0 ? 'bg-graphite/40' : 'bg-graphite/20'
-              }`}
+              className={`grid grid-cols-4 p-4 sm:p-6 gap-4 ${idx % 2 === 0 ? 'bg-graphite/40' : 'bg-graphite/20'
+                }`}
             >
               <div className="text-silver text-sm sm:text-base font-medium">{row.feature}</div>
-              <div className={`text-center text-sm sm:text-base ${row.webinarjam.negative ? 'text-muted' : 'text-silver'}`}>
-                {row.webinarjam.value}
+              <div className={`text-center text-sm sm:text-base ${row.standardBI.negative ? 'text-muted' : 'text-silver'}`}>
+                {row.standardBI.value}
               </div>
-              <div className={`text-center text-sm sm:text-base ${row.zoom.negative ? 'text-muted' : 'text-silver'}`}>
-                {row.zoom.value}
+              <div className={`text-center text-sm sm:text-base ${row.spreadsheets.negative ? 'text-muted' : 'text-silver'}`}>
+                {row.spreadsheets.value}
               </div>
               <div className={`text-center text-sm sm:text-base ${row.magnius.positive ? 'text-cyan font-medium' : 'text-frost'}`}>
                 {row.magnius.value}
