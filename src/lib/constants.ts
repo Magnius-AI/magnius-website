@@ -1,10 +1,10 @@
 import {
-  Video,
-  Layout,
-  MessageSquare,
-  Sparkles,
-  PlayCircle,
-  BarChart3,
+  Database,
+  Sun,
+  AlertTriangle,
+  Network,
+  DollarSign,
+  Target,
   Zap,
   TrendingUp,
   Clock,
@@ -17,9 +17,9 @@ import {
 
 export const BRAND = {
   name: 'Magnius',
-  tagline: 'AI-Powered Webinars That Convert',
+  tagline: 'Make Your Agency\'s Data Speak',
   description:
-    'The modern webinar platform with AI-powered content generation, high-converting registration pages, and reliable streaming. Built for coaches, creators, and businesses.',
+    'The AI-powered analytics platform for sales agencies. Aggregate Meta, Hyros, GHL, and SendBlue data into an AI Narrative Engine that generates actionable daily briefings and catches hidden funnel leaks.',
   email: 'hello@magnius.ai',
   calendly: 'https://calendly.com/kishor-relius',
   parent: 'A Relius Company',
@@ -65,99 +65,99 @@ export interface Feature {
 
 export const FEATURES: Feature[] = [
   {
-    id: 'live-streaming',
-    name: 'Live Streaming',
-    shortName: 'Streaming',
-    description: 'Low-latency WebRTC streaming with automatic HLS fallback. Reliable at any scale.',
-    icon: Video,
+    id: 'data-aggregation',
+    name: 'Multi-Source Aggregation',
+    shortName: 'Integrations',
+    description: 'Connect all your tools seamlessly. Meta Ads, Hyros, GoHighLevel, and SendBlue integration out of the box.',
+    icon: Database,
     color: COLORS.cyan,
     gradient: 'from-cyan to-teal',
     details: [
-      'WebRTC-powered sub-second latency for presenters',
-      'Automatic HLS fallback for large audiences (500+)',
-      'Multi-presenter support (up to 6 on screen)',
-      'Screen sharing and slide presentation mode',
-      'Automatic recording of every session',
+      'Native integration with Meta Ads and Hyros',
+      'GoHighLevel (GHL) funnel metrics sync',
+      'SendBlue iMessage analytics tracking',
+      'Unified data warehouse for your agency',
+      'Real-time data freshness',
     ],
   },
   {
-    id: 'registration-pages',
-    name: 'Registration Pages',
-    shortName: 'Reg Pages',
-    description: 'Beautiful, high-converting landing pages with templates, countdown timers, and social proof.',
-    icon: Layout,
+    id: 'ai-briefings',
+    name: 'AI Morning Briefings',
+    shortName: 'Briefings',
+    description: 'Start your day with an AI-generated CEO briefing summarizing your top metrics and North Star progress.',
+    icon: Sun,
     color: COLORS.teal,
     gradient: 'from-teal to-cyan',
     details: [
-      'Pre-built high-converting templates',
-      'Custom fields and branding',
-      'Countdown timers and urgency elements',
-      'Social proof widgets (attendee count, testimonials)',
-      'A/B testing for optimization',
+      'Daily summaries delivered automatically',
+      'Top 5 leverage metrics highlighted',
+      'No more scrambling through dashboards',
+      'Plain business language without jargon',
+      'Actionable recommendations included',
     ],
   },
   {
-    id: 'interactive-tools',
-    name: 'Interactive Tools',
-    shortName: 'Engagement',
-    description: 'Live chat, polls, Q&A, hand raises, and timed CTA overlays to keep your audience engaged.',
-    icon: MessageSquare,
+    id: 'anomaly-detection',
+    name: 'Anomaly Detection',
+    shortName: 'Anomalies',
+    description: 'Catch funnel leaks instantly. Our AI monitors your metrics 24/7 and alerts you when things break.',
+    icon: AlertTriangle,
     color: COLORS.electric,
     gradient: 'from-electric to-violet',
     details: [
-      'Real-time live chat with moderation',
-      'Interactive polls with live results',
-      'Q&A with upvoting and moderator view',
-      'Hand raises and attendee spotlighting',
-      'Timed CTA overlays and offer popups',
+      '24/7 monitoring of all core metrics',
+      'Statistical bounds and trend deviation alerts',
+      'Slack and email notifications',
+      'Root cause analysis generated instantly',
+      'Prioritized by severity',
     ],
   },
   {
-    id: 'ai-content',
-    name: 'AI Content Assistant',
-    shortName: 'AI Content',
-    description: 'Generate webinar slides, scripts, follow-up emails, and recap docs from a topic outline.',
-    icon: Sparkles,
+    id: 'cross-metric',
+    name: 'Cross-Metric Insights',
+    shortName: 'Graph AI',
+    description: 'Understand the "why". Magnius walks the causal graph to show how top-of-funnel changes impact the bottom.',
+    icon: Network,
     color: COLORS.violet,
     gradient: 'from-violet to-electric',
     details: [
-      'Generate slide decks from a topic or outline',
-      'AI-written presenter scripts with talking points',
-      'Automated follow-up email sequences',
-      'Post-webinar recap docs from transcripts',
-      'Personalized content for attendees vs no-shows',
+      'Proprietary Metric Graph technology',
+      'Upstream and downstream impact tracking',
+      'See how ad spend changes affect close rates',
+      'Feedback loop identification',
+      'RAG-enhanced historical pattern recognition',
     ],
   },
   {
-    id: 'automated-webinars',
-    name: 'Automated Webinars',
-    shortName: 'Evergreen',
-    description: 'Pre-recorded evergreen webinars that feel live. Schedule replays with simulated chat and timed offers.',
-    icon: PlayCircle,
+    id: 'revenue-impact',
+    name: 'Revenue Impact Quantification',
+    shortName: 'ROI Calc',
+    description: 'Stop guessing. Every anomaly and recommendation comes with a calculated dollar impact on your revenue.',
+    icon: DollarSign,
     color: COLORS.cyan,
     gradient: 'from-cyan to-electric',
     details: [
-      'Record once, replay on any schedule',
-      'Simulated live chat for authentic feel',
-      'Timed CTA overlays and offer popups',
-      'Urgency elements (limited seats, countdown)',
-      'On-demand replay pages with gated access',
+      'Estimated revenue impact per anomaly',
+      'Sensitivity analysis across the funnel',
+      'Dollar quantification using edge formulas',
+      'Clear prioritization of what to fix first',
+      'Hard ROI tracking for your agency',
     ],
   },
   {
-    id: 'analytics',
-    name: 'Analytics Dashboard',
-    shortName: 'Analytics',
-    description: 'Attendance rates, drop-off points, engagement scores, and conversion tracking in real-time.',
-    icon: BarChart3,
+    id: 'team-performance',
+    name: 'Team Performance Tracking',
+    shortName: 'Team Ops',
+    description: 'Track your setters and closers. Deep dive into individual performance and conversion rates.',
+    icon: Target,
     color: COLORS.teal,
     gradient: 'from-teal to-violet',
     details: [
-      'Real-time attendee count and engagement metrics',
-      'Drop-off curve visualization',
-      'Engagement scoring per attendee',
-      'CTA click and conversion tracking',
-      'Export reports and integrate with your CRM',
+      'Setter to Closer matrix',
+      'Call outcome tracking',
+      'Individual rep leaderboards',
+      'Identify coaching opportunities',
+      'Real-time team dashboards',
     ],
   },
 ];
@@ -169,7 +169,7 @@ export const FEATURES: Feature[] = [
 export interface PricingTier {
   id: string;
   name: string;
-  price: number;
+  price: number | string;
   period: string;
   description: string;
   attendees: string;
@@ -181,81 +181,24 @@ export interface PricingTier {
 
 export const PRICING_TIERS: PricingTier[] = [
   {
-    id: 'free',
-    name: 'Free',
-    price: 0,
-    period: 'forever',
-    description: 'Try Magnius with no commitment',
-    attendees: '25 attendees',
+    id: 'agency',
+    name: 'Agency Partner',
+    price: 'Custom',
+    period: '',
+    description: 'Transform how your agency uses data',
+    attendees: 'Unlimited Clients',
     features: [
-      '1 webinar/month',
-      '30 min max duration',
-      'Basic analytics',
-      'Live chat',
-      'Magnius branding',
-    ],
-    cta: 'Get Started Free',
-    gradient: 'from-slate to-graphite',
-  },
-  {
-    id: 'starter',
-    name: 'Starter',
-    price: 39,
-    period: '/mo',
-    description: 'Everything you need to start hosting',
-    attendees: '100 attendees',
-    features: [
-      'Unlimited webinars',
-      '2 hour max duration',
-      'Registration pages',
-      'Chat, polls & Q&A',
-      'Email reminders',
-      'AI content (5/mo)',
-      'Custom branding',
-      'Recording & replay',
+      'Full Narrative Engine Access',
+      'GHL, Hyros, Meta & SendBlue Integrations',
+      'Daily AI CEO Briefings',
+      'Real-time Anomaly Detection',
+      'Cross-Metric Graph Analysis',
+      'Dedicated Slack Support',
+      'White-label options available',
     ],
     popular: true,
-    cta: 'Start Free Trial',
-    gradient: 'from-cyan to-teal',
-  },
-  {
-    id: 'pro',
-    name: 'Pro',
-    price: 79,
-    period: '/mo',
-    description: 'For growing businesses that need more',
-    attendees: '500 attendees · 3 hosts',
-    features: [
-      'Everything in Starter, plus:',
-      'Evergreen webinars',
-      'CTA overlays & offers',
-      'Conversion tracking',
-      'AI content (unlimited)',
-      'Integrations (HubSpot, GHL, Zapier)',
-      'Advanced analytics',
-      'Follow-up automation',
-    ],
-    cta: 'Start Free Trial',
+    cta: 'Book a Demo',
     gradient: 'from-electric to-violet',
-  },
-  {
-    id: 'business',
-    name: 'Business',
-    price: 149,
-    period: '/mo',
-    description: 'For agencies and enterprises',
-    attendees: '2,000 attendees · 6 hosts',
-    features: [
-      'Everything in Pro, plus:',
-      'White-label branding',
-      'Priority support',
-      'API access',
-      'SSO authentication',
-      'Custom integrations',
-      'Dedicated account manager',
-    ],
-    cta: 'Contact Sales',
-    gradient: 'from-violet to-cyan',
   },
 ];
 
@@ -264,18 +207,18 @@ export const PRICING_TIERS: PricingTier[] = [
 // ============================================
 
 export const HERO = {
-  badge: 'Now in Beta — Join the Waitlist',
-  headline: 'Webinars that sell.',
+  badge: 'Now in Beta — Book a Demo',
+  headline: 'Make your agency\'s data **speak**.',
   subheadline:
-    'The AI-powered webinar platform built for coaches, creators, and businesses. Reliable streaming, high-converting pages, and AI that writes your content.',
+    'Stop scrambling through spreadsheets. Magnius aggregates your Meta, Hyros, and GHL data into an AI Narrative Engine that generates actionable daily briefings and catches funnel leaks before they cost you.',
   cta: {
-    primary: 'Start Free',
+    primary: 'Book a Demo',
     secondary: 'See Features',
   },
   stats: [
-    { value: '500+', label: 'Attendees supported' },
-    { value: '99.9%', label: 'Uptime' },
-    { value: 'AI', label: 'Powered' },
+    { value: '4+', label: 'Core Integrations' },
+    { value: '24/7', label: 'Anomaly Detection' },
+    { value: 'AI', label: 'Narrative Engine' },
   ],
 } as const;
 
@@ -285,19 +228,19 @@ export const HERO = {
 
 export const VALUE_PROPS = [
   {
-    title: 'Streaming that doesn\'t crash',
-    description: 'WebRTC-powered streaming with HLS fallback. Your webinar stays live even at 500+ attendees.',
-    icon: Zap,
+    title: 'Automated Briefings',
+    description: 'Start your day with an AI-generated CEO briefing. Know your numbers without opening a single dashboard.',
+    icon: Sun,
   },
   {
-    title: 'Pages that convert',
-    description: 'High-converting registration pages with countdown timers, social proof, and A/B testing built in.',
-    icon: TrendingUp,
+    title: 'Instant Anomaly Detection',
+    description: 'Catch funnel leaks the moment they happen. Get alerts with calculated dollar impacts so you know what to fix.',
+    icon: AlertTriangle,
   },
   {
-    title: 'AI does the heavy lifting',
-    description: 'Generate slides, scripts, follow-up emails, and recap docs from just a topic. Your AI content assistant.',
-    icon: Sparkles,
+    title: 'Cross-Metric Causality',
+    description: 'Our Narrative Engine walks the data graph to show you exactly how ad spend upstream affects close rates downstream.',
+    icon: Network,
   },
 ] as const;
 
@@ -307,40 +250,22 @@ export const VALUE_PROPS = [
 
 export const COMPARISON_DATA = [
   {
-    feature: 'Reliable streaming',
-    webinarjam: { value: '❌ Crashes often', negative: true },
-    zoom: { value: '✅ Solid', positive: true },
-    magnius: { value: '✅ WebRTC + HLS', positive: true },
+    feature: 'Data Access',
+    standardBI: { value: 'Manual exports', negative: true },
+    spreadsheets: { value: 'Siloed tools', negative: true },
+    magnius: { value: '✅ Meta, Hyros, GHL', positive: true },
   },
   {
-    feature: 'AI content generation',
-    webinarjam: { value: '❌ None', negative: true },
-    zoom: { value: '❌ None', negative: true },
-    magnius: { value: '✅ Built-in', positive: true },
+    feature: 'Data Interpretation',
+    standardBI: { value: 'You figure it out', negative: true },
+    spreadsheets: { value: 'Complex charts', negative: true },
+    magnius: { value: '✅ AI Narratives', positive: true },
   },
   {
-    feature: 'Sales CTAs & offers',
-    webinarjam: { value: '✅ Basic', positive: true },
-    zoom: { value: '❌ None', negative: true },
-    magnius: { value: '✅ Advanced', positive: true },
-  },
-  {
-    feature: 'Registration pages',
-    webinarjam: { value: '⚠️ Basic', negative: false },
-    zoom: { value: '❌ None', negative: true },
-    magnius: { value: '✅ Builder', positive: true },
-  },
-  {
-    feature: 'Evergreen webinars',
-    webinarjam: { value: '✅ EverWebinar', positive: true },
-    zoom: { value: '❌ None', negative: true },
-    magnius: { value: '✅ Built-in', positive: true },
-  },
-  {
-    feature: 'Starting price',
-    webinarjam: { value: '$49/mo', negative: false },
-    zoom: { value: '$79/mo add-on', negative: true },
-    magnius: { value: 'Free', positive: true },
+    feature: 'Anomaly Detection',
+    standardBI: { value: '❌ None', negative: true },
+    spreadsheets: { value: '❌ None', negative: true },
+    magnius: { value: '✅ Real-time Alerts', positive: true },
   },
 ];
 
@@ -350,8 +275,7 @@ export const COMPARISON_DATA = [
 
 export const NAV_LINKS = [
   { label: 'Home', href: '/' },
-  { label: 'Features', href: '/features' },
-  { label: 'Pricing', href: '/#pricing' },
+  { label: 'Platform', href: '/features' },
   { label: 'Contact', href: '/contact' },
 ] as const;
 
@@ -374,28 +298,28 @@ export const FOOTER = {
 
 export const FAQ = [
   {
-    question: 'How is Magnius different from WebinarJam?',
-    answer: 'We\'re built on modern infrastructure (WebRTC + HLS), so your webinars don\'t crash mid-presentation. Plus, we have native AI content generation — generate slides, scripts, and follow-up emails automatically. And our pricing starts at free.',
+    question: 'How exactly does the AI read my data?',
+    answer: 'Magnius uses a proprietary "Metric Graph" that maps the causal relationships between your KPIs. When data flows in from GHL or Meta, our Narrative Engine walks this graph upstream and downstream to understand context, then uses an LLM to generate plain-English insights.',
   },
   {
-    question: 'What about Zoom Webinars?',
-    answer: 'Zoom is great for meetings but wasn\'t built for sales webinars. No registration page builder, no CTA overlays, no evergreen webinars, no AI content assistant. Magnius is purpose-built for webinars that convert.',
+    question: 'What integrations do you natively support?',
+    answer: 'We currently natively integrate with Meta Ads, Hyros, GoHighLevel (GHL), and SendBlue (for iMessage analytics). This covers the entire funnel from ad click to signed contract.',
   },
   {
-    question: 'How does the AI content assistant work?',
-    answer: 'Give it a topic or outline, and it generates webinar slide decks, a full presenter script with talking points, follow-up email sequences (different for attendees vs no-shows), and post-webinar recap docs from the recording transcript.',
+    question: 'Does it just give me charts, or does it tell me what to do?',
+    answer: 'The core value of Magnius is the Narrative Engine. Instead of just showing you a chart that dipped, Magnius generates a Morning Briefing or Anomaly Alert that tells you: "Close rates dropped 15%, which is costing you $4,000/week. This was caused by a drop in show rates from the Meta Ads campaign." It gives you the "so what" and "now what."',
   },
   {
-    question: 'Can I run automated/evergreen webinars?',
-    answer: 'Yes. Record once, then schedule automated replays that feel live — complete with simulated chat, timed CTA overlays, urgency elements, and offer popups. Perfect for evergreen funnels.',
+    question: 'Is it hard to set up?',
+    answer: 'Not at all. Once you connect your data sources via OAuth or API keys, Magnius begins syncing historical data and establishing baselines. The AI starts generating narratives within 24 hours.',
   },
   {
-    question: 'What integrations do you support?',
-    answer: 'HubSpot, GoHighLevel (GHL), Stripe, Mailchimp, ConvertKit, ActiveCampaign, Zapier, and more. Plus webhooks and a public API for custom integrations on our Business plan.',
+    question: 'Can I track individual team members?',
+    answer: 'Yes. Our platform includes a Setter-Closer matrix and call outcome tracking, so you can see exactly which reps are performing and who needs coaching based on the data.',
   },
   {
-    question: 'How many attendees can I host?',
-    answer: 'Up to 2,000 on our Business plan, with custom capacity for Enterprise. Our WebRTC + HLS hybrid architecture ensures smooth, reliable streaming regardless of audience size.',
+    question: 'How is this different from tools like Databox or Looker?',
+    answer: 'Standard BI tools are "dumb" dashboards—they show you numbers and force you to interpret them. Magnius is an active intelligence platform. It analyzes the data for you, writes the reports, and calculates the dollar impact of issues before you even log in.',
   },
 ] as const;
 
@@ -405,18 +329,18 @@ export const FAQ = [
 
 export const TARGET_CUSTOMERS = [
   {
-    title: 'Coaches & Creators',
-    description: 'Host weekly webinars that convert viewers into clients and course buyers.',
-    icon: Sparkles,
+    title: 'Sales Agencies',
+    description: 'Track client performance, prove ROI, and stop wasting hours pulling reports.',
+    icon: Target,
   },
   {
-    title: 'Marketing Agencies',
-    description: 'White-label webinar hosting for your clients. Scale without limits.',
+    title: 'Growth Teams',
+    description: 'Unify ad spend with sales outcomes to see the true cost of acquisition.',
     icon: TrendingUp,
   },
   {
-    title: 'SaaS Companies',
-    description: 'Product demos, onboarding webinars, and customer education at scale.',
+    title: 'RevOps Leaders',
+    description: 'Get automated anomaly detection across your entire GHL and Hyros funnel.',
     icon: Zap,
   },
 ] as const;

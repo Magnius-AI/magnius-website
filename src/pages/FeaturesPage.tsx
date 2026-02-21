@@ -8,9 +8,9 @@ import { GradientMesh } from '../components/effects';
 import { FEATURES, BRAND } from '../lib/constants';
 
 const metrics = [
-  { value: '500+', label: 'Attendees' },
-  { value: '< 1s', label: 'Latency' },
-  { value: '99.9%', label: 'Uptime' },
+  { value: '4+', label: 'Integrations' },
+  { value: '24/7', label: 'Monitoring' },
+  { value: '100%', label: 'Automated' },
   { value: 'AI', label: 'Powered' },
 ];
 
@@ -43,11 +43,11 @@ export function FeaturesPage() {
 
             <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-frost mb-6 leading-tight">
               The Complete{' '}
-              <span className="text-gradient">Webinar Platform</span>
+              <span className="text-gradient">Data Narrative Platform</span>
             </h1>
 
             <p className="max-w-2xl mx-auto text-lg sm:text-xl text-silver mb-12">
-              From registration to replay — everything you need to host engaging, high-converting webinars.
+              From raw data to actionable insights — everything you need to understand your agency's performance.
             </p>
 
             {/* Metrics */}
@@ -86,9 +86,8 @@ export function FeaturesPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: '-100px' }}
                   transition={{ duration: 0.6 }}
-                  className={`flex flex-col lg:flex-row gap-12 items-center ${
-                    index % 2 === 1 ? 'lg:flex-row-reverse' : ''
-                  }`}
+                  className={`flex flex-col lg:flex-row gap-12 items-center ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''
+                    }`}
                 >
                   {/* Content */}
                   <div className="flex-1 space-y-6">
@@ -146,21 +145,14 @@ export function FeaturesPage() {
               Ready to See It in Action?
             </h2>
             <p className="text-silver text-lg mb-8 max-w-2xl mx-auto">
-              Start hosting webinars that convert — for free.
+              Book a demo to see how Magnius connects the dots in your data.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button
-                onClick={scrollToPricing}
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-cyan to-teal text-void font-semibold rounded-lg hover:opacity-90 transition-opacity"
-              >
-                <Rocket className="w-5 h-5" />
-                Start Free
-              </button>
               <a
                 href={BRAND.calendly}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-graphite/60 backdrop-blur-sm border border-slate/40 text-frost font-semibold rounded-lg hover:bg-graphite/80 transition-colors"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-cyan to-teal text-void font-semibold rounded-lg hover:opacity-90 transition-opacity"
               >
                 Book a Demo
               </a>

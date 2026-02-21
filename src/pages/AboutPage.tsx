@@ -8,26 +8,26 @@ import { fadeInUp, staggerContainer, viewportSettings } from '../lib/animations'
 const visionPoints = [
   {
     icon: Shield,
-    title: 'Reliability First',
-    description: 'Built on WebRTC with HLS fallback. No more mid-webinar crashes that cost you sales.',
+    title: 'Data Integrity',
+    description: 'Robust integrations with Meta, Hyros, and GHL. No more dropped metrics or mismatched attribution.',
     color: '#00d4ff',
   },
   {
     icon: Sparkles,
-    title: 'AI-Native',
-    description: 'Content generation isn\'t bolted on — it\'s built into every workflow from slides to follow-ups.',
+    title: 'AI-Native Insights',
+    description: 'Narratives aren\'t bolted on — our engine reads the metric graph to generate actionable CEO briefings.',
     color: '#00b8a9',
   },
   {
     icon: Target,
-    title: 'Built for Conversion',
-    description: 'Every feature exists to help you sell. CTAs, offers, urgency timers, and follow-up automation.',
+    title: 'Built for Agencies',
+    description: 'Stop guessing what\'s breaking. Automated anomaly detection tells your team exactly where the funnel is leaking.',
     color: '#0066ff',
   },
   {
     icon: DollarSign,
-    title: 'Fair Pricing',
-    description: 'Start free. No $500/mo surprises. Scale your plan as your audience grows.',
+    title: 'ROI Focused',
+    description: 'We quantify the exact dollar impact of every drop-off in your funnel, so you know exactly what to fix.',
     color: '#7c3aed',
   },
 ];
@@ -56,14 +56,14 @@ export default function AboutPage() {
               className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-frost mb-6"
             >
               We built Magnius because{' '}
-              <span className="text-gradient">webinars deserve better</span>
+              <span className="text-gradient">agency data deserves better</span>
             </motion.h1>
 
             <motion.p
               variants={fadeInUp}
               className="max-w-2xl mx-auto text-lg text-silver"
             >
-              Tired of paying $500/mo for webinar software that crashes mid-presentation.
+              Tired of duct-taping tools together to understand your agency's performance.
               We're building the modern, AI-native alternative.
             </motion.p>
           </motion.div>
@@ -83,20 +83,20 @@ export default function AboutPage() {
           >
             <motion.div variants={fadeInUp}>
               <h2 className="font-display text-3xl sm:text-4xl font-bold text-frost mb-6">
-                The webinar industry is broken
+                The analytics industry is broken
               </h2>
               <div className="space-y-4 text-silver">
                 <p>
-                  <span className="text-frost font-semibold">WebinarJam</span> crashes during your most important presentations and feels like software from 2015.
+                  <span className="text-frost font-semibold">Standard BI Tools</span> give you complex charts but no actual answers on what to do.
                 </p>
                 <p>
-                  <span className="text-frost font-semibold">Zoom Webinars</span> is great for meetings but wasn't built for sales — no CTAs, no registration pages, no conversion tools.
+                  <span className="text-frost font-semibold">Spreadsheets</span> are great for accounting but terrible for real-time decision making — prone to errors and always outdated.
                 </p>
                 <p>
-                  <span className="text-frost font-semibold">Nobody has AI</span> — you're still manually creating slides, writing scripts, and crafting follow-up emails for every webinar.
+                  <span className="text-frost font-semibold">Nobody has AI interpretations</span> — you're still manually analyzing data, trying to figure out why your close rate dropped this week.
                 </p>
                 <p>
-                  <span className="text-frost font-semibold">Pricing is absurd</span> — $500+/mo for basic webinar features that should cost a fraction of that.
+                  <span className="text-frost font-semibold">Attribution is a mess</span> — connecting top-of-funnel ad spend to bottom-of-funnel booked calls is a nightmare.
                 </p>
               </div>
             </motion.div>
@@ -107,16 +107,16 @@ export default function AboutPage() {
                   The Magnius approach
                 </h3>
                 <p className="text-silver mb-6">
-                  Modern streaming infrastructure, AI-powered content generation, and conversion tools — all in one platform that starts free.
+                  Deep native integrations, causal graph walking, and AI-powered narratives — all in one platform built for sales teams.
                 </p>
                 <div className="grid grid-cols-2 gap-4">
                   <div className="text-center p-4 rounded-xl bg-graphite/50">
-                    <div className="text-2xl font-bold text-gradient">Free</div>
-                    <div className="text-xs text-muted">To get started</div>
+                    <div className="text-2xl font-bold text-gradient">AI</div>
+                    <div className="text-xs text-muted">Daily Briefings</div>
                   </div>
                   <div className="text-center p-4 rounded-xl bg-graphite/50">
-                    <div className="text-2xl font-bold text-gradient">AI</div>
-                    <div className="text-xs text-muted">Content assistant</div>
+                    <div className="text-2xl font-bold text-gradient">Data</div>
+                    <div className="text-xs text-muted">Deep Integrations</div>
                   </div>
                 </div>
               </GlowCard>
@@ -139,7 +139,7 @@ export default function AboutPage() {
                 What makes us different
               </h2>
               <p className="max-w-2xl mx-auto text-silver">
-                Not another WebinarJam clone. A fundamentally different approach to webinar hosting.
+                Not another Looker Studio dashboard. A fundamentally different approach to analytics.
               </p>
             </motion.div>
 
@@ -150,8 +150,8 @@ export default function AboutPage() {
                     className="h-full p-6"
                     glowColor={
                       index % 4 === 0 ? 'cyan' :
-                      index % 4 === 1 ? 'teal' :
-                      index % 4 === 2 ? 'electric' : 'violet'
+                        index % 4 === 1 ? 'teal' :
+                          index % 4 === 2 ? 'electric' : 'violet'
                     }
                   >
                     <div
@@ -192,7 +192,7 @@ export default function AboutPage() {
           >
             <motion.div variants={fadeInUp} className="text-center mb-12">
               <h2 className="font-display text-3xl sm:text-4xl font-bold text-frost mb-4">
-                Built for people who sell with webinars
+                Built for scaling agencies
               </h2>
             </motion.div>
 
@@ -222,17 +222,19 @@ export default function AboutPage() {
             variants={fadeInUp}
           >
             <h2 className="font-display text-3xl font-bold text-frost mb-6">
-              Ready to host webinars that convert?
+              Ready to make your data speak?
             </h2>
             <p className="text-silver mb-8">
-              Start free. No credit card required.
+              Book a demo today.
             </p>
             <a
-              href="/#pricing"
+              href={BRAND.calendly}
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-cyan to-teal text-void font-semibold rounded-lg hover:opacity-90 transition-opacity"
             >
               <Rocket className="w-5 h-5" />
-              Get Started
+              Book a Demo
             </a>
           </motion.div>
         </div>

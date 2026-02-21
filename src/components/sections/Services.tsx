@@ -15,11 +15,11 @@ export function Services() {
           className="text-center mb-16"
         >
           <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-frost mb-4">
-            Everything You Need to{' '}
-            <span className="text-gradient">Host, Engage, and Convert</span>
+            The Complete{' '}
+            <span className="text-gradient">Data Narrative Platform</span>
           </h2>
           <p className="max-w-2xl mx-auto text-lg text-silver">
-            One platform. No more duct-taping tools together.
+            Everything you need to turn agency metrics into actionable intelligence.
           </p>
         </motion.div>
 

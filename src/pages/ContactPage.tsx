@@ -59,7 +59,7 @@ export default function ContactPage() {
               variants={fadeInUp}
               className="max-w-xl mx-auto text-lg text-silver"
             >
-              Questions about Magnius? Want a personalized demo of our webinar platform?
+              Questions about Magnius? Want a personalized demo of our AI Data Platform?
               We'd love to hear from you.
             </motion.p>
           </motion.div>
@@ -89,7 +89,7 @@ export default function ContactPage() {
                   className="h-full p-6 text-center"
                   glowColor={
                     index === 0 ? 'cyan' :
-                    index === 1 ? 'teal' : 'electric'
+                      index === 1 ? 'teal' : 'electric'
                   }
                 >
                   <div
@@ -133,12 +133,12 @@ export default function ContactPage() {
             variants={fadeInUp}
           >
             <h2 className="font-display text-3xl sm:text-4xl font-bold text-frost mb-6">
-              Ready to host webinars that convert?
+              Ready to make your agency's data speak?
             </h2>
             <p className="text-silver mb-8">
-              Book a demo or start hosting for free today.
+              Book a demo to see the AI Narrative Engine in action.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-sm mx-auto">
               <a
                 href={BRAND.calendly}
                 target="_blank"
@@ -147,12 +147,6 @@ export default function ContactPage() {
               >
                 <span>Book a Demo</span>
                 <ArrowRight className="w-5 h-5" />
-              </a>
-              <a
-                href="/#pricing"
-                className="inline-flex items-center justify-center gap-2 flex-1 px-6 py-4 bg-graphite/60 border border-slate/40 text-frost font-semibold rounded-xl hover:bg-graphite/80 transition-colors"
-              >
-                Start Free
               </a>
             </div>
           </motion.div>

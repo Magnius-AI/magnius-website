@@ -25,11 +25,11 @@ export function FinalCTA() {
           transition={{ duration: 0.6 }}
         >
           <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-frost mb-6">
-            Ready to host webinars that{' '}
-            <span className="text-gradient">actually convert</span>?
+            Ready to make your agency's data{' '}
+            <span className="text-gradient">actually speak</span>?
           </h2>
           <p className="text-lg sm:text-xl text-silver mb-10 max-w-2xl mx-auto">
-            Join the beta. Start hosting for free. No credit card required.
+            Book a demo to see the AI Data Narrative Engine in action.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -38,13 +38,13 @@ export function FinalCTA() {
               className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-cyan to-teal text-void font-semibold rounded-lg hover:opacity-90 transition-opacity"
             >
               <Rocket className="w-5 h-5" />
-              Start Free
+              Book a Demo
               <ArrowRight className="w-5 h-5" />
             </button>
           </div>
 
           <p className="mt-6 text-sm text-muted">
-            No credit card required. Free plan available forever.
+            Includes a guided walkthrough of our data integrations.
           </p>
         </motion.div>
       </div>

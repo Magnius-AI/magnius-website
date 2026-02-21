@@ -159,7 +159,7 @@ export default function Navigation() {
 
               {/* Mobile Tagline */}
               <p className="text-xs text-muted text-center pt-4 border-t border-slate/20">
-                AI-powered webinars that convert
+                Make your agency's data speak
               </p>
             </div>
           </motion.div>
